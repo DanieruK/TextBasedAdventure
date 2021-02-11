@@ -19,6 +19,7 @@ public class GUI {
     Font normFont = new Font("Comic Sans MS", Font.PLAIN,30);
 
     private ActionListener tsHandler = new TitleScreenHandler();
+    private ActionListener sc1Handler = new Screen1();
 
     public GUI(){
 
@@ -100,6 +101,13 @@ public class GUI {
         public void actionPerformed(ActionEvent event){
 
             createGameScreen();
+        }
+    }
+    public class Screen1 implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+
+            Screen1();
         }
     }
 
