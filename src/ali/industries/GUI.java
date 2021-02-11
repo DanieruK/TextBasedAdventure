@@ -64,7 +64,7 @@ public class GUI {
         mainTextPanel.setBackground(Color.BLACK);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("This is the Main Text Area. Das wird das beste Spiel das ich jemals programmiert habe. Das wird bestimmt was ziemlich gutes");
+        mainTextArea = new JTextArea("Vorgeschichte: Dein Dorf wurde von einer Dämonenherde überrannt und haben dabei das ganze Dorf zerstört. Du hast dir Rache geschworen und suchst nun den Dämonenkönig um dich an ihm zu rächen.");
         mainTextArea.setBounds(100,100,600,250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
