@@ -13,7 +13,7 @@ public class GUI {
     private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
     private JLabel titleNameLabel;
     private JButton startButton, choice1, choice2, choice3;
-    JTextArea mainTextArea;
+    private JTextArea mainTextArea;
     Font titleFont = new Font("Comic Sans MS", Font.PLAIN,60);
     Font startFont = new Font("Comic Sans MS", Font.PLAIN,50);
     Font normFont = new Font("Comic Sans MS", Font.PLAIN,30);
@@ -23,11 +23,12 @@ public class GUI {
 
     public GUI(){
 
-        mainWindow = new JFrame();
+        mainWindow = new JFrame("Text Adventure");
         mainWindow.setSize(800,600);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.getContentPane().setBackground(Color.BLACK);
         mainWindow.setLayout(null);
+        mainWindow.setResizable(false);
         mainWindow.setVisible(true);
         con = mainWindow.getContentPane();
 
