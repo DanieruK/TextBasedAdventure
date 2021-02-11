@@ -96,6 +96,10 @@ public class GUI {
         choiceButtonPanel.add(choice3);
     }
 
+    public void Screen1 (){
+
+    }
+
     public class TitleScreenHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
