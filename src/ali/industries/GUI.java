@@ -14,9 +14,9 @@ public class GUI {
     private JLabel titleNameLabel;
     private JButton startButton, choice1, choice2, choice3;
     private JTextArea mainTextArea;
-    Font titleFont = new Font("Comic Sans MS", Font.PLAIN,60);
-    Font startFont = new Font("Comic Sans MS", Font.PLAIN,50);
-    Font normFont = new Font("Comic Sans MS", Font.PLAIN,30);
+    Font titleFont = new Font("Algerian", Font.PLAIN,60);
+    Font startFont = new Font("Algerian", Font.PLAIN,50);
+    Font normFont = new Font("Comic Sans MS", Font.PLAIN,28);
 
     private ActionListener tsHandler = new TitleScreenHandler();
     private ActionListener sc1Handler = new Screen1();
@@ -64,13 +64,16 @@ public class GUI {
         mainTextPanel.setBackground(Color.BLACK);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("Vorgeschichte: Dein Dorf wurde von einer Dämonenherde überrannt und haben dabei das ganze Dorf zerstört. Du hast dir Rache geschworen und suchst nun den Dämonenkönig um dich an ihm zu rächen.");
+        mainTextArea = new JTextArea("...einst wurde dein Dorf von einer Dämonenherde überrannt, diese haben dabei deine" +
+                " Heimat zerstört und geliebten getötet. Du hast dir geschworen Rache an den Dämonen zu üben und suchst" +
+                " nun den König der Dämonen um Vergeltung zu üben.");
         mainTextArea.setBounds(100,100,600,250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
         mainTextArea.setFont(normFont);
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
 
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(250,350,300,150);
