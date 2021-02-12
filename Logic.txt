@@ -59,6 +59,12 @@ Charaktere:
 aus, trägt er die zweite Rüstung hält er zwei hits aus und mit der besten Rüstung macht der Dämonenkönig nur noch 33 Dmg
 pro hit, der Dämonenkönig ist der Bösewicht der die Bürger des Königreichs Tyral in Angst versetzt.
 
+-Dämon Klasse 1; 50 Lebenspunkte, 2 Hits ohne Rüstung, mit Anfangsrüstung macht er 25 Dmg, mit der zweiten Rüstung macht
+der Dämon 15 Dmg und mit der Endrüstung 5 Dmg
+
+-Dämon Klasse 2; 25 Lebenspunkte, 4 Hits ohne Rüstung, mit Anfangsrüstung macht er 15 Dmg, mit der zweiten Rüstung macht
+er 10 Dmg und mit der Endrüstung nur noch 1 Dmg.
+
 -Bürger Tyrals; 25 Lebenspunkte (irrelevant), Bürger des Königreichs, welche sich vor dem Dämonenkönig fürchten.
 
 -Schmied; 25 Lebenspunkte, gibt dem Spieler anfangs eine kostenlose Rüstung und Waffe. Im Laufe des Spiels kann man im
@@ -67,12 +73,6 @@ Austausch von Edelsteinen weitere Waffen und Rüstungen erwerben.
 -Magierin; 15 Lebenspunkte, bei ihr kann der Spieler sich Heiltränke kaufen.
 
 -Wächter; 25 Lebenspunkte, er warnt dich anfangs davor die Höhle zu betreten.
-
--Dämon Klasse 1; 50 Lebenspunkte, One-Hit ohne Rüstung, mit Anfangsrüstung macht er 25 Dmg, mit der zweiten Rüstung macht
-der Dämon 15 Dmg und mit der Endrüstung 5 Dmg
-
--Dämon Klasse 2; 25 Lebenspunkte, One-Hit ohne Rüstung, mit Anfangsrüstung macht er 15 Dmg, mit der zweiten Rüstung macht
-er 10 Dmg und mit der Endrüstung nur noch 1 Dmg.
 
 
 
@@ -83,9 +83,9 @@ Objekte (allgemein Waffen sind keine Verbrauchsgegenstände):
 
 -Schwert 2; 20 Dmg, Preis: *
 
--Schwert 3; 30 dmg
+-Schwert 3; 30 dmg, Preis: *
 
--Rüstung Anfang
+-Rüstung Anfang; Damagereduzierung:
 
 -Rüstung 2
 
