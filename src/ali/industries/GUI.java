@@ -7,16 +7,16 @@ import java.awt.event.ActionListener;
 
 public class GUI {
 
-    private JLabel item1;
     private JFrame mainWindow;
     private Container con;
-    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel;
-    private JLabel titleNameLabel;
-    private JButton startButton, choice1, choice2, choice3;
+    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
+    private JButton startButton, choice1, choice2, choice3, choice4, inventar;
     private JTextArea mainTextArea;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
     Font startFont = new Font("Algerian", Font.PLAIN,50);
     Font normFont = new Font("Comic Sans MS", Font.PLAIN,28);
+    Font buttonFont = new Font("Comic Sans MS", Font.PLAIN, 24);
 
     private ActionListener tsHandler = new TitleScreenHandler();
     private ActionListener sc1Handler = new Screen1();
@@ -79,26 +79,61 @@ public class GUI {
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(250,350,300,150);
         choiceButtonPanel.setBackground(Color.BLACK);
-        choiceButtonPanel.setLayout(new GridLayout(3,1));
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
 
         choice1 = new JButton("Auswahl Nr.1");
         choice1.setBackground(Color.BLACK);
         choice1.setForeground(Color.WHITE);
-        choice1.setFont(normFont);
+        choice1.setFont(buttonFont);
         choiceButtonPanel.add(choice1);
 
         choice2 = new JButton("Auswahl Nr.2");
         choice2.setBackground(Color.BLACK);
         choice2.setForeground(Color.WHITE);
-        choice2.setFont(normFont);
+        choice2.setFont(buttonFont);
         choiceButtonPanel.add(choice2);
 
         choice3 = new JButton("Auswahl Nr.3");
         choice3.setBackground(Color.BLACK);
         choice3.setForeground(Color.WHITE);
-        choice3.setFont(normFont);
+        choice3.setFont(buttonFont);
         choiceButtonPanel.add(choice3);
+
+        choice4 = new JButton("Auswahl Nr.4");
+        choice4.setBackground(Color.BLACK);
+        choice4.setForeground(Color.WHITE);
+        choice4.setFont(buttonFont);
+        choiceButtonPanel.add(choice4);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+        //TODO.add(inventar);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLUE);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
     }
 
     public void Screen1 (){
