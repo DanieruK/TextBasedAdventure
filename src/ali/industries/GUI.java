@@ -64,7 +64,8 @@ public class GUI {
         mainTextPanel.setBackground(Color.BLACK);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("...einst wurde dein Dorf von einer Dämonenherde überrannt, diese haben dabei deine" +
+        mainTextArea = new JTextArea("...einst wurde dein Dorf von einer Dämonenherde überrannt, wobei der König der Dämonen dein Dorf zerstört hat" +
+                " haben dabei deine" +
                 " Heimat zerstört und geliebten getötet. Du hast dir geschworen Rache an den Dämonen zu üben und suchst" +
                 " nun den König der Dämonen um Vergeltung zu üben.");
         mainTextArea.setBounds(100,100,600,250);

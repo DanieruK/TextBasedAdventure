@@ -1,5 +1,96 @@
-Ali:
+Story:
+Der Spieler erfährt von seinem zerstörten Dorf und wird auf seine Reise geschickt die Dämonen zu vernichten.
+Auf seinem Weg zum Dämonenkönig trifft der Spieler auf verschiedene Charaktere wie Bürger oder normale Dämonen.
+Bis der Spieler nicht ein gewissen Stärkegrad erreicht hat, ist er kein Gegner für den König der Dämonen.
+Hat man den Dämonenkönig besiegt neigt das Spiel sich dem Ende zu, die Bürger retten allerdings noch den Spieler aus der
+eingestürzten Höhlen und feiern ihren Helden.
 
-Justin:
 
-Daniel:
+
+
+
+Kreuzungssystem:
+Man befindet sich auf einer Kreuzung. Im Süden befindet sich das zerstörte Heimatdorf des Spielers, im Osten befindet
+sich das Königreich Tyral, im Westen findet man eine Zauberin und im Norden befindet sich der Höhleneingang.
+
+-Geht man nach Süden sieht man Trümmer und zerstörte Gebäude. Man kann nur nach Norden zurück.
+
+-Geht man nach Osten kann man sich mit Waffen und Rüstungen ausstatten, die Starterrüstung und Waffe sind kostenlos,
+da die Bürger sich vor den Monstern fürchten und einen Helden suchen. Man kann nur nach Westen zurück.
+
+-Geht man nach Westen kann man für wenige Edelsteine Heiltränke kaufen. Man kann nur nach Osten zurück.
+
+-Geht man nach Norden kommt man zum Höhleneingang, diesen kann man noch nicht betritten solange man keine Rüstung und
+Waffe mit sich führt. Man wird von einem Wächter zurück zur Kreuzung geschickt. Betritt man die Höhle hat man vier
+Richtungsmöglichkeiten.
+
+
+
+
+
+Höhlensystem:
+Man kann nach vier Richtungen gehen, Norden, Süden, Westen und Osten.
+
+-Geht man nach Süden verlässt man die Höhle und erreicht erneut das Kreuzungssystem
+
+-Geht man nach Norden erreicht man einen Klasse 2 Dämon, hat man diesen besiegt kann man erneut nach Norden gehen oder
+zurück nach Süden gehen. -> Im Norden wartet ein Klasse 1 Dämon auf dich, während der Spieler im Süden zum Höhlenausgang
+kommt. Hat man diesen besiegt kann man erneut nach Norden oder nach Süden gehen. Im Norden wartet der Dämonen König auf
+den Spieler. Nach Süden kommt man zum Höhlenausgang.
+
+-Geht man nach Osten erreicht man einen Klasse 2 Dämon, hat man diesen besiegt kann man entweder nach Norden weiter
+gehen oder nach Westen zurück gehen. -> Im Norden wartet ein Klasse 1 Dämon auf dich, während du im Westen zum
+Höhlenausgang kommst. Hat man den Klasse 1 Dämon besiegt kann man nach Westen zum Dämonenkönig gehen oder man geht nach
+Süden wodurch man den Höhlenausgang erreicht.
+
+-Geht man nach Westen erreicht man einen Klasse 2 Dämon, hat man diesen besiegt kann man entweder nach Norden weiter
+gehen oder nach Osten zurück gehen. -> Im Norden wartet ein Klasse 1 Dämon auf dich, während du im Osten zum
+Höhlenausgang kommst. Hat man den Klasse 1 Dämon besiegt kann man nach Osten zum Dämonenkönig gehen oder man geht nach
+Süden wodurch man den Höhlenausgang erreicht.
+
+
+
+
+
+Charaktere:
+-Spieler; "Name", 100 Lebenspunkte, der Held der Geschichte der sein, von Dämonen, zerstörtes Dorf rächen will.
+
+-König Dämonen; "Fynal", 100 Lebenspunkte, One-Hit ohne Rüstung, trägt der Spieler die Anfangsrüstung hält er einen hit
+aus, trägt er die zweite Rüstung hält er zwei hits aus und mit der besten Rüstung macht der Dämonenkönig nur noch 33 Dmg
+pro hit, der Dämonenkönig ist der Bösewicht der die Bürger des Königreichs Tyral in Angst versetzt.
+
+-Bürger Tyrals; 25 Lebenspunkte (irrelevant), Bürger des Königreichs, welche sich vor dem Dämonenkönig fürchten.
+
+-Schmied; 25 Lebenspunkte, gibt dem Spieler anfangs eine kostenlose Rüstung und Waffe. Im Laufe des Spiels kann man im
+Austausch von Edelsteinen weitere Waffen und Rüstungen erwerben.
+
+-Magierin; 15 Lebenspunkte, bei ihr kann der Spieler sich Heiltränke kaufen.
+
+-Wächter; 25 Lebenspunkte, er warnt dich anfangs davor die Höhle zu betreten.
+
+-Dämon Klasse 1; 50 Lebenspunkte, One-Hit ohne Rüstung, mit Anfangsrüstung macht er 25 Dmg, mit der zweiten Rüstung macht
+der Dämon 15 Dmg und mit der Endrüstung 5 Dmg
+
+-Dämon Klasse 2; 25 Lebenspunkte, One-Hit ohne Rüstung, mit Anfangsrüstung macht er 15 Dmg, mit der zweiten Rüstung macht
+er 10 Dmg und mit der Endrüstung nur noch 1 Dmg.
+
+
+
+
+
+Objekte (allgemein Waffen sind keine Verbrauchsgegenstände):
+-Schwert Anfang; 10 Dmg, Preis: Kostenlos
+
+-Schwert 2; 20 Dmg, Preis: *
+
+-Schwert 3; 30 dmg
+
+-Rüstung Anfang
+
+-Rüstung 2
+
+-Rüstung 3
+
+.
+.
+.
