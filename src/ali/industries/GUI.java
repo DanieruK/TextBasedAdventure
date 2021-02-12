@@ -72,6 +72,7 @@ public class GUI {
         mainTextArea.setForeground(Color.WHITE);
         mainTextArea.setFont(normFont);
         mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
         mainTextPanel.add(mainTextArea);
         mainTextArea.setEditable(false);
 
