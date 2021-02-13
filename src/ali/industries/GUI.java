@@ -111,11 +111,10 @@ public class GUI {
         inventar.setBackground(Color.BLACK);
         inventar.setForeground(Color.WHITE);
         inventar.setFont(buttonFont);
-        //TODO.add(inventar);
 
         playerPanel = new JPanel();
         playerPanel.setBounds(30,15,680,50);
-        playerPanel.setBackground(Color.BLUE);
+        playerPanel.setBackground(Color.BLACK);
         playerPanel.setLayout(new GridLayout(1,5));
         con.add(playerPanel);
         lpLabel = new JLabel("LP: ");
