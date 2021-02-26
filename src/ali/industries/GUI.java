@@ -136,9 +136,6 @@ public class GUI {
         playerPanel.add(inventar);
     }
 
-    public void Screen1 (){
-
-    }
 
     public class TitleScreenHandler implements ActionListener {
 
@@ -147,12 +144,4 @@ public class GUI {
             createGameScreen();
         }
     }
-    public class Screen1 implements ActionListener {
-
-        public void actionPerformed(ActionEvent event){
-
-            Screen1();
-        }
-    }
-
 }
