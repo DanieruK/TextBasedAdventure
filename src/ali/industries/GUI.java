@@ -19,7 +19,6 @@ public class GUI {
     Font buttonFont = new Font("Comic Sans MS", Font.PLAIN, 24);
 
     private ActionListener tsHandler = new TitleScreenHandler();
-    private ActionListener sc1Handler = new Screen1();
 
     public GUI(){
 
@@ -135,7 +134,6 @@ public class GUI {
         playerPanel.add(itemNameLabel);
         playerPanel.add(inventar);
     }
-
 
     public class TitleScreenHandler implements ActionListener {
 
