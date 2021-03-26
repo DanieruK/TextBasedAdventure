@@ -9,10 +9,11 @@ public class GUI {
 
     private JFrame mainWindow;
     private Container con;
-    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel;
+    private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, lpPanel, itemPanel, inputPanel;
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
-    private JButton startButton, choice1, choice2, choice3, choice4, inventar;
-    private JTextArea mainTextArea;
+    private JButton startButton, startGame,inventar;
+    private JTextArea mainTextArea, nameInputTextArea;
+    private JTextField nameInput;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
     Font startFont = new Font("Algerian", Font.PLAIN,50);
     Font normFont = new Font("Comic Sans MS", Font.PLAIN,28);
@@ -54,10 +55,33 @@ public class GUI {
         con.add(startButtonPanel);
     }
 
-    public void createGameScreen(){
+    public void createNameInput(){
 
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
+
+        nameInputTextArea = new JTextArea("Wähle deinen Heldenamen");
+        nameInputTextArea.setBounds(220, 120, 350, 50);
+        nameInputTextArea.setBackground(Color.BLACK);
+        nameInputTextArea.setForeground(Color.white);
+        nameInputTextArea.setFont(normFont);
+        con.add(nameInputTextArea);
+
+        inputPanel = new JPanel();
+        inputPanel.setBounds(250,200,300,50);
+        inputPanel.setBackground(Color.lightGray);
+        inputPanel.setLayout(new GridLayout(1,1));
+        con.add(inputPanel);
+
+        nameInput = new JTextField();
+        nameInput.setFont(normFont);
+        nameInput.setBackground(Color.LIGHT_GRAY);
+        nameInput.setForeground(Color.BLACK);
+        inputPanel.add(nameInput);
+    }
+
+    public void createGameScreen(){
+
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(100,100,600,250);
         mainTextPanel.setBackground(Color.BLACK);
@@ -77,69 +101,61 @@ public class GUI {
         mainTextArea.setEditable(false);
 
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBounds(250,400,300,50);
         choiceButtonPanel.setBackground(Color.BLACK);
-        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        choiceButtonPanel.setLayout(new GridLayout(1,1));
         con.add(choiceButtonPanel);
 
-        choice1 = new JButton("Auswahl Nr.1");
-        choice1.setBackground(Color.BLACK);
-        choice1.setForeground(Color.WHITE);
-        choice1.setFont(buttonFont);
-        choiceButtonPanel.add(choice1);
-
-        choice2 = new JButton("Auswahl Nr.2");
-        choice2.setBackground(Color.BLACK);
-        choice2.setForeground(Color.WHITE);
-        choice2.setFont(buttonFont);
-        choiceButtonPanel.add(choice2);
-
-        choice3 = new JButton("Auswahl Nr.3");
-        choice3.setBackground(Color.BLACK);
-        choice3.setForeground(Color.WHITE);
-        choice3.setFont(buttonFont);
-        choiceButtonPanel.add(choice3);
-
-        choice4 = new JButton("Auswahl Nr.4");
-        choice4.setBackground(Color.BLACK);
-        choice4.setForeground(Color.WHITE);
-        choice4.setFont(buttonFont);
-        choiceButtonPanel.add(choice4);
+        startGame = new JButton("Story starten");
+        startGame.setBackground(Color.BLACK);
+        startGame.setForeground(Color.WHITE);
+        startGame.setFont(buttonFont);
+        choiceButtonPanel.add(startGame);
 
         inventar = new JButton("Inventar");
+        inventar.setBounds(590,15,180,50);
         inventar.setBackground(Color.BLACK);
         inventar.setForeground(Color.WHITE);
         inventar.setFont(buttonFont);
+        con.add(inventar);
 
-        playerPanel = new JPanel();
-        playerPanel.setBounds(30,15,680,50);
-        playerPanel.setBackground(Color.BLACK);
-        playerPanel.setLayout(new GridLayout(1,5));
-        con.add(playerPanel);
+        lpPanel = new JPanel();
+        lpPanel.setBounds(30,15,180,50);
+        lpPanel.setBackground(Color.BLACK);
+        lpPanel.setLayout(new GridLayout(1,2));
+        con.add(lpPanel);
         lpLabel = new JLabel("LP: ");
         lpLabel.setFont(normFont);
         lpLabel.setForeground(Color.WHITE);
-        playerPanel.add(lpLabel);
+        lpPanel.add(lpLabel);
         lpNumberLabel = new JLabel("100");
         lpNumberLabel.setFont(normFont);
         lpNumberLabel.setForeground(Color.WHITE);
-        playerPanel.add(lpNumberLabel);
+        lpPanel.add(lpNumberLabel);
+
+        itemPanel = new JPanel();
+        itemPanel.setBounds(230,15,350,50);
+        itemPanel.setBackground(Color.BLACK);
+        itemPanel.setLayout(new GridLayout(1,2));
+        con.add(itemPanel);
         itemLabel = new JLabel("Item: ");
         itemLabel.setFont(normFont);
         itemLabel.setForeground(Color.WHITE);
-        playerPanel.add(itemLabel);
+        itemPanel.add(itemLabel);
         itemNameLabel = new JLabel("Langschwert");
         itemNameLabel.setFont(normFont);
         itemNameLabel.setForeground(Color.WHITE);
-        playerPanel.add(itemNameLabel);
-        playerPanel.add(inventar);
+        itemPanel.add(itemNameLabel);
+
     }
 
     public class TitleScreenHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
 
-            createGameScreen();
+            createNameInput();
         }
     }
+
+
 }
