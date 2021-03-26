@@ -53,7 +53,7 @@ Süden wodurch man den Höhlenausgang erreicht.
 
 
 Charaktere:
--Spieler; "Name", 100 Lebenspunkte, der Held der Geschichte der sein, von Dämonen, zerstörtes Dorf rächen will.
+-Spieler; "Name", 100 Lebenspunkte, der Held der Geschichte der sein, von Dämonen zerstörtes, Dorf rächen will.
 
 -König Dämonen; "Fynal", 100 Lebenspunkte, One-Hit ohne Rüstung, trägt der Spieler die Anfangsrüstung hält er einen hit
 aus, trägt er die zweite Rüstung hält er zwei hits aus und mit der besten Rüstung macht der Dämonenkönig nur noch 33 Dmg
