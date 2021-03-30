@@ -484,7 +484,7 @@ public class Screens {
         playerPanel.add(inventar);
     } /**wird einmalig aufgerufen**/
 
-    public void SchmiedScreenDrei(){
+    public void SchmiedScreen(){
 
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
@@ -562,7 +562,7 @@ public class Screens {
         playerPanel.add(inventar);
     }
 
-    public void GaststaetteScreen(){
+    public void GaststaetteScreenVor(){
 
         titleNamePanel.setVisible(false);
         startButtonPanel.setVisible(false);
@@ -628,5 +628,65 @@ public class Screens {
         playerPanel.add(inventar);
     }
 
+    public void GaststaetteScreenNach(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Wirt: Guten morgen! Ich hoffe euer Aufenthalt war zufriedenstellend, " +
+                "beehre uns gerne wieder!");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Bis bald!");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
 }
 
