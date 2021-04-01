@@ -337,6 +337,409 @@ public class Screens {
 
 
 
+    /**Hoehelen Screens**/
+    public void HoehleScreen(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Du hast die Hoehle betreten. Vor dir siehst du mehrere Wege, die alle zum Daemonenkoenig fuehren. " +
+                "In welche Richtung moechtest du gehen?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Hoehle");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Nach links");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Gerade aus");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        choice3 = new JButton("Nach rechts");
+        choice3.setBackground(Color.BLACK);
+        choice3.setForeground(Color.WHITE);
+        choice3.setFont(buttonFont);
+        choiceButtonPanel.add(choice3);
+
+        choice4 = new JButton("Zurueck zur Kreuzung");
+        choice4.setBackground(Color.BLACK);
+        choice4.setForeground(Color.WHITE);
+        choice4.setFont(buttonFont);
+        choiceButtonPanel.add(choice4);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
+
+    public void HoehleEtapeEinsVorScreen(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Vor dir steht ein Daemon der Klasse 1. Um weiter zu gehen musst du ihn besiegen." +
+                "Bist du bereit für den Kampf?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Hoehle-Etape 1");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Los geht´s!");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Flucht");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
+
+    public void HoehleEtapeEinsNachScreen(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Du hast den Daemon besiegt. Moechtest du dem Weg folgen oder dich zurueck zum Anfang begeben?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Hoehle-Etape 1");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Dem Weg folgen");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Zueruck zum Anfang");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
+
+    public void HoehleEtapeZweiVorScreen(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Der Weg den du gegangen bist hat dich zu einem Daemon der Klasse 2 gebracht. Um weiter zu gehen musst du ihn besiegen." +
+                "Bist du bereit für den Kampf?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Hoehle-Etape 2");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Los geht´s!");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Flucht");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
+
+    public void HoehleEtapeZweiNachScreen(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Du hast den Daemon besiegt. Moechtest du dem Weg folgen oder dich zurueck zum Anfang begeben?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Hoehle-Etape 2");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Weiter gehen");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Zurueck zum Anfang");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
+
+
+
     /**Schloss-Marktplatz**/
     public void MarktplatzScreen(){
 
@@ -1140,7 +1543,8 @@ public class Screens {
         mainTextPanel.setBackground(Color.BLACK);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("Du betrittst dein Heimatdorf...um dich herum siehst du zerstörte Haeuser. Wo lang willst du gehen?");
+        mainTextArea = new JTextArea("Du stehst vor deinem Heimatdorf...um dich herum siehst du zerstörte Haeuser und verbrannte Stellen." +
+                "Wo lang willst du gehen?");
         mainTextArea.setBounds(100,100,600,250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
@@ -1543,6 +1947,82 @@ public class Screens {
         playerPanel.add(inventar);
     }
 
+    public void HeldenSchwertScreen(){
 
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100,100,600,250);
+        mainTextPanel.setBackground(Color.BLACK);
+        con.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("Unter den Steinen die einst die Mauern deines Hauses gebildet haben siehst du ein Schwert." +
+                "Es hat eine besondere Ausstrahlung. Willst du es aufheben?");
+        mainTextArea.setBounds(100,100,600,250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(normFont);
+        mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
+        mainTextPanel.add(mainTextArea);
+        mainTextArea.setEditable(false);
+
+        /**location**/
+        locTextArea = new JTextArea("Phylia-Dein Haus");
+        locTextArea.setBounds(400,0,600,250);
+        locTextArea.setBackground(Color.BLACK);
+        locTextArea.setForeground(Color.WHITE);
+        locTextArea.setFont(normFont);
+        locTextArea.setLineWrap(true);
+        locTextArea.setWrapStyleWord(true);
+        /**locTextPanel.add(locTextArea);**/
+        locTextArea.setEditable(false);
+
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanel);
+
+        choice1 = new JButton("Ja");
+        choice1.setBackground(Color.BLACK);
+        choice1.setForeground(Color.WHITE);
+        choice1.setFont(buttonFont);
+        choiceButtonPanel.add(choice1);
+
+        choice2 = new JButton("Nein");
+        choice2.setBackground(Color.BLACK);
+        choice2.setForeground(Color.WHITE);
+        choice2.setFont(buttonFont);
+        choiceButtonPanel.add(choice2);
+
+        inventar = new JButton("Inventar");
+        inventar.setBackground(Color.BLACK);
+        inventar.setForeground(Color.WHITE);
+        inventar.setFont(buttonFont);
+
+        playerPanel = new JPanel();
+        playerPanel.setBounds(30,15,680,50);
+        playerPanel.setBackground(Color.BLACK);
+        playerPanel.setLayout(new GridLayout(1,5));
+        con.add(playerPanel);
+        lpLabel = new JLabel("LP: ");
+        lpLabel.setFont(normFont);
+        lpLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpLabel);
+        lpNumberLabel = new JLabel("100");
+        lpNumberLabel.setFont(normFont);
+        lpNumberLabel.setForeground(Color.WHITE);
+        playerPanel.add(lpNumberLabel);
+        itemLabel = new JLabel("Item: ");
+        itemLabel.setFont(normFont);
+        itemLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemLabel);
+        itemNameLabel = new JLabel("Langschwert");
+        itemNameLabel.setFont(normFont);
+        itemNameLabel.setForeground(Color.WHITE);
+        playerPanel.add(itemNameLabel);
+        playerPanel.add(inventar);
+    }
 }
 
