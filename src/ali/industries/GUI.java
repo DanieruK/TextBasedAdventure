@@ -55,31 +55,6 @@ public class GUI {
         con.add(startButtonPanel);
     }
 
-    public void createNameInput(){
-
-        titleNamePanel.setVisible(false);
-        startButtonPanel.setVisible(false);
-
-        nameInputTextArea = new JTextArea("Wähle deinen Heldenamen");
-        nameInputTextArea.setBounds(220, 120, 350, 50);
-        nameInputTextArea.setBackground(Color.BLACK);
-        nameInputTextArea.setForeground(Color.white);
-        nameInputTextArea.setFont(normFont);
-        con.add(nameInputTextArea);
-
-        inputPanel = new JPanel();
-        inputPanel.setBounds(250,200,300,50);
-        inputPanel.setBackground(Color.lightGray);
-        inputPanel.setLayout(new GridLayout(1,1));
-        con.add(inputPanel);
-
-        nameInput = new JTextField();
-        nameInput.setFont(normFont);
-        nameInput.setBackground(Color.LIGHT_GRAY);
-        nameInput.setForeground(Color.BLACK);
-        inputPanel.add(nameInput);
-    }
-
     public void createGameScreen(){
 
         mainTextPanel = new JPanel();
@@ -148,6 +123,31 @@ public class GUI {
 
     }
 
+    public void createNameInput(){
+
+        titleNamePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+
+        nameInputTextArea = new JTextArea("Wähle deinen Heldenamen");
+        nameInputTextArea.setBounds(220, 120, 350, 50);
+        nameInputTextArea.setBackground(Color.BLACK);
+        nameInputTextArea.setForeground(Color.white);
+        nameInputTextArea.setFont(normFont);
+        con.add(nameInputTextArea);
+
+        inputPanel = new JPanel();
+        inputPanel.setBounds(250,200,300,50);
+        inputPanel.setBackground(Color.lightGray);
+        inputPanel.setLayout(new GridLayout(1,1));
+        con.add(inputPanel);
+
+        nameInput = new JTextField();
+        nameInput.setFont(normFont);
+        nameInput.setBackground(Color.LIGHT_GRAY);
+        nameInput.setForeground(Color.BLACK);
+        inputPanel.add(nameInput);
+    }
+
     public class TitleScreenHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
@@ -155,6 +155,5 @@ public class GUI {
             createNameInput();
         }
     }
-
 
 }
