@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI extends Screens {
 
     private JFrame mainWindow;
     private Container con;
@@ -152,7 +152,9 @@ public class GUI {
 
         public void actionPerformed(ActionEvent event){
 
-            createNameInput();
+            titleNamePanel.setVisible(false);
+            startButtonPanel.setVisible(false);
+            //TODO Dein Screen hier einfügen!!!
         }
     }
 

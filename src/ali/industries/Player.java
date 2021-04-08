@@ -9,6 +9,5 @@ public class Player {
     public Player(String pPlayerName){
         playerName = pPlayerName;
         playerLivePoints = 100;
-        playerLevel = 1;
     }
 }
