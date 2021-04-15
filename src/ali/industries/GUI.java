@@ -4,21 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.concurrent.locks.StampedLock;
 
-public class GUI<x> extends Screens {
+public class GUI {
 
+    Player player = new Player();
     private JFrame mainWindow;
     private Container con;
     private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, choiceButtonPanelKreuzung, lpPanel, itemPanel, inputPanel,
-            kreuzungTextPanel, hoehlenEingangTextPanel, choiceButtonPanelHoehlenEingang, MarktplatzTextPanel, choiceButtonPanelMarktplatz,
+            kreuzungTextPanel, hoehlenEingangTextPanel, choiceButtonPanelHoehlenEingang, marktplatzTextPanel, choiceButtonPanelMarktplatz,
             SumpfTextPanel, choiceButtonPanelSumpf, heimatTextPanel, choiceButtonPanelHeimat, schuleTextPanel, choiceButtonPanelSchule,
-            kircheTextPanel, choiceButtonPanelKirche, parkTextPanel, choiceButtonPanelPark;
+            kircheTextPanel, choiceButtonPanelKirche, parkTextPanel, choiceButtonPanelPark, gaststaetteVorTextPanel, choiceButtonPanelGaststaetteVor,
+            gaststaetteNachTextPanel, choiceButtonPanelGaststaetteNach;
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
     private JButton startButton, startGame,inventar, choice1, choice2, choice3, choice4, choice5, choice6, choice7, choice8, choice9,
-            choice10, choice11, choice12, choice13, choice14, choice15, choice16, choice17, choice18, choice19, choice20, choice21;
+            choice10, choice11, choice12, choice13, choice14, choice15, choice16, choice17, choice18, choice19, choice20, choice21,
+            choice22, choice23, choice24;
     private JTextArea mainTextArea, nameInputTextArea, kreuzungTextArea, hoehlenEingangTextArea, MarktplatzTextArea, SumpfTextArea,
-            heimatTextArea, schuleTextArea, kircheTextArea, parkTextArea;
+            heimatTextArea, schuleTextArea, kircheTextArea, parkTextArea, gaststaetteVorTextArea, gaststaetteNachTextArea;
     private JTextField nameInput;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
     Font startFont = new Font("Algerian", Font.PLAIN,50);
@@ -29,13 +31,24 @@ public class GUI<x> extends Screens {
     private ActionListener gsHandler = new GameScreenHandler();
     private ActionListener hoehleneingangHandler = new HoehlenEingangHandler();
     private ActionListener zkHandler = new ZurueckZurKreuzungHandler();
+    private ActionListener zk1Handler = new ZurueckZurKreuzung1Handler();
+    private ActionListener zk2Handler = new ZurueckZurKreuzung2Handler();
+    private ActionListener zk3Handler = new ZurueckZurKreuzung3Handler();
     private ActionListener schlossHandler = new SchlossHandler();
-    private ActionListener hexeHandler = new SumpfHandler();
+    private ActionListener gaststaetteHandler = new GaststaetteHandler();
+    private ActionListener gaststaetteNachHandler = new GaststaetteNachHandler();
+    private ActionListener mp1Handler = new Marktplatz1Handler();
+    private ActionListener mp2Handler = new Marktplatz2Handler();
+    private ActionListener sumpfHandler = new SumpfHandler();
     private ActionListener heimatHandler = new HeimatHandler();
     private ActionListener zdHandler = new ZurueckZumDorfeingangHandler();
+    private ActionListener zd1Handler = new ZurueckZumDorfeingang1Handler();
+    private ActionListener zd2Handler = new ZurueckZumDorfeingang2Handler();
     private ActionListener schuleHandler = new SchuleHandler();
+    private ActionListener schule1Handler = new Schule1Handler();
     private ActionListener kircheHandler = new KircheHandler();
     private ActionListener parkHandler = new ParkHandler();
+    private ActionListener park1Handler = new Park1Handler();
 
     public GUI(){
 
@@ -121,7 +134,7 @@ public class GUI<x> extends Screens {
         lpLabel.setFont(normFont);
         lpLabel.setForeground(Color.WHITE);
         lpPanel.add(lpLabel);
-        lpNumberLabel = new JLabel("100");
+        lpNumberLabel = new JLabel(player.getPlayerLivePoints());
         lpNumberLabel.setFont(normFont);
         lpNumberLabel.setForeground(Color.WHITE);
         lpPanel.add(lpNumberLabel);
@@ -198,12 +211,10 @@ public class GUI<x> extends Screens {
         choice4.setForeground(Color.WHITE);
         choice4.setFont(buttonFont);
         choiceButtonPanelKreuzung.add(choice4);
-        choice4.addActionListener(hexeHandler);
+        choice4.addActionListener(sumpfHandler);
     }
 
     public void HoehleneingangScreen(){
-        choiceButtonPanelKreuzung.setVisible(false);
-        kreuzungTextArea.setVisible(false);
 
         hoehlenEingangTextPanel = new JPanel();
         hoehlenEingangTextPanel.setBounds(100,100,600,250);
@@ -243,13 +254,10 @@ public class GUI<x> extends Screens {
     }
 
     public void MarktplatzScreen(){
-        kreuzungTextPanel.setVisible(false);
-        choiceButtonPanelKreuzung.setVisible(false);
-
-        MarktplatzTextPanel = new JPanel();
-        MarktplatzTextPanel.setBounds(100,100,600,250);
-        MarktplatzTextPanel.setBackground(Color.BLACK);
-        con.add(MarktplatzTextPanel);
+        marktplatzTextPanel = new JPanel();
+        marktplatzTextPanel.setBounds(100,100,600,250);
+        marktplatzTextPanel.setBackground(Color.BLACK);
+        con.add(marktplatzTextPanel);
 
         MarktplatzTextArea = new JTextArea("Du stehst in mitten des Marktplatzes des Schlosses Tyrals. Viele Menschen laufen umher, " +
                 "doch sie alle scheint etwas zu bedruecken. Du siehst einen Schmied und eine Gaststaette. Wohin gehst du?");
@@ -259,7 +267,7 @@ public class GUI<x> extends Screens {
         MarktplatzTextArea.setFont(normFont);
         MarktplatzTextArea.setLineWrap(true);
         MarktplatzTextArea.setWrapStyleWord(true);
-        MarktplatzTextPanel.add(MarktplatzTextArea);
+        marktplatzTextPanel.add(MarktplatzTextArea);
         MarktplatzTextArea.setEditable(false);
         MarktplatzTextArea.setVisible(true);
 
@@ -281,13 +289,79 @@ public class GUI<x> extends Screens {
         choice8.setForeground(Color.WHITE);
         choice8.setFont(buttonFont);
         choiceButtonPanelMarktplatz.add(choice8);
+        choice8.addActionListener(gaststaetteHandler);
+    }
 
-        choice9 = new JButton("Zurueck zur Kreuzung");
-        choice9.setBackground(Color.BLACK);
-        choice9.setForeground(Color.WHITE);
-        choice9.setFont(buttonFont);
-        choiceButtonPanelMarktplatz.add(choice9);
-        choice9.addActionListener(zkHandler);
+    public void GaststaetteScreenVor(){
+        gaststaetteVorTextPanel = new JPanel();
+        gaststaetteVorTextPanel.setBounds(100,100,600,250);
+        gaststaetteVorTextPanel.setBackground(Color.BLACK);
+        con.add(gaststaetteVorTextPanel);
+
+        gaststaetteVorTextArea = new JTextArea("Wirt: Guten Tag, wie wärs mit einem erholenden Schlaf?");
+        gaststaetteVorTextArea.setBounds(100,100,600,250);
+        gaststaetteVorTextArea.setBackground(Color.BLACK);
+        gaststaetteVorTextArea.setForeground(Color.WHITE);
+        gaststaetteVorTextArea.setFont(normFont);
+        gaststaetteVorTextArea.setLineWrap(true);
+        gaststaetteVorTextArea.setWrapStyleWord(true);
+        gaststaetteVorTextPanel.add(gaststaetteVorTextArea);
+        gaststaetteVorTextArea.setEditable(false);
+        gaststaetteVorTextArea.setVisible(true);
+
+        choiceButtonPanelGaststaetteVor = new JPanel();
+        choiceButtonPanelGaststaetteVor.setBounds(250,350,300,150);
+        choiceButtonPanelGaststaetteVor.setBackground(Color.BLACK);
+        choiceButtonPanelGaststaetteVor.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanelGaststaetteVor);
+        choiceButtonPanelGaststaetteVor.setVisible(true);
+
+        choice22 = new JButton("Gerne!");
+        choice22.setBackground(Color.BLACK);
+        choice22.setForeground(Color.WHITE);
+        choice22.setFont(buttonFont);
+        choiceButtonPanelGaststaetteVor.add(choice22);
+        choice22.addActionListener(gaststaetteNachHandler);
+
+        choice23 = new JButton("Nein, vielen dank.");
+        choice23.setBackground(Color.BLACK);
+        choice23.setForeground(Color.WHITE);
+        choice23.setFont(buttonFont);
+        choiceButtonPanelGaststaetteVor.add(choice23);
+        choice23.addActionListener(mp1Handler);
+    }
+
+    public void GaststaetteScreenNach(){
+        gaststaetteNachTextPanel = new JPanel();
+        gaststaetteNachTextPanel.setBounds(100,100,600,250);
+        gaststaetteNachTextPanel.setBackground(Color.BLACK);
+        con.add(gaststaetteNachTextPanel);
+
+        gaststaetteNachTextArea = new JTextArea("Wirt: Guten morgen! Ich hoffe dein Aufenthalt war zufriedenstellend," +
+                "beehre uns gerne wieder!");
+        gaststaetteNachTextArea.setBounds(100,100,600,250);
+        gaststaetteNachTextArea.setBackground(Color.BLACK);
+        gaststaetteNachTextArea.setForeground(Color.WHITE);
+        gaststaetteNachTextArea.setFont(normFont);
+        gaststaetteNachTextArea.setLineWrap(true);
+        gaststaetteNachTextArea.setWrapStyleWord(true);
+        gaststaetteNachTextPanel.add(gaststaetteNachTextArea);
+        gaststaetteNachTextArea.setEditable(false);
+        gaststaetteNachTextArea.setVisible(true);
+
+        choiceButtonPanelGaststaetteNach = new JPanel();
+        choiceButtonPanelGaststaetteNach.setBounds(250,350,300,150);
+        choiceButtonPanelGaststaetteNach.setBackground(Color.BLACK);
+        choiceButtonPanelGaststaetteNach.setLayout(new GridLayout(4,1));
+        con.add(choiceButtonPanelGaststaetteNach);
+        choiceButtonPanelGaststaetteNach.setVisible(true);
+
+        choice24 = new JButton("Vielen dank, bis bald!");
+        choice24.setBackground(Color.BLACK);
+        choice24.setForeground(Color.WHITE);
+        choice24.setFont(buttonFont);
+        choiceButtonPanelGaststaetteNach.add(choice24);
+        choice24.addActionListener(mp2Handler);
     }
 
     public void SumpfScreen(){
@@ -328,7 +402,7 @@ public class GUI<x> extends Screens {
         choice11.setForeground(Color.WHITE);
         choice11.setFont(buttonFont);
         choiceButtonPanelSumpf.add(choice11);
-        choice11.addActionListener(zkHandler);
+        choice11.addActionListener(zk2Handler);
     }
 
     public void HeimatScreen(){
@@ -382,7 +456,7 @@ public class GUI<x> extends Screens {
         choice15.setForeground(Color.WHITE);
         choice15.setFont(buttonFont);
         choiceButtonPanelHeimat.add(choice15);
-        choice15.addActionListener(zkHandler);
+        choice15.addActionListener(zk3Handler);
     }
 
     public void SchuleScreen(){
@@ -414,7 +488,7 @@ public class GUI<x> extends Screens {
         choice16.setBackground(Color.BLACK);
         choice16.setForeground(Color.WHITE);
         choice16.setFont(buttonFont);
-        choiceButtonPanelHeimat.add(choice16);
+        choiceButtonPanelSchule.add(choice16);
         choice16.addActionListener(zdHandler);
     }
 
@@ -448,13 +522,14 @@ public class GUI<x> extends Screens {
         choice17.setForeground(Color.WHITE);
         choice17.setFont(buttonFont);
         choiceButtonPanelKirche.add(choice17);
-        choice17.addActionListener(schuleHandler);
+        choice17.addActionListener(schule1Handler);
 
         choice18 = new JButton("Zum Park");
         choice18.setBackground(Color.BLACK);
         choice18.setForeground(Color.WHITE);
         choice18.setFont(buttonFont);
         choiceButtonPanelKirche.add(choice18);
+        choice18.addActionListener(park1Handler);
 
         choice19 = new JButton("Zu deinem Haus");
         choice19.setBackground(Color.BLACK);
@@ -467,7 +542,7 @@ public class GUI<x> extends Screens {
         choice20.setForeground(Color.WHITE);
         choice20.setFont(buttonFont);
         choiceButtonPanelKirche.add(choice20);
-        choice20.addActionListener(zdHandler);
+        choice20.addActionListener(zd1Handler);
     }
 
     public void ParkScreen(){
@@ -500,7 +575,7 @@ public class GUI<x> extends Screens {
         choice21.setForeground(Color.WHITE);
         choice21.setFont(buttonFont);
         choiceButtonPanelPark.add(choice21);
-        choice21.addActionListener(zdHandler);
+        choice21.addActionListener(zd2Handler);
     }
 
     public void createNameInput(){
@@ -551,102 +626,214 @@ public class GUI<x> extends Screens {
     public class GameScreenHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(mainTextPanel);
+            con.remove(choiceButtonPanel);
             KreuzungsScreen();
+            mainWindow.repaint();
         }
     }
 
     public class HoehlenEingangHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(kreuzungTextPanel);
+            con.remove(choiceButtonPanelKreuzung);
             HoehleneingangScreen();
+            mainWindow.repaint();
         }
     }
 
     public class ZurueckZurKreuzungHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(hoehlenEingangTextPanel);
+            con.remove(choiceButtonPanelHoehlenEingang);
             KreuzungsScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class ZurueckZurKreuzung1Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(marktplatzTextPanel);
+            con.remove(choiceButtonPanelMarktplatz);
+            KreuzungsScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class ZurueckZurKreuzung2Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(SumpfTextPanel);
+            con.remove(choiceButtonPanelSumpf);
+            KreuzungsScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class ZurueckZurKreuzung3Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(heimatTextPanel);
+            con.remove(choiceButtonPanelHeimat);
+            KreuzungsScreen();
+            mainWindow.repaint();
         }
     }
 
     public class SchlossHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(kreuzungTextPanel);
+            con.remove(choiceButtonPanelKreuzung);
             MarktplatzScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class GaststaetteHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(marktplatzTextPanel);
+            con.remove(choiceButtonPanelMarktplatz);
+            GaststaetteScreenVor();
+            mainWindow.repaint();
+        }
+    }
+
+    public class GaststaetteNachHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(gaststaetteVorTextPanel);
+            con.remove(choiceButtonPanelGaststaetteVor);
+            player.setPlayerLivePoints(100);
+            GaststaetteScreenNach();
+            mainWindow.repaint();
+        }
+    }
+
+    public class Marktplatz1Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(gaststaetteVorTextPanel);
+            con.remove(choiceButtonPanelGaststaetteVor);
+            MarktplatzScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class Marktplatz2Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(gaststaetteNachTextPanel);
+            con.remove(choiceButtonPanelGaststaetteNach);
+            MarktplatzScreen();
+            mainWindow.repaint();
         }
     }
 
     public class SumpfHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(kreuzungTextPanel);
+            con.remove(choiceButtonPanelKreuzung);
             SumpfScreen();
+            mainWindow.repaint();
         }
     }
 
     public class HeimatHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(kreuzungTextPanel);
+            con.remove(choiceButtonPanelKreuzung);
             HeimatScreen();
-        }
-    }
-
-    public class SchuleHandler implements ActionListener {
-
-        public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
-            SchuleScreen();
+            mainWindow.repaint();
         }
     }
 
     public class ZurueckZumDorfeingangHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(schuleTextPanel);
+            con.remove(choiceButtonPanelSchule);
             HeimatScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class ZurueckZumDorfeingang1Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(kircheTextPanel);
+            con.remove(choiceButtonPanelKirche);
+            HeimatScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class ZurueckZumDorfeingang2Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(parkTextPanel);
+            con.remove(choiceButtonPanelPark);
+            HeimatScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class SchuleHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(heimatTextPanel);
+            con.remove(choiceButtonPanelHeimat);
+            SchuleScreen();
+            mainWindow.repaint();
+        }
+    }
+
+    public class Schule1Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(kircheTextPanel);
+            con.remove(choiceButtonPanelKirche);
+            SchuleScreen();
+            mainWindow.repaint();
         }
     }
 
     public class KircheHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(heimatTextPanel);
+            con.remove(choiceButtonPanelHeimat);
             KircheScreen();
+            mainWindow.repaint();
         }
     }
 
     public class ParkHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            con.remove(heimatTextPanel);
+            con.remove(choiceButtonPanelHeimat);
             ParkScreen();
+            mainWindow.repaint();
         }
     }
+
+    public class Park1Handler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event){
+            con.remove(kircheTextPanel);
+            con.remove(choiceButtonPanelKirche);
+            ParkScreen();
+            mainWindow.repaint();
+        }
+    }
+
 
     public void Standardbefehl(){
         con.remove(titleNamePanel);

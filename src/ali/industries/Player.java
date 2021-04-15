@@ -2,12 +2,18 @@ package ali.industries;
 
 public class Player {
 
-    private String playerName;
     private int playerLivePoints;
     private int playerLevel;
 
-    public Player(String pPlayerName){
-        playerName = pPlayerName;
+    public Player(){
         playerLivePoints = 100;
+    }
+
+    public void setPlayerLivePoints(int playerLivePoints) {
+        this.playerLivePoints = playerLivePoints;
+    }
+
+    public void getPlayerLivePoints(){
+        return;
     }
 }
