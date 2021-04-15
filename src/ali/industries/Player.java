@@ -2,11 +2,11 @@ package ali.industries;
 
 public class Player {
 
-    private int playerLivePoints;
+    protected int playerLivePoints;
     private int playerLevel;
 
     public Player(){
-        playerLivePoints = 100;
+        playerLivePoints = 90;
     }
 
     public void setPlayerLivePoints(int playerLivePoints) {
