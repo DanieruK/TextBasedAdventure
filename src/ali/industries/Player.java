@@ -13,7 +13,7 @@ public class Player {
         this.playerLivePoints = playerLivePoints;
     }
 
-    public void getPlayerLivePoints(){
-        return;
+    public int getPlayerLivePoints() {
+        return playerLivePoints;
     }
 }

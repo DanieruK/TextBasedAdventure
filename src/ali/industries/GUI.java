@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 public class GUI {
 
     Player player = new Player();
+    int pPlayerLivePoints = player.getPlayerLivePoints();
+
     private JFrame mainWindow;
     private Container con;
     private JPanel titleNamePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, choiceButtonPanelKreuzung, lpPanel, itemPanel, inputPanel,
@@ -134,7 +136,7 @@ public class GUI {
         lpLabel.setFont(normFont);
         lpLabel.setForeground(Color.WHITE);
         lpPanel.add(lpLabel);
-        lpNumberLabel = new JLabel(player.getPlayerLivePoints());
+        lpNumberLabel = new JLabel(String.valueOf(pPlayerLivePoints));
         lpNumberLabel.setFont(normFont);
         lpNumberLabel.setForeground(Color.WHITE);
         lpPanel.add(lpNumberLabel);
