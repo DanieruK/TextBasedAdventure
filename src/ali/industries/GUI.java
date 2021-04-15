@@ -542,10 +542,9 @@ public class GUI<x> extends Screens {
     public class TitleScreenHandler implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
-
-            titleNamePanel.setVisible(false);
-            startButtonPanel.setVisible(false);
+            Standardbefehl();
             createGameScreen();
+            mainWindow.repaint();
         }
     }
 
@@ -650,5 +649,7 @@ public class GUI<x> extends Screens {
     }
 
     public void Standardbefehl(){
+        con.remove(titleNamePanel);
+        con.remove(startButtonPanel);
     }
 }
