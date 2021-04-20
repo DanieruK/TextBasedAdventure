@@ -9,11 +9,46 @@ public class GUI {
 
     Player player = new Player();
 
+    public JFrame getMainWindow() {
+        return mainWindow;
+    }
+
     private JFrame mainWindow;
     private Container con;
     private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel;
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
-    private JButton startButton, inventar, startGame, choice1, choice2, choice3, choice4;
+    private JButton startButton;
+    private JButton inventar;
+
+    public JButton getStartButton() {
+        return startButton;
+    }
+
+    public JButton getStartGame() {
+        return startGame;
+    }
+
+    public JButton getChoice1() {
+        return choice1;
+    }
+
+    public JButton getChoice2() {
+        return choice2;
+    }
+
+    public JButton getChoice3() {
+        return choice3;
+    }
+
+    public JButton getChoice4() {
+        return choice4;
+    }
+
+    private JButton startGame;
+    private JButton choice1;
+    private JButton choice2;
+    private JButton choice3;
+    private JButton choice4;
     private JTextArea tutorialTextArea, nameInputTextArea;
     private JTextField nameInput;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
@@ -21,9 +56,15 @@ public class GUI {
     Font normFont = new Font("Comic Sans MS", Font.PLAIN,28);
     Font buttonFont = new Font("Comic Sans MS", Font.PLAIN, 24);
 
-    private ActionListener action = new Action();
+    private ActionListener action;
+
+    public void setAction(ActionListener action) {
+        this.action = action;
+    }
 
     public GUI(){
+
+        ScreenControl sc = new ScreenControl(this);
 
         mainWindow = new JFrame("Text Adventure");
         mainWindow.setSize(800,600);
@@ -298,87 +339,6 @@ public class GUI {
         choice2.setVisible(false);
         choice3.setVisible(false);
         choice4.setVisible(false);
-    }
-
-
-    /**public void createNameInput(){
-
-     titleNamePanel.setVisible(false);
-     startButtonPanel.setVisible(false);
-
-     nameInputTextArea = new JTextArea("Wähle deinen Heldenamen");
-     nameInputTextArea.setBounds(220, 120, 350, 50);
-     nameInputTextArea.setBackground(Color.BLACK);
-     nameInputTextArea.setForeground(Color.white);
-     nameInputTextArea.setFont(normFont);
-     con.add(nameInputTextArea);
-
-     inputPanel = new JPanel();
-     inputPanel.setBounds(250,200,300,50);
-     inputPanel.setBackground(Color.lightGray);
-     inputPanel.setLayout(new GridLayout(1,1));
-     con.add(inputPanel);
-
-     nameInput = new JTextField();
-     nameInput.setFont(normFont);
-     nameInput.setBackground(Color.LIGHT_GRAY);
-     nameInput.setForeground(Color.BLACK);
-     inputPanel.add(nameInput);
-     }**/
-
-    public class Action implements ActionListener {
-
-        public void actionPerformed(ActionEvent event){
-            if (event.getSource()==startButton){
-                Standardbefehl();
-                createGameScreen();
-                mainWindow.repaint();
-            } else if (event.getSource()== startGame){
-                choiceActionButtons(startGame.getText());
-            }else if (event.getSource()== choice1){
-                choiceActionButtons(choice1.getText());
-                System.out.println(3);
-            }else if (event.getSource()== choice2){
-                choiceActionButtons(choice2.getText());
-            }else if (event.getSource()== choice3){
-                choiceActionButtons(choice3.getText());;
-            }else if (event.getSource()== choice4){
-                choiceActionButtons(choice4.getText());
-            }
-        }
-    }
-
-    public void choiceActionButtons(String pNextScreen){
-        switch (pNextScreen){
-            case "Story starten" : mainWindow.repaint(); Tutorial1(); break;
-            case "zum Hoehleneingang" : Tutorial2(); break;
-            case "zurueck zur Kreuzung" : Tutorial3(); break;
-            case "zum Schloss" : Tutorial4(); break;
-            case "zur Gaststaette" : Tutorial5(); break;
-            case "Ja bitte..." : Schlafen(); Tutorial6(); break;
-
-            /**Test Tutorial7 statt kreuzung **/
-            case "Werde ich bestimmt!" : WegMitDemSchmutz(); mainWindow.repaint(); Kreuzung(); break;
-
-            /**Kreuzung**/
-            case "Zurueck zur Kreuzung" : UeberarbeitungKreuzung(); Kreuzung(); break;
-            case "Zum Hoehleneingang" : Hoehleneingang(); break;
-            case "Zum Schloss" : Marktplatz(); break;
-            case "Zu deinem Heimatdorf" : Heimat(); break;
-            case "Zur Hexe" : Sumpf(); break;
-
-            /**Gaststaette**/
-            case "Zur Gaststaette" : GaststaetteVor(); break;
-            case "Gerne!" : Schlafen(); GaststaetteNach(); break;
-            case "Nein, vielen dank." : Marktplatz(); break;
-            case "Vielen dank, bis bald!" : Marktplatz(); break;
-
-            /**Heimat**/
-            case "Zurueck zum Dorfeingang" : Heimat(); break;
-            case "Zur Schule" : Schule(); break;
-            case "Zur Kirche" : Kirche(); break;
-            case "Zum Park" : Park(); break;
-        }
     }
 
     public void Standardbefehl(){
