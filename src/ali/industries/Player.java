@@ -6,7 +6,7 @@ public class Player {
     private int playerLevel;
 
     public Player(){
-        playerLivePoints = 90;
+        playerLivePoints = 20;
     }
 
     public void setPlayerLivePoints(int playerLivePoints) {

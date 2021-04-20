@@ -16,7 +16,7 @@ public class Inventory {
     }
 
     public void addItem(String pItem){
-        if (slotCounter < slot.length){
+        if (slotCounter < slot.length-1){
             slot[slotCounter] = pItem;
             slotCounter++;
         }else System.out.println("ERROR!!! Item slot voll");

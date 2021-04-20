@@ -94,3 +94,7 @@ Objekte (allgemein Waffen sind keine Verbrauchsgegenstände):
 .
 .
 .
+
+
+start des games : der Spieler hat nur die Möglichkeit zum hoehleneingang zu laufen wo ihn der Waechter aufhält und ihm sagt
+er müsse zum Schloss um sich auszuruhen und um sich eine rüstung und ein schwert zu holen
