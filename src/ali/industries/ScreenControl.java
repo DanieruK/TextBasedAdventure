@@ -61,6 +61,11 @@ public class ScreenControl {
             case "Zur Schule" : aGui.Schule(); break;
             case "Zur Kirche" : aGui.Kirche(); break;
             case "Zum Park" : aGui.Park(); break;
+
+            /**Hexe**/
+            case "Hexenhaus betreten" : aGui.Hexe(); break;
+            case "Trankinformationen" : aGui.Trankinformationen(); break;
+            case "Zurueck" : aGui.Hexe(); break;
         }
     }
 }

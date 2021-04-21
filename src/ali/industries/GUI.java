@@ -145,8 +145,7 @@ public class GUI {
         con.add(tutorialTextPanel);
 
         tutorialTextArea = new JTextArea("Kuerzlich wurde dein Dorf von einer Daemonenherde ueberrannt, wobei diese dein Dorf zerstoert haben. " +
-                "Der Daemonenkoenig hat, waehrend des Angriffs, deine Geliebten getötet. Du hast dir geschworen Rache an den Daemonen zu üben und suchst" +
-                " sie nun um sie und ihren König zu vernichten.");
+                "Der Daemonenkoenig hat, waehrend des Angriffs, deine Geliebten getoetet. Du hast dir geschworen Rache an den Daemonen zu ueben und suchst sie nun um sie und ihren Koenig zu vernichten.");
         tutorialTextArea.setBounds(100,100,600,250);
         tutorialTextArea.setBackground(Color.BLACK);
         tutorialTextArea.setForeground(Color.WHITE);
@@ -273,10 +272,10 @@ public class GUI {
     public void Marktplatz(){
         tutorialTextArea.setText("Du stehst in mitten des Marktplatzes des Schlosses Tyrals. Viele Menschen laufen umher, " +
                 "doch sie alle scheint etwas zu bedruecken. Du siehst den Schmied und die Gaststaette. Wohin gehst du?");
-        choice3.setVisible(true);
         choice1.setText("Zum Schmied");
         choice2.setVisible(true);
         choice2.setText("Zur Gaststaette");
+        choice3.setVisible(true);
         choice3.setText("Zurueck zur Kreuzung");
         choice4.setVisible(false);
     }
@@ -298,6 +297,27 @@ public class GUI {
                 "Moechtest du eintreten oder zurück zur Kreuzung gehen?");
         choice1.setText("Hexenhaus betreten");
         choice2.setText("Zurueck zur Kreuzung");
+        choice3.setVisible(false);
+        choice4.setVisible(false);
+    }
+
+    public void Hexe(){
+        tutorialTextArea.setText("Hexe: Hallo junger reisender, was kann ich für dich tun?");
+        choice1.setText("kl. Trank = 1 Juwel");
+        choice2.setVisible(true);
+        choice2.setText("gr. Trank = 3 Juwelen");
+        choice3.setVisible(true);
+        choice3.setText("Trankinformationen");
+        choice4.setVisible(true);
+        choice4.setText("Zurueck zur Kreuzung");
+    }
+
+    public void Trankinformationen(){
+        tutorialTextArea.setText("Hexe: Der kleine Trank regeneriert 20 deiner Lebenspunkte in einem Kampf und der " +
+                "große Trank 40 Lebenspunkte. Zwar kostet der kleine Trank weniger Juwelen, allerdings verbraucht das benutzen " +
+                "jedes Trankes deinen Angriffszug im Kampf.");
+        choice1.setText("Zurueck");
+        choice2.setVisible(false);
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
