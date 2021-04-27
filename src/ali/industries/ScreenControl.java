@@ -33,28 +33,35 @@ public class ScreenControl {
 
     public void choiceActionButtons(String pNextScreen){
         switch (pNextScreen){
-            case "Story starten" : aGui.getMainWindow().repaint(); aGui.Tutorial1(); break;
+            case "Story starten" : aGui.Tutorial1(); break;
             case "zum Hoehleneingang" : aGui.Tutorial2(); break;
             case "zurueck zur Kreuzung" : aGui.Tutorial3(); break;
             case "zum Schloss" : aGui.Tutorial4(); break;
             case "zur Gaststaette" : aGui.Tutorial5(); break;
             case "Ja bitte..." : aGui.Schlafen(); aGui.Tutorial6(); break;
+            case "Werde ich bestimmt!" : aGui.Tutorial7(); break;
+            case "zum Schmied" : aGui.Tutorial8(); break;
+            case "Deine Geschichte erzaehlen..." : aGui.Tutorial9(); break;
+            case "Geschenk annehmen" : aGui.Tutorial10(); break;
 
-            /**Test Tutorial7 statt kreuzung **/
-            case "Werde ich bestimmt!" : aGui.WegMitDemSchmutz(); aGui.getMainWindow().repaint(); aGui.Kreuzung(); break;
+            /**Inventar**/
+            case "Inventar" : aGui.Inventar(); break;
 
             /**Kreuzung**/
-            case "Zurueck zur Kreuzung" : aGui.UeberarbeitungKreuzung(); aGui.Kreuzung(); break;
-            case "Zum Hoehleneingang" : aGui.Hoehleneingang(); break;
+            case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung(); break;
+            case "Zum Hoehleneingang" : System.out.println(2); aGui.Hoehleneingang(); break;
             case "Zum Schloss" : aGui.Marktplatz(); break;
             case "Zu deinem Heimatdorf" : aGui.Heimat(); break;
             case "Zur Hexe" : aGui.Sumpf(); break;
 
+            case "pp" : System.out.println(3); aGui.Hoehlenausgang(); break;
+
             /**Gaststaette**/
             case "Zur Gaststaette" : aGui.GaststaetteVor(); break;
             case "Gerne!" : aGui.Schlafen(); aGui.GaststaetteNach(); break;
-            case "Nein, vielen dank." : aGui.Marktplatz(); break;
-            case "Vielen dank, bis bald!" : aGui.Marktplatz(); break;
+            case "Nein, vielen dank." :
+            case "Vielen dank, bis bald!" :
+                aGui.Marktplatz(); break;
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); break;
@@ -63,9 +70,11 @@ public class ScreenControl {
             case "Zum Park" : aGui.Park(); break;
 
             /**Hexe**/
-            case "Hexenhaus betreten" : aGui.Hexe(); break;
+            case "Hexenhaus betreten" :
+            case "Zurueck" :
+                aGui.Hexe(); break;
             case "Trankinformationen" : aGui.Trankinformationen(); break;
-            case "Zurueck" : aGui.Hexe(); break;
+            case "kl. Trank = 1 Juwel" :
         }
     }
 }

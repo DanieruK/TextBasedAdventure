@@ -15,8 +15,9 @@ public class GUI {
 
     private JFrame mainWindow;
     private Container con;
-    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel;
-    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
+    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel,
+            mPanel;
+    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, mLabel, mNumberLabel;
     private JButton startButton;
     private JButton inventar;
 
@@ -172,6 +173,10 @@ public class GUI {
 
     }
 
+    public void Inventar(){
+
+    }
+
 
     /**dies sind die Tutorial Screens. In diesen kann der Spieler sich noch nicht frei bewegen,
      er soll erstmal die Spielmechanik verstehen**/
@@ -186,6 +191,22 @@ public class GUI {
         inventar.setForeground(Color.WHITE);
         inventar.setFont(buttonFont);
         con.add(inventar);
+        inventar.addActionListener(action);
+
+        mPanel = new JPanel();
+        mPanel.setBounds(30, 50, 100, 50);
+        mPanel.setBackground(Color.BLACK);
+        mPanel.setLayout(new GridLayout(1,2));
+        con.add(mPanel);
+        mLabel = new JLabel("Juwelen: ");
+        mLabel.setFont(normFont);
+        mLabel.setForeground(Color.WHITE);
+        mPanel.add(mLabel);
+        int pPlayerMoney = player.getPlayerMoney();
+        mNumberLabel = new JLabel(String.valueOf(pPlayerMoney));
+        mNumberLabel.setFont(normFont);
+        mNumberLabel.setForeground(Color.WHITE);
+        mPanel.add(mNumberLabel);
 
         lpPanel = new JPanel();
         lpPanel.setBounds(30,15,180,50);
@@ -246,27 +267,65 @@ public class GUI {
 
     public void Tutorial7() {
         tutorialTextArea.setText("Gut du hast deine Lebenspunkte regeneriert. Gehe nun zum Schmied!");
-        startGame.setText("Zum Schmied");
+        startGame.setText("zum Schmied");
+    }
+
+    public void Tutorial8(){
+        tutorialTextArea.setText("Schmied: Na mein Freund, bist du neu hier? Leider befindet sich das Koenigreich in " +
+                "schlechten Zeiten, die Daemonen haben erst vor kurzem das naheliegende Dorf Phylia zerstört.");
+        tutorialButtonPanel.setBounds(200,400,400,50);
+        startGame.setText("Deine Geschichte erzaehlen...");
+    }
+
+    public void Tutorial9(){
+        tutorialTextArea.setText("Scheint als haettest du einiges durchmachen muessen. Wenn du Rache ueben " +
+                "willst werde ich dir allerdings zur Seite stehen, hier nimm dieses Schwert und diese Ruestung" +
+                " an dich, es ist ein Geschenk!");
+        tutorialButtonPanel.setBounds(250,400,300,50);
+        startGame.setText("Geschenk annehmen");
+    }
+
+    public void Tutorial10(){
+        tutorialTextArea.setText("Nun gehe hinaus in die Welt und befreie die Buerger Tyrals von den Daemonen, die uns in " +
+                "Angst und Schrecken versetzen!");
+        startGame.setText("Zurueck zur Kreuzung");
     }
 
 
-    /**ab hier beginnen die freien Screen **/
+    /**ab hier beginnt das freie Spiel **/
     public void Kreuzung(){
+        startGame.setVisible(false);
         tutorialTextArea.setText("Du befindest dich auf einer Kreuzung, wo lang moechtest du gehen?");
         choice1.setVisible(true);
+        choice1.setText("Zum Hoehleneingang");
+        choice1.addActionListener(action);
         choice2.setVisible(true);
+        choice2.setText("Zum Schloss");
         choice3.setVisible(true);
+        choice3.setText("Zu deinem Heimatdorf");
         choice4.setVisible(true);
+        choice4.setText("Zur Hexe");
 
     }
 
     public void Hoehleneingang(){
         tutorialTextArea.setText("Waechter: Ich lasse dich passieren, allerdings warne ich dich noch einmal, in dieser Hoehle" +
                 "befinden sich starke Daemonen! Sicher, dass du eintreten willst?");
-        choice1.setText("Hoehle betreten");
+        choice1.setText("pp");
         choice2.setText("Zurueck zur Kreuzung");
         choice3.setVisible(false);
         choice4.setVisible(false);
+    }
+
+    public void Hoehlenausgang(){
+        tutorialTextArea.setText("Du befindest dich in der Hoehle. Du siehst drei Wege denen du folgen kannst. " +
+                "In welche Richtung gehst du?");
+        choice1.setText("Links");
+        choice2.setText("Geradeaus");
+        choice3.setVisible(true);
+        choice3.setText("Rechts");
+        choice4.setVisible(true);
+        choice4.setText("Zurueck zur Kreuzung");
     }
 
     public void Marktplatz(){
@@ -290,6 +349,7 @@ public class GUI {
     public void GaststaetteNach(){
         tutorialTextArea.setText("Wirt: Guten morgen! Ich hoffe dein Aufenthalt war zufriedenstellend, beehre uns gerne wieder!");
         choice1.setText("Vielen dank, bis bald!");
+        choice2.setVisible(false);
     }
 
     public void Sumpf(){
@@ -374,14 +434,6 @@ public class GUI {
         player.setPlayerLivePoints(100);
         int pPlayerLivePoints = player.getPlayerLivePoints();
         lpNumberLabel.setText(String.valueOf(pPlayerLivePoints));
-    }
-
-    public void UeberarbeitungKreuzung(){
-        choice1.setText("Zum Hoehleneingang");
-        choice1.addActionListener(action);
-        choice2.setText("Zum Schloss");
-        choice3.setText("Zu deinem Heimatdorf");
-        choice4.setText("Zur Hexe");
     }
 
 }

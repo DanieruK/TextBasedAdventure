@@ -1,9 +1,12 @@
 package ali.industries;
 
 public class Inventory {
+    Player aPlayer;
 
     private String[] slot = new String[4];
     private int slotCounter = 0;
+    protected int anzKleineTraenke = 0;
+    protected int anzGroßeTraenke = 0;
     private String currentWeapon;
     private String currenAromoury;
 
@@ -15,16 +18,37 @@ public class Inventory {
         this.currentWeapon = pCurrentWeapon;
     }
 
-    public void addItem(String pItem){
-        if (slotCounter < slot.length-1){
+    public void kaufenKleinerHeiltrank(String pItem){
+        if (slotCounter < slot.length-1 & aPlayer.playerMoney > 0){
             slot[slotCounter] = pItem;
             slotCounter++;
+            aPlayer.playerMoney = aPlayer.playerMoney - 1;
+            anzKleineTraenke++;
         }else System.out.println("ERROR!!! Item slot voll");
     }
+
+    public void kaufenGroßerHeiltrank(String pItem){
+        if (slotCounter < slot.length-1 & aPlayer.playerMoney > 2){
+            slot[slotCounter] = pItem;
+            slotCounter++;
+            aPlayer.playerMoney = aPlayer.playerMoney - 3;
+            anzGroßeTraenke++;
+        }else System.out.println("ERROR!!! Item slot voll oder nicht genug Geld!");
+    }
     
-    public void removeItem(){
-        if (slotCounter > 0){
-            slot[slotCounter] = null;
+    public void benutzenKleinerHeiltrank(){
+        if (anzKleineTraenke > 0){
+            aPlayer.playerLivePoints = aPlayer.playerLivePoints + 20;
+            slotCounter--;
+            anzKleineTraenke--;
+        }
+    }
+
+    public void benutzenGroßerHeiltrank(){
+        if (anzGroßeTraenke > 0){
+            aPlayer.playerLivePoints = aPlayer.playerLivePoints + 40;
+            slotCounter--;
+            anzGroßeTraenke--;
         }
     }
 
