@@ -311,13 +311,14 @@ public class GUI {
     public void Hoehleneingang(){
         tutorialTextArea.setText("Waechter: Ich lasse dich passieren, allerdings warne ich dich noch einmal, in dieser Hoehle" +
                 "befinden sich starke Daemonen! Sicher, dass du eintreten willst?");
-        choice1.setText("pp");
+        choice1.setVisible(true);
+        choice1.setText("Hoehle betreten");
         choice2.setText("Zurueck zur Kreuzung");
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
 
-    public void Hoehlenausgang(){
+    public void Hoehle(){
         tutorialTextArea.setText("Du befindest dich in der Hoehle. Du siehst drei Wege denen du folgen kannst. " +
                 "In welche Richtung gehst du?");
         choice1.setText("Links");

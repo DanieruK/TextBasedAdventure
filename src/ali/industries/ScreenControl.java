@@ -17,15 +17,15 @@ public class ScreenControl {
                 aGui.Standardbefehl();
                 aGui.createGameScreen();
                 aGui.getMainWindow().repaint();
-            }else if (event.getSource()== aGui.getStartGame()){
+            }else if (event.getSource().equals(aGui.getStartGame())){
                 choiceActionButtons(aGui.getStartGame().getText());
-            }else if (event.getSource()== aGui.getChoice1()){
+            }else if (event.getSource().equals(aGui.getChoice1())){
                 choiceActionButtons(aGui.getChoice1().getText());
-            }else if (event.getSource()== aGui.getChoice2()){
+            }else if (event.getSource().equals(aGui.getChoice2())){
                 choiceActionButtons(aGui.getChoice2().getText());
-            }else if (event.getSource()== aGui.getChoice3()){
+            }else if (event.getSource().equals(aGui.getChoice3())){
                 choiceActionButtons(aGui.getChoice3().getText());;
-            }else if (event.getSource()== aGui.getChoice4()){
+            }else if (event.getSource().equals(aGui.getChoice4())){
                 choiceActionButtons(aGui.getChoice4().getText());
             }
         }
@@ -54,9 +54,9 @@ public class ScreenControl {
             case "Zu deinem Heimatdorf" : aGui.Heimat(); break;
             case "Zur Hexe" : aGui.Sumpf(); break;
 
-            case "pp" : System.out.println(3); aGui.Hoehlenausgang(); break;
+            case "Hoehle betreten" : aGui.Hoehle(); break;
 
-            /**Gaststaette**/
+                      /**Gaststaette**/
             case "Zur Gaststaette" : aGui.GaststaetteVor(); break;
             case "Gerne!" : aGui.Schlafen(); aGui.GaststaetteNach(); break;
             case "Nein, vielen dank." :
