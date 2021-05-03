@@ -18,7 +18,7 @@ public class GUI {
     private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel,
             mPanel;
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, mLabel, mNumberLabel;
-    private JButton startButton;
+    private JButton startButton, backButton;
     private JButton inventar;
 
     public JButton getStartButton() {
@@ -44,6 +44,8 @@ public class GUI {
     public JButton getChoice4() {
         return choice4;
     }
+
+    public JButton getInventory(){ return inventar; }
 
     private JButton startGame;
     private JButton choice1;
@@ -173,8 +175,15 @@ public class GUI {
 
     }
 
-    public void Inventar(){
+    public void Inventory(){
 
+        boolean schleife = true;
+
+
+
+        while (schleife=true){
+
+        }
     }
 
 

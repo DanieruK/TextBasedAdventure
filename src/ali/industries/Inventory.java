@@ -9,6 +9,7 @@ public class Inventory {
     protected int anzGroßeTraenke = 0;
     private String currentWeapon;
     private String currenAromoury;
+    private String currentScreen;
 
     public void setCurrenAromoury(String pCurrenAromoury) {
         this.currenAromoury = pCurrenAromoury;
@@ -52,4 +53,11 @@ public class Inventory {
         }
     }
 
+    public void setCurrentScreen(String pCurrentScreen) {
+        this.currentScreen = pCurrentScreen;
+    }
+
+    public String getCurrentScreen() {
+        return currentScreen;
+    }
 }
