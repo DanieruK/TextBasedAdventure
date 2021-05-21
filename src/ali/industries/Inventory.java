@@ -1,5 +1,8 @@
 package ali.industries;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class Inventory {
     Player aPlayer;
 
@@ -10,6 +13,23 @@ public class Inventory {
     private String currentWeapon;
     private String currenAromoury;
     private String currentScreen;
+    private JFrame inventoryWindow;
+
+    public Inventory(){
+
+    }
+
+    public void createInventoryScreen(){
+        inventoryWindow = new JFrame("Inventar");
+        inventoryWindow.setSize(800,600);
+        inventoryWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        inventoryWindow.getContentPane().setBackground(Color.BLACK);
+        inventoryWindow.setLayout(null);
+        inventoryWindow.setResizable(false);
+        inventoryWindow.setVisible(true);
+
+
+    }
 
     public void setCurrenAromoury(String pCurrenAromoury) {
         this.currenAromoury = pCurrenAromoury;

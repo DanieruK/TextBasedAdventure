@@ -15,8 +15,7 @@ public class GUI {
 
     private JFrame mainWindow;
     private Container con;
-    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel,
-            mPanel;
+    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel, mPanel;
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, mLabel, mNumberLabel;
     private JButton startButton, backButton;
     private JButton inventar;
@@ -174,18 +173,6 @@ public class GUI {
         startGame.addActionListener(action);
 
     }
-
-    public void Inventory(){
-
-        boolean schleife = true;
-
-
-
-        while (schleife=true){
-
-        }
-    }
-
 
     /**dies sind die Tutorial Screens. In diesen kann der Spieler sich noch nicht frei bewegen,
      er soll erstmal die Spielmechanik verstehen**/

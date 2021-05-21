@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 public class ScreenControl {
     GUI aGui;
+    Inventory inv = new Inventory();
     private ActionListener action = new Action();
     public ScreenControl(GUI pGui){
         this.aGui=pGui;
         aGui.setAction(action);
     }
+
     public class Action implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
@@ -48,7 +50,7 @@ public class ScreenControl {
             case "Geschenk annehmen" : aGui.Tutorial10();aGui.getMainWindow().repaint(); break;
 
             /**Inventar**/
-            case "Inventar" : aGui.Inventory();aGui.getMainWindow().repaint(); break;
+            case "Inventar" : inv.createInventoryScreen();aGui.getMainWindow().repaint(); break;
 
             /**Kreuzung**/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
