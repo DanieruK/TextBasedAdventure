@@ -15,10 +15,6 @@ public class Inventory {
     private String currentScreen;
     private JFrame inventoryWindow;
 
-    public Inventory(){
-
-    }
-
     public void createInventoryScreen(){
         inventoryWindow = new JFrame("Inventar");
         inventoryWindow.setSize(800,600);
