@@ -22,5 +22,4 @@ public class Weapon extends Item {
     Weapon dolch = new Weapon("2cmNahKampfStechele",20,2,10 );
     Weapon breitschwert = new Weapon("DerFühltSichZuBreit", 40, 3, 0);
 
-
 }

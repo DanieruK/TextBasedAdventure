@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI{
 
     Player player = new Player();
 
@@ -47,10 +47,7 @@ public class GUI {
     public JButton getInventory(){ return inventar; }
 
     private JButton startGame;
-    private JButton choice1;
-    private JButton choice2;
-    private JButton choice3;
-    private JButton choice4;
+    private JButton choice1, choice2, choice3, choice4;
     private JTextArea tutorialTextArea, nameInputTextArea;
     private JTextField nameInput;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
@@ -64,12 +61,14 @@ public class GUI {
         this.action = action;
     }
 
+    //* hier wird unser Hauptfenster erstellt*//
+
     public GUI(){
 
         ScreenControl sc = new ScreenControl(this);
 
         mainWindow = new JFrame("Text Adventure");
-        mainWindow.setSize(800,600);
+        mainWindow.setSize(1000,700);
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainWindow.getContentPane().setBackground(Color.BLACK);
         mainWindow.setLayout(null);
@@ -78,14 +77,14 @@ public class GUI {
         con = mainWindow.getContentPane();
 
         titleNamePanel = new JPanel();
-        titleNamePanel.setBounds(100,100,600,100);
+        titleNamePanel.setBounds(200,100,600,100);
         titleNamePanel.setBackground(Color.BLACK);
         titleNameLabel = new JLabel("TEXT ADVENTURE");
         titleNameLabel.setForeground(Color.WHITE);
         titleNameLabel.setFont(titleFont);
 
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300,400,200,100);
+        startButtonPanel.setBounds(400,400,200,100);
         startButtonPanel.setBackground(Color.BLACK);
 
         startButton = new JButton("START");
@@ -100,7 +99,7 @@ public class GUI {
         con.add(startButtonPanel);
 
         choiceButtonPanel= new JPanel();
-        choiceButtonPanel.setBounds(250,350,300,150);
+        choiceButtonPanel.setBounds(300,350,400,150);
         choiceButtonPanel.setBackground(Color.BLACK);
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
@@ -142,13 +141,14 @@ public class GUI {
     public void createGameScreen(){
 
         tutorialTextPanel = new JPanel();
-        tutorialTextPanel.setBounds(100,100,600,250);
+        tutorialTextPanel.setBounds(200,100,600,300);
         tutorialTextPanel.setBackground(Color.BLACK);
         con.add(tutorialTextPanel);
 
         tutorialTextArea = new JTextArea("Kuerzlich wurde dein Dorf von einer Daemonenherde ueberrannt, wobei diese dein Dorf zerstoert haben. " +
-                "Der Daemonenkoenig hat, waehrend des Angriffs, deine Geliebten getoetet. Du hast dir geschworen Rache an den Daemonen zu ueben und suchst sie nun um sie und ihren Koenig zu vernichten.");
-        tutorialTextArea.setBounds(100,100,600,250);
+                "Der Daemonenkoenig hat, waehrend des Angriffs, deine Geliebten getoetet. Du hast dir geschworen Rache an den Daemonen zu ueben und" +
+                " suchst sie nun um sie und ihren Koenig zu vernichten.");
+        tutorialTextArea.setBounds(200,100,600,300);
         tutorialTextArea.setBackground(Color.BLACK);
         tutorialTextArea.setForeground(Color.WHITE);
         tutorialTextArea.setFont(normFont);
@@ -159,7 +159,7 @@ public class GUI {
         tutorialTextArea.setVisible(true);
 
         tutorialButtonPanel = new JPanel();
-        tutorialButtonPanel.setBounds(250,400,300,50);
+        tutorialButtonPanel.setBounds(350,400,300,50);
         tutorialButtonPanel.setBackground(Color.BLACK);
         tutorialButtonPanel.setLayout(new GridLayout(1,1));
         con.add(tutorialButtonPanel);
@@ -182,7 +182,7 @@ public class GUI {
         startGame.setText("zum Hoehleneingang");
 
         inventar = new JButton("Inventar");
-        inventar.setBounds(590,15,180,50);
+        inventar.setBounds(800,15,180,50);
         inventar.setBackground(Color.BLACK);
         inventar.setForeground(Color.WHITE);
         inventar.setFont(buttonFont);
@@ -220,9 +220,8 @@ public class GUI {
         lpPanel.add(lpNumberLabel);
 
         itemPanel = new JPanel();
-        itemPanel.setBounds(230,15,350,50);
+        itemPanel.setBounds(450,15,350,50);
         itemPanel.setBackground(Color.BLACK);
-        itemPanel.setLayout(new GridLayout(1,2));
         con.add(itemPanel);
         itemLabel = new JLabel("Item: ");
         itemLabel.setFont(normFont);
@@ -269,7 +268,7 @@ public class GUI {
     public void Tutorial8(){
         tutorialTextArea.setText("Schmied: Na mein Freund, bist du neu hier? Leider befindet sich das Koenigreich in " +
                 "schlechten Zeiten, die Daemonen haben erst vor kurzem das naheliegende Dorf Phylia zerstört.");
-        tutorialButtonPanel.setBounds(200,400,400,50);
+        tutorialButtonPanel.setBounds(300,400,400,50);
         startGame.setText("Deine Geschichte erzaehlen...");
     }
 
@@ -277,7 +276,7 @@ public class GUI {
         tutorialTextArea.setText("Scheint als haettest du einiges durchmachen muessen. Wenn du Rache ueben " +
                 "willst werde ich dir allerdings zur Seite stehen, hier nimm dieses Schwert und diese Ruestung" +
                 " an dich, es ist ein Geschenk!");
-        tutorialButtonPanel.setBounds(250,400,300,50);
+        tutorialButtonPanel.setBounds(350,400,300,50);
         startGame.setText("Geschenk annehmen");
     }
 
@@ -301,7 +300,6 @@ public class GUI {
         choice3.setText("Zu deinem Heimatdorf");
         choice4.setVisible(true);
         choice4.setText("Zur Hexe");
-
     }
 
     public void Hoehleneingang(){
@@ -349,6 +347,28 @@ public class GUI {
         choice2.setVisible(false);
     }
 
+    public void Schmied(){
+        tutorialTextArea.setText("Schmied: Na mein Freund, was kann ich fuer dich tun? Sieh dich gerne um in meinem Laden!");
+        choice1.setText("Zurueck zum Marktplatz");
+        choice2.setText("Ruestungen ansehen");
+        choice3.setText("Waffen ansehen");
+        choice4.setVisible(false);
+    }
+
+    public void WaffenShop(){
+        choice1.setText("Schwert lvl 1");
+        choice2.setText("Schwert lvl 2 = 10 J");
+        choice3.setText("Verlassen");
+    }
+
+    public void RuestungsShop(){
+        choice1.setText("Ruestung lvl 1 = 4 J");
+        choice2.setText("Ruestung lvl 2 = 10 J");
+        choice3.setText("Ruestung lvl 3 = 20 J");
+        choice4.setVisible(true);
+        choice4.setText("Verlassen");
+    }
+
     public void Sumpf(){
         tutorialTextArea.setText("Du bewegst dich inmitten eines Sumpfes und siehst das mysteriöse Haus der Hexe vor dir. " +
                 "Moechtest du eintreten oder zurück zur Kreuzung gehen?");
@@ -382,9 +402,9 @@ public class GUI {
     public void Heimat(){
         tutorialTextArea.setText("Du stehst vor deinem Heimatdorf...um dich herum siehst du zerstoerte Haeuser und verbrannte Stellen. " +
                 "Wo lang willst du gehen?");
-        choice1.setText("Zur Schule");
+        choice1.setText("Zu deiner alten Schule");
         choice2.setVisible(true);
-        choice2.setText("Zur Kirche");
+        choice2.setText("Zur großen Kirche");
         choice3.setVisible(true);
         choice3.setText("Zum Park");
         choice4.setVisible(true);

@@ -26,4 +26,5 @@ public class Player {
     public int getPlayerMoney(){
         return playerMoney;
     }
+
 }
