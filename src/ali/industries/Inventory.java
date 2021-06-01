@@ -37,19 +37,19 @@ public class Inventory extends Player{
         inventarPanel.setVisible(true);
         inventoryWindow.add(inventarPanel);
 
-        ImageIcon icon = new ImageIcon("C:\\Users\\afist\\IdeaProjects\\TextBasedAdventure2.0\\Bilder\\FeuersteinXXX.png");
+        ImageIcon icon = new ImageIcon("Bilder/FeuersteinXXX.png");
         feuerStein = new JLabel(icon);
         feuerStein.setBounds(0, 300, 300, 300);
         icon.setImage(icon.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT));
         inventoryWindow.add(feuerStein);
 
-        ImageIcon icon2 = new ImageIcon("C:\\Users\\afist\\IdeaProjects\\TextBasedAdventure2.0\\Bilder\\EissteinXXX.png");
+        ImageIcon icon2 = new ImageIcon("Bilder/EissteinXXX.png");
         eisStein = new JLabel(icon2);
         eisStein.setBounds(250, 300, 300, 300);
         icon2.setImage(icon2.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT));
         inventoryWindow.add(eisStein);
 
-        ImageIcon icon3 = new ImageIcon("C:\\Users\\afist\\IdeaProjects\\TextBasedAdventure2.0\\Bilder\\BlitzSteinXXX.png");
+        ImageIcon icon3 = new ImageIcon("Bilder/BlitzSteinXXX.png");
         blitzStein = new JLabel(icon3);
         blitzStein.setBounds(480, 280, 300, 300);
         icon3.setImage(icon3.getImage().getScaledInstance(220,220,Image.SCALE_DEFAULT));
