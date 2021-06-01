@@ -3,12 +3,10 @@ package ali.industries;
 public class Weapon extends Item {
     private int damage;
 
-    public Weapon(String pName, int pDamage, int pID, int pPrice){
-        setName(pName);
-        setDamage(pDamage);
-        setiD(pID);
-        setPrice(pPrice);
+    public Weapon(String pName, int pDamage, int pPrice, int pID) {
+        super(pName, pPrice, pID);
     }
+
 
     public void setDamage(int damage) {
         this.damage = damage;

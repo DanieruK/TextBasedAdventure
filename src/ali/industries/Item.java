@@ -6,6 +6,12 @@ public class Item {
     protected int iD;
     protected int anz;
 
+    public Item( String pName, int pPrice, int pID){
+        price = pPrice;
+        name = pName;
+        iD = pID;
+    }
+
     public void setAnz(int anz) {
         this.anz = anz;
     }
