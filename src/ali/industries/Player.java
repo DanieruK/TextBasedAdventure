@@ -2,28 +2,27 @@ package ali.industries;
 
 public class Player {
 
-    protected int playerLivePoints;
-    private int playerLevel;
-    protected int playerMoney;
+    private static int playerLivePoints;
+    private static int playerMoney;
 
     public Player(){
         playerLivePoints = 20;
         playerMoney = 0;
     }
 
-    public void setPlayerLivePoints(int playerLivePoints) {
-        this.playerLivePoints = playerLivePoints;
+    public static void setPlayerLivePoints(int playerLivePoints) {
+        Player.playerLivePoints = playerLivePoints;
     }
 
-    public int getPlayerLivePoints() {
+    public static int getPlayerLivePoints() {
         return playerLivePoints;
     }
 
-    public void setPlayerMoney(int playerMoney){
-        this.playerMoney = playerMoney + 1 ;
+    public static void setPlayerMoney(int playerMoney){
+        Player.playerMoney = playerMoney + 1 ;
     }
 
-    public int getPlayerMoney(){
+    public static int getPlayerMoney(){
         return playerMoney;
     }
 

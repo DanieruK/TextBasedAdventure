@@ -5,8 +5,7 @@ import jdk.jfr.Enabled;
 import javax.swing.*;
 import java.awt.*;
 
-public class Inventory extends Player{
-    Player aPlayer;
+public class Inventory{
 
     private String[] slot = new String[4];
     private int slotCounter = 0;
@@ -119,7 +118,7 @@ public class Inventory extends Player{
         grosserHeiltrank.setVisible(true);
         grosserHeiltrank.setEnabled(false);
 
-        juwelen = new JButton("Juwelen: " + playerMoney);
+        juwelen = new JButton("Juwelen: " + Player.getPlayerMoney());
         juwelen.setBackground(Color.BLACK);
         juwelen.setForeground(Color.WHITE);
         juwelen.setFont(buttonFont);
@@ -151,26 +150,26 @@ public class Inventory extends Player{
     }
 
     public void kaufenKleinerHeiltrank(String pItem){
-        if (slotCounter < slot.length-1 & aPlayer.playerMoney > 0){
+        if (slotCounter < slot.length-1 & Player.getPlayerMoney() > 0){
             slot[slotCounter] = pItem;
             slotCounter++;
-            aPlayer.playerMoney = aPlayer.playerMoney - 1;
+            Player.setPlayerMoney(Player.getPlayerMoney()-1);
             anzKleineTraenke++;
         }else System.out.println("ERROR!!! Item slot voll");
     }
 
     public void kaufenGroßerHeiltrank(String pItem){
-        if (slotCounter < slot.length-1 & aPlayer.playerMoney > 2){
+        if (slotCounter < slot.length-1 & Player.getPlayerMoney() > 2){
             slot[slotCounter] = pItem;
             slotCounter++;
-            aPlayer.playerMoney = aPlayer.playerMoney - 3;
+            Player.setPlayerMoney(Player.getPlayerMoney()-3);
             anzGroßeTraenke++;
         }else System.out.println("ERROR!!! Item slot voll oder nicht genug Geld!");
     }
     
     public void benutzenKleinerHeiltrank(){
         if (anzKleineTraenke > 0){
-            aPlayer.playerLivePoints = aPlayer.playerLivePoints + 20;
+            Player.setPlayerMoney(Player.getPlayerMoney()+20);
             slotCounter--;
             anzKleineTraenke--;
         }
@@ -178,7 +177,7 @@ public class Inventory extends Player{
 
     public void benutzenGroßerHeiltrank(){
         if (anzGroßeTraenke > 0){
-            aPlayer.playerLivePoints = aPlayer.playerLivePoints + 40;
+            Player.setPlayerMoney(Player.getPlayerMoney()+40);
             slotCounter--;
             anzGroßeTraenke--;
         }
