@@ -39,8 +39,8 @@ public class Entity {
         return name;
     }
 
-    public void attack(int pDemonDamage, double pArmorDamagRedukion){
-        aPlayer.setPlayerLivePoints(aPlayer.getPlayerLivePoints()-(int)(pDemonDamage*pArmorDamagRedukion));
+    public void attack(double pArmorDamagRedukion){
+        aPlayer.setPlayerLivePoints(aPlayer.getPlayerLivePoints()-(int)(damage*pArmorDamagRedukion));
     }
 
 

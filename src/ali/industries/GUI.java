@@ -15,9 +15,9 @@ public class GUI{
 
     private JFrame mainWindow;
     private Container con;
-    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel, mPanel;
-    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, mLabel, mNumberLabel;
-    private JButton startButton, backButton;
+    private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel;
+    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
+    private JButton startButton;
     private JButton inventar;
 
     public JButton getStartButton() {
@@ -52,8 +52,8 @@ public class GUI{
     private JTextField nameInput;
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
     Font startFont = new Font("Algerian", Font.PLAIN,50);
-    Font normFont = new Font("Comic Sans MS", Font.PLAIN,28);
-    Font buttonFont = new Font("Comic Sans MS", Font.PLAIN, 24);
+    Font normFont = new Font("Algerian", Font.PLAIN,28);
+    Font buttonFont = new Font("Algerian", Font.PLAIN, 24);
 
     private ActionListener action;
 
@@ -99,11 +99,11 @@ public class GUI{
         con.add(startButtonPanel);
 
         choiceButtonPanel= new JPanel();
-        choiceButtonPanel.setBounds(300,350,400,150);
+        choiceButtonPanel.setBounds(300,400,400,150);
         choiceButtonPanel.setBackground(Color.BLACK);
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
-        choiceButtonPanel.setVisible(true);
+        choiceButtonPanel.setVisible(false);
 
         choice1 = new JButton("Zum Hoehleneingang");
         choice1.setBackground(Color.BLACK);
@@ -159,8 +159,8 @@ public class GUI{
         tutorialTextArea.setVisible(true);
 
         tutorialButtonPanel = new JPanel();
-        tutorialButtonPanel.setBounds(350,400,300,50);
-        tutorialButtonPanel.setBackground(Color.BLACK);
+        tutorialButtonPanel.setBounds(250,450,550,50);
+        tutorialButtonPanel.setBackground(Color.BLUE);
         tutorialButtonPanel.setLayout(new GridLayout(1,1));
         con.add(tutorialButtonPanel);
         tutorialButtonPanel.setVisible(true);
@@ -189,26 +189,12 @@ public class GUI{
         con.add(inventar);
         inventar.addActionListener(action);
 
-        mPanel = new JPanel();
-        mPanel.setBounds(30, 50, 100, 50);
-        mPanel.setBackground(Color.BLACK);
-        mPanel.setLayout(new GridLayout(1,2));
-        con.add(mPanel);
-        mLabel = new JLabel("Juwelen: ");
-        mLabel.setFont(normFont);
-        mLabel.setForeground(Color.WHITE);
-        mPanel.add(mLabel);
-        int pPlayerMoney = player.getPlayerMoney();
-        mNumberLabel = new JLabel(String.valueOf(pPlayerMoney));
-        mNumberLabel.setFont(normFont);
-        mNumberLabel.setForeground(Color.WHITE);
-        mPanel.add(mNumberLabel);
-
         lpPanel = new JPanel();
         lpPanel.setBounds(30,15,180,50);
         lpPanel.setBackground(Color.BLACK);
         lpPanel.setLayout(new GridLayout(1,2));
         con.add(lpPanel);
+
         lpLabel = new JLabel("LP: ");
         lpLabel.setFont(normFont);
         lpLabel.setForeground(Color.WHITE);
@@ -268,7 +254,6 @@ public class GUI{
     public void Tutorial8(){
         tutorialTextArea.setText("Schmied: Na mein Freund, bist du neu hier? Leider befindet sich das Koenigreich in " +
                 "schlechten Zeiten, die Daemonen haben erst vor kurzem das naheliegende Dorf Phylia zerstört.");
-        tutorialButtonPanel.setBounds(300,400,400,50);
         startGame.setText("Deine Geschichte erzaehlen...");
     }
 
@@ -276,7 +261,6 @@ public class GUI{
         tutorialTextArea.setText("Scheint als haettest du einiges durchmachen muessen. Wenn du Rache ueben " +
                 "willst werde ich dir allerdings zur Seite stehen, hier nimm dieses Schwert und diese Ruestung" +
                 " an dich, es ist ein Geschenk!");
-        tutorialButtonPanel.setBounds(350,400,300,50);
         startGame.setText("Geschenk annehmen");
     }
 
@@ -290,6 +274,7 @@ public class GUI{
     /**ab hier beginnt das freie Spiel **/
     public void Kreuzung(){
         startGame.setVisible(false);
+        choiceButtonPanel.setVisible(true);
         tutorialTextArea.setText("Du befindest dich auf einer Kreuzung, wo lang moechtest du gehen?");
         choice1.setVisible(true);
         choice1.setText("Zum Hoehleneingang");

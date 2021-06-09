@@ -11,30 +11,40 @@ public class Inventory{
     private int slotCounter = 0;
     protected int anzKleineTraenke = 0;
     protected int anzGroßeTraenke = 0;
-    private String currentWeapon;
-    private String currenAromoury;
     private String currentScreen;
-    private JPanel inventarPanel;
+    private JPanel inventarPanel, inventoryTitlePanel;
     private JFrame inventoryWindow;
-    private JLabel feuerStein, eisStein, blitzStein;
+    private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel;
     protected JButton waffe1, waffe2, waffe3, ruestung1, ruestung2, ruestung3, kleinerHeiltrank, grosserHeiltrank, juwelen;
-    Font buttonFont = new Font("Comic Sans MS", Font.PLAIN, 20);
+    Font buttonFont = new Font("Algerian", Font.PLAIN, 20);
+    Font titleFont = new Font("Algerian", Font.PLAIN,60);
 
     public Inventory(){
         inventoryWindow = new JFrame("Inventar");
-        inventoryWindow.setSize(800,600);
+        inventoryWindow.setSize(900,600);
         inventoryWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-        inventoryWindow.getContentPane().setBackground(Color.WHITE);
+        inventoryWindow.getContentPane().setBackground(Color.LIGHT_GRAY);
         inventoryWindow.setLayout(null);
         inventoryWindow.setResizable(false);
         inventoryWindow.setVisible(false);
 
         inventarPanel= new JPanel();
-        inventarPanel.setBounds(50,150,700,200);
+        inventarPanel.setBounds(50,150,800,200);
         inventarPanel.setBackground(Color.BLACK);
         inventarPanel.setLayout(new GridLayout(3,3));
         inventarPanel.setVisible(true);
         inventoryWindow.add(inventarPanel);
+
+        inventoryTitlePanel= new JPanel();
+        inventoryTitlePanel.setBounds(200,50,500,75);
+        inventoryTitlePanel.setBackground(Color.LIGHT_GRAY);
+        inventoryTitlePanel.setVisible(true);
+        inventoryWindow.add(inventoryTitlePanel);
+
+        inventoryTitleLabel = new JLabel("Inventar");
+        inventoryTitleLabel.setFont(titleFont);
+        inventoryTitleLabel.setForeground(Color.BLACK);
+        inventoryTitlePanel.add(inventoryTitleLabel);
 
         ImageIcon icon = new ImageIcon("Bilder/FeuersteinXXX.png");
         feuerStein = new JLabel(icon);
@@ -139,14 +149,6 @@ public class Inventory{
     public void schwert2(){
         waffe2.setEnabled(true);
         waffe2.setText("Schwert Level 2");
-    }
-
-    public void setCurrenAromoury(String pCurrenAromoury) {
-        this.currenAromoury = pCurrenAromoury;
-    }
-
-    public void setCurrentWeapon(String pCurrentWeapon) {
-        this.currentWeapon = pCurrentWeapon;
     }
 
     public void kaufenKleinerHeiltrank(String pItem){
