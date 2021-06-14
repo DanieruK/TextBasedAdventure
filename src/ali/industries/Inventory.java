@@ -11,7 +11,6 @@ public class Inventory{
     private int slotCounter = 0;
     protected int anzKleineTraenke = 0;
     protected int anzGroßeTraenke = 0;
-    private String currentScreen;
     private JPanel inventarPanel, inventoryTitlePanel;
     private JFrame inventoryWindow;
     private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel;
@@ -143,12 +142,12 @@ public class Inventory{
 
     public void schwert1(){
         waffe1.setEnabled(true);
-        waffe1.setText("Schwert Level 1");
+        waffe1.setText(ItemData.langschwert.getName());
     }
 
     public void schwert2(){
         waffe2.setEnabled(true);
-        waffe2.setText("Schwert Level 2");
+        waffe2.setText(ItemData.dolch.getName());
     }
 
     public void kaufenKleinerHeiltrank(String pItem){
@@ -185,11 +184,4 @@ public class Inventory{
         }
     }
 
-    public void setCurrentScreen(String pCurrentScreen) {
-        this.currentScreen = pCurrentScreen;
-    }
-
-    public String getCurrentScreen() {
-        return currentScreen;
-    }
 }

@@ -99,7 +99,7 @@ public class GUI{
         con.add(startButtonPanel);
 
         choiceButtonPanel= new JPanel();
-        choiceButtonPanel.setBounds(300,400,400,150);
+        choiceButtonPanel.setBounds(200,400,550,150);
         choiceButtonPanel.setBackground(Color.BLACK);
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
@@ -159,7 +159,7 @@ public class GUI{
         tutorialTextArea.setVisible(true);
 
         tutorialButtonPanel = new JPanel();
-        tutorialButtonPanel.setBounds(250,450,550,50);
+        tutorialButtonPanel.setBounds(200,450,550,50);
         tutorialButtonPanel.setBackground(Color.BLUE);
         tutorialButtonPanel.setLayout(new GridLayout(1,1));
         con.add(tutorialButtonPanel);
@@ -213,7 +213,8 @@ public class GUI{
         itemLabel.setFont(normFont);
         itemLabel.setForeground(Color.WHITE);
         itemPanel.add(itemLabel);
-        itemNameLabel = new JLabel("Langschwert");
+        Player.setCurrentWeapon(ItemData.holzstock);
+        itemNameLabel = new JLabel(Player.getCurrentWeapon().getName());
         itemNameLabel.setFont(normFont);
         itemNameLabel.setForeground(Color.WHITE);
         itemPanel.add(itemNameLabel);
@@ -265,11 +266,12 @@ public class GUI{
     }
 
     public void Tutorial10(){
+        Player.setCurrentWeapon(ItemData.langschwert);
+        itemLabel.setText("Item: " + Player.getCurrentWeapon().getName());
         tutorialTextArea.setText("Nun gehe hinaus in die Welt und befreie die Buerger Tyrals von den Daemonen, die uns in " +
                 "Angst und Schrecken versetzen!");
         startGame.setText("Zurueck zur Kreuzung");
     }
-
 
     /**ab hier beginnt das freie Spiel **/
     public void Kreuzung(){
@@ -277,8 +279,7 @@ public class GUI{
         choiceButtonPanel.setVisible(true);
         tutorialTextArea.setText("Du befindest dich auf einer Kreuzung, wo lang moechtest du gehen?");
         choice1.setVisible(true);
-        choice1.setText("Zum Hoehleneingang");
-        choice1.addActionListener(action);
+        choice1.setText("Zum dem Hoehleneingang");
         choice2.setVisible(true);
         choice2.setText("Zum Schloss");
         choice3.setVisible(true);
@@ -291,8 +292,8 @@ public class GUI{
         tutorialTextArea.setText("Waechter: Ich lasse dich passieren, allerdings warne ich dich noch einmal, in dieser Hoehle" +
                 "befinden sich starke Daemonen! Sicher, dass du eintreten willst?");
         choice1.setVisible(true);
-        choice1.setText("Hoehle betreten");
-        choice2.setText("Zurueck zur Kreuzung");
+        choice1.setText("Zurueck zur Kreuzung");
+        choice2.setText("Die Hoehle betreten");
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
@@ -341,15 +342,15 @@ public class GUI{
     }
 
     public void WaffenShop(){
-        choice1.setText("Schwert lvl 1");
-        choice2.setText("Schwert lvl 2 = 10 J");
+        choice1.setText(ItemData.langschwert.getName());
+        choice2.setText(ItemData.dolch.getName()+" = 10 J");
         choice3.setText("Verlassen");
     }
 
     public void RuestungsShop(){
-        choice1.setText("Ruestung lvl 1 = 4 J");
-        choice2.setText("Ruestung lvl 2 = 10 J");
-        choice3.setText("Ruestung lvl 3 = 20 J");
+        choice1.setText(ItemData.lederlappen.getName() + " = 4 J");
+        choice2.setText(ItemData.kettenhemd.getName()+ " = 10 J");
+        choice3.setText(ItemData.stahlruestung.getName() + " = 20 J");
         choice4.setVisible(true);
         choice4.setText("Verlassen");
     }
@@ -438,4 +439,7 @@ public class GUI{
         lpNumberLabel.setText(String.valueOf(pPlayerLivePoints));
     }
 
+    public void createFightTheme(){
+
+    }
 }

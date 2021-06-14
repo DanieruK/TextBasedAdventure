@@ -6,7 +6,9 @@ public class Entity {
     protected int entityLivePoints;
     protected int damage;
 
+    Weapon aWeapon;
     Player aPlayer;
+    Armor aArmor;
 
     public Entity(String pName, int pLP, int pDamage, int pLVL, Player pPlayer){
         name = pName;
@@ -15,16 +17,8 @@ public class Entity {
         this.aPlayer=pPlayer;
     }
 
-    public void setDamage(int damage) {
-        this.damage = damage;
-    }
-
     public void setEntityLivePoints(int entityLivePoints) {
         this.entityLivePoints = entityLivePoints;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getDamage() {
@@ -40,9 +34,10 @@ public class Entity {
     }
 
     public void attack(double pArmorDamagRedukion){
-        aPlayer.setPlayerLivePoints(aPlayer.getPlayerLivePoints()-(int)(damage*pArmorDamagRedukion));
+        aPlayer.setPlayerLivePoints(aPlayer.getPlayerLivePoints()-(int)(damage*Player.getCurrentArmor().getDamageReduktion()));
     }
 
-
-
+    public void takeDamage(){
+     setEntityLivePoints(getEntityLivePoints()-Player.getCurrentWeapon().getDamage());
+    }
 }

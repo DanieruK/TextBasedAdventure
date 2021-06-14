@@ -60,12 +60,12 @@ public class ScreenControl {
 
             /**Kreuzung**/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
-            case "Zum Hoehleneingang" : System.out.println(2); aGui.Hoehleneingang();aGui.getMainWindow().repaint(); break;
+            case "Zum dem Hoehleneingang" : System.out.println("Fehler"); aGui.Hoehleneingang();aGui.getMainWindow().repaint(); break;
             case "Zum Schloss" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
             case "Zu deinem Heimatdorf" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zur Hexe" : aGui.Sumpf(); aGui.getMainWindow().repaint(); break;
 
-            case "Hoehle betreten" : aGui.Hoehle(); aGui.getMainWindow().repaint(); break;
+            case "Die Hoehle betreten" : aGui.Hoehle(); aGui.getMainWindow().repaint(); break;
 
             /**Gaststaette**/
             case "Zur Gaststaette" : aGui.GaststaetteVor(); aGui.getMainWindow().repaint(); break;

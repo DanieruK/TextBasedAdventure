@@ -16,7 +16,4 @@ public class Armor extends Item{
         return damageReduktion;
     }
 
-    Armor lederLappen = new Armor("Lederlappen",0.85,4,4);
-    Armor muelltuete = new Armor("Mülltüte", 0.5, 5, 10);
-    Armor latexAnzug = new Armor("LatexAnzug", 0.25, 6, 20);
 }
