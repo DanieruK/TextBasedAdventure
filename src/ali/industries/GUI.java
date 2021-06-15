@@ -348,9 +348,9 @@ public class GUI{
     }
 
     public void RuestungsShop(){
-        choice1.setText(ItemData.lederlappen.getName() + " = 4 J");
-        choice2.setText(ItemData.kettenhemd.getName()+ " = 10 J");
-        choice3.setText(ItemData.stahlruestung.getName() + " = 20 J");
+        choice1.setText("Leder Rüstung = 4 J");
+        choice2.setText("Einfaches Kettenhemd = 10 J");
+        choice3.setText("Gestärkte Stahlruestung = 20 J");
         choice4.setVisible(true);
         choice4.setText("Verlassen");
     }
@@ -440,7 +440,7 @@ public class GUI{
     }
 
     public void createFightTheme(){
-        tutorialTextArea.setText("");
+        tutorialTextArea.setText("Vor dir steht ein " + Player.currenDemon.getName() + " wähle deine nächste Aktion aus!");
         choice1.setText("Angreifen");
         choice2.setText("Blocken");
         choice3.setText("Fluechten");

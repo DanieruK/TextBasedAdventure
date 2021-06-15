@@ -60,7 +60,7 @@ public class ScreenControl {
 
             /**Kreuzung**/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
-            case "Zum dem Hoehleneingang" : System.out.println("Fehler"); aGui.Hoehleneingang();aGui.getMainWindow().repaint(); break;
+            case "Zum dem Hoehleneingang" : aGui.Hoehleneingang();aGui.getMainWindow().repaint(); break;
             case "Zum Schloss" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
             case "Zu deinem Heimatdorf" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zur Hexe" : aGui.Sumpf(); aGui.getMainWindow().repaint(); break;
@@ -75,7 +75,7 @@ public class ScreenControl {
                 aGui.Marktplatz();aGui.getMainWindow().repaint(); break;
 
             /**Schmied**/
-            case "Zum Schmied" : aGui.Schmied(); aGui.getMainWindow().repaint(); java.lang.System.out.print( 4 ); break;
+            case "Zum Schmied" : aGui.Schmied(); aGui.getMainWindow().repaint(); break;
             case "Zurueck zum Marktplatz" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
             case "Ruestungen ansehen" : aGui.RuestungsShop(); aGui.getMainWindow().repaint(); break;
             case "Waffen ansehen" : aGui.WaffenShop(); aGui.getMainWindow().repaint();aGui.getChoice1().setEnabled(false); ueberpruefenInventar(); break;
@@ -83,7 +83,7 @@ public class ScreenControl {
             case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true); aGui.getChoice2().setEnabled(true); break;
             case "Schwert lvl 2 = 10 J" : if (Player.getPlayerMoney()>=10){
                 aGui.getChoice2().setEnabled(false); inv.schwert2(); break;
-            }else System.out.println("Nicht genug Juwelen");
+            }else System.out.println("Nicht genug Juwelen"); break;
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
@@ -99,9 +99,11 @@ public class ScreenControl {
             case "kl. Trank = 1 Juwel" :
 
             //Anfang Kampfszenerie
-            case "Links" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
+            case "Links" : Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Geradeaus" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
             case "Rechts" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
+
+            case "Angreifen" : Player.takeDamage();
 
         }
     }

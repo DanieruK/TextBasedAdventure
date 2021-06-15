@@ -4,14 +4,14 @@ public class Player {
 
     private static int playerLivePoints;
     private static int playerMoney;
-    private static Boolean playerAlive;
+    private static Boolean playerAlive = true;
     public static Armor currentArmor;
     public static Weapon currentWeapon;
     public static Demon currenDemon;
 
     public Player(){
         playerLivePoints = 20;
-        playerMoney = 10;
+        playerMoney = 0;
     }
 
     public static void setPlayerLivePoints(int playerLivePoints) {
@@ -62,7 +62,7 @@ public class Player {
     }
 
     public static void attack(){
-        currenDemon.setEntityLivePoints(currenDemon.getEntityLivePoints()- currentWeapon.getDamage());
+        currenDemon.setEntityLivePoints(currenDemon.getEntityLivePoints()-currentWeapon.getDamage());
         if (currenDemon.getEntityLivePoints()<=0){
             currenDemon.kill();
         }

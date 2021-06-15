@@ -11,9 +11,9 @@ public class Inventory{
     private int slotCounter = 0;
     protected int anzKleineTraenke = 0;
     protected int anzGroßeTraenke = 0;
-    private JPanel inventarPanel, inventoryTitlePanel, juweleryPanel;
+    private JPanel inventarPanel, inventoryTitlePanel;
     private JFrame inventoryWindow;
-    private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel, jeweleryLabel;
+    private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel;
     protected JButton waffe1, waffe2, waffe3, ruestung1, ruestung2, ruestung3, kleinerHeiltrank, grosserHeiltrank, juwelen;
     Font buttonFont = new Font("Algerian", Font.PLAIN, 20);
     Font titleFont = new Font("Algerian", Font.PLAIN,60);
@@ -44,17 +44,6 @@ public class Inventory{
         inventoryTitleLabel.setFont(titleFont);
         inventoryTitleLabel.setForeground(Color.BLACK);
         inventoryTitlePanel.add(inventoryTitleLabel);
-
-        juweleryPanel = new JPanel();
-        juweleryPanel.setBounds(450,50,400,75);
-        juweleryPanel.setBackground(Color.LIGHT_GRAY);
-        juweleryPanel.setVisible(true);
-        inventoryWindow.add(juweleryPanel);
-
-        jeweleryLabel = new JLabel("Juwelen: " + Player.getPlayerMoney());
-        jeweleryLabel.setFont(titleFont);
-        jeweleryLabel.setForeground(Color.BLACK);
-        juweleryPanel.add(jeweleryLabel);
 
         ImageIcon icon = new ImageIcon("Bilder/FeuersteinXXX.png");
         feuerStein = new JLabel(icon);
@@ -196,6 +185,6 @@ public class Inventory{
     }
 
     public void refreshJeweleryLabel() {
-        jeweleryLabel.setText("Juwelen: " + Player.getPlayerMoney());
+        juwelen.setText("Juwelen: " + Player.getPlayerMoney());
     }
 }
