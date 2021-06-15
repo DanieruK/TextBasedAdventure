@@ -5,37 +5,52 @@ import jdk.jfr.Enabled;
 import javax.swing.*;
 import java.awt.*;
 
-public class Inventory{
+public class Inventory {
 
     private String[] slot = new String[4];
-    private int slotCounter = 0;
     protected int anzKleineTraenke = 0;
     protected int anzGroßeTraenke = 0;
     private JPanel inventarPanel, inventoryTitlePanel;
     private JFrame inventoryWindow;
     private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel;
     protected JButton waffe1, waffe2, waffe3, ruestung1, ruestung2, ruestung3, kleinerHeiltrank, grosserHeiltrank, juwelen;
-    Font buttonFont = new Font("Algerian", Font.PLAIN, 20);
-    Font titleFont = new Font("Algerian", Font.PLAIN,60);
+    Font buttonFont = new Font("Algerian", Font.PLAIN, 17);
+    Font titleFont = new Font("Algerian", Font.PLAIN, 60);
 
-    public Inventory(){
+    public int getAnzKleineTraenke() {
+        return anzKleineTraenke;
+    }
+
+    public int getAnzGroßeTraenke() {
+        return anzGroßeTraenke;
+    }
+
+    public void setAnzKleineTraenke(int anzKleineTraenke) {
+        this.anzKleineTraenke = anzKleineTraenke;
+    }
+
+    public void setAnzGroßeTraenke(int anzGroßeTraenke) {
+        this.anzGroßeTraenke = anzGroßeTraenke;
+    }
+
+    public Inventory() {
         inventoryWindow = new JFrame("Inventar");
-        inventoryWindow.setSize(900,600);
+        inventoryWindow.setSize(900, 600);
         inventoryWindow.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         inventoryWindow.getContentPane().setBackground(Color.LIGHT_GRAY);
         inventoryWindow.setLayout(null);
         inventoryWindow.setResizable(false);
         inventoryWindow.setVisible(false);
 
-        inventarPanel= new JPanel();
-        inventarPanel.setBounds(50,150,800,200);
+        inventarPanel = new JPanel();
+        inventarPanel.setBounds(50, 150, 800, 200);
         inventarPanel.setBackground(Color.BLACK);
-        inventarPanel.setLayout(new GridLayout(3,3));
+        inventarPanel.setLayout(new GridLayout(3, 3));
         inventarPanel.setVisible(true);
         inventoryWindow.add(inventarPanel);
 
         inventoryTitlePanel = new JPanel();
-        inventoryTitlePanel.setBounds(50,50,300,75);
+        inventoryTitlePanel.setBounds(50, 50, 300, 75);
         inventoryTitlePanel.setBackground(Color.LIGHT_GRAY);
         inventoryTitlePanel.setVisible(true);
         inventoryWindow.add(inventoryTitlePanel);
@@ -47,20 +62,20 @@ public class Inventory{
 
         ImageIcon icon = new ImageIcon("Bilder/FeuersteinXXX.png");
         feuerStein = new JLabel(icon);
-        feuerStein.setBounds(0, 300, 300, 300);
-        icon.setImage(icon.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT));
+        feuerStein.setBounds(20, 300, 300, 300);
+        icon.setImage(icon.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT));
         inventoryWindow.add(feuerStein);
 
         ImageIcon icon2 = new ImageIcon("Bilder/EissteinXXX.png");
         eisStein = new JLabel(icon2);
-        eisStein.setBounds(250, 300, 300, 300);
-        icon2.setImage(icon2.getImage().getScaledInstance(300,300,Image.SCALE_DEFAULT));
+        eisStein.setBounds(290, 300, 300, 300);
+        icon2.setImage(icon2.getImage().getScaledInstance(300, 300, Image.SCALE_DEFAULT));
         inventoryWindow.add(eisStein);
 
         ImageIcon icon3 = new ImageIcon("Bilder/BlitzSteinXXX.png");
         blitzStein = new JLabel(icon3);
-        blitzStein.setBounds(480, 280, 300, 300);
-        icon3.setImage(icon3.getImage().getScaledInstance(220,220,Image.SCALE_DEFAULT));
+        blitzStein.setBounds(540, 280, 300, 300);
+        icon3.setImage(icon3.getImage().getScaledInstance(220, 220, Image.SCALE_DEFAULT));
         inventoryWindow.add(blitzStein);
 
         waffe1 = new JButton("???");
@@ -111,7 +126,7 @@ public class Inventory{
         ruestung3.setVisible(true);
         ruestung3.setEnabled(false);
 
-        kleinerHeiltrank = new JButton("Anz. kl. Heiltrank: " + anzKleineTraenke);
+        kleinerHeiltrank = new JButton("Anz. kl. Heiltrank: " + getAnzKleineTraenke());
         kleinerHeiltrank.setBackground(Color.BLACK);
         kleinerHeiltrank.setForeground(Color.WHITE);
         kleinerHeiltrank.setFont(buttonFont);
@@ -119,7 +134,7 @@ public class Inventory{
         kleinerHeiltrank.setVisible(true);
         kleinerHeiltrank.setEnabled(false);
 
-        grosserHeiltrank = new JButton("Anz. gr. Heiltrank: " + anzGroßeTraenke);
+        grosserHeiltrank = new JButton("Anz. gr. Heiltrank: " + getAnzGroßeTraenke());
         grosserHeiltrank.setBackground(Color.BLACK);
         grosserHeiltrank.setForeground(Color.WHITE);
         grosserHeiltrank.setFont(buttonFont);
@@ -136,50 +151,68 @@ public class Inventory{
         juwelen.setEnabled(false);
     }
 
-    public void fensterOeffnen(){
+    public void fensterOeffnen() {
         inventoryWindow.setVisible(true);
     }
 
-    public void schwert1(){
+    public void schwert1() {
         waffe1.setEnabled(true);
-        waffe1.setText(ItemData.langschwert.getName());
+        waffe1.setText(ItemData.schwertlvl1.getName() + (" (10 dmg)"));
     }
 
-    public void schwert2(){
+    public void schwert2() {
         waffe2.setEnabled(true);
-        waffe2.setText(ItemData.dolch.getName());
+        waffe2.setText(ItemData.schwertlvl2.getName() + (" (20 dmg)"));
+        Player.setPlayerMoney(Player.getPlayerMoney() - 11);
     }
 
-    public void kaufenKleinerHeiltrank(String pItem){
-        if (slotCounter < slot.length-1 & Player.getPlayerMoney() > 0){
-            slot[slotCounter] = pItem;
-            slotCounter++;
-            Player.setPlayerMoney(Player.getPlayerMoney()-1);
-            anzKleineTraenke++;
-        }else System.out.println("ERROR!!! Item slot voll");
+    public void schwert3() {
+        waffe3.setEnabled(true);
+        waffe3.setText(ItemData.schwertlvl3.getName() + (" (40 dmg)"));
     }
 
-    public void kaufenGroßerHeiltrank(String pItem){
-        if (slotCounter < slot.length-1 & Player.getPlayerMoney() > 2){
-            slot[slotCounter] = pItem;
-            slotCounter++;
-            Player.setPlayerMoney(Player.getPlayerMoney()-3);
-            anzGroßeTraenke++;
-        }else System.out.println("ERROR!!! Item slot voll oder nicht genug Geld!");
+    public void ruestung1(){
+        ruestung1.setEnabled(true);
+        ruestung1.setText(ItemData.ruestunglvl1.getName() + (" (-15% dmg)"));
+        Player.setPlayerMoney(Player.getPlayerMoney() - 5);
+    }
+
+    public void ruestung2(){
+        ruestung2.setEnabled(true);
+        ruestung2.setText(ItemData.ruestunglvl2.getName() + (" (-50% dmg)"));
+        Player.setPlayerMoney(Player.getPlayerMoney() - 11);
+    }
+
+    public void ruestung3(){
+        ruestung3.setEnabled(true);
+        ruestung3.setText(ItemData.ruestunglvl3.getName() + (" (-75% dmg)"));
+        Player.setPlayerMoney(Player.getPlayerMoney() - 21);
+    }
+
+    public void kaufenKleinerHeiltrank() {
+        if (Player.getPlayerMoney() > 0 & getAnzKleineTraenke() < 3){
+            Player.setPlayerMoney(Player.getPlayerMoney() - 2);
+        setAnzKleineTraenke(getAnzKleineTraenke() + 1);
+        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
+    }
+
+    public void kaufenGroßerHeiltrank(){
+        if (getAnzGroßeTraenke() < 3 & Player.getPlayerMoney() > 2){
+            Player.setPlayerMoney(Player.getPlayerMoney()-4);
+            setAnzGroßeTraenke(getAnzGroßeTraenke()+1);
+        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
     }
     
     public void benutzenKleinerHeiltrank(){
-        if (anzKleineTraenke > 0){
-            Player.setPlayerMoney(Player.getPlayerMoney()+20);
-            slotCounter--;
-            anzKleineTraenke--;
+        if (getAnzKleineTraenke() > 0){
+            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+20);
+            setAnzKleineTraenke(getAnzKleineTraenke()-1);
         }
     }
 
     public void benutzenGroßerHeiltrank(){
         if (anzGroßeTraenke > 0){
-            Player.setPlayerMoney(Player.getPlayerMoney()+40);
-            slotCounter--;
+            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+40);
             anzGroßeTraenke--;
         }
     }
@@ -187,4 +220,9 @@ public class Inventory{
     public void refreshJeweleryLabel() {
         juwelen.setText("Juwelen: " + Player.getPlayerMoney());
     }
+    public void refreshKleineTraenke() { kleinerHeiltrank.setText("Anz. kl. Heiltrank: " + getAnzKleineTraenke());}
+
+    public void refreshGrosseTraenke() { grosserHeiltrank.setText("Anz. gr. Heiltrank: " + getAnzGroßeTraenke());}
+
+
 }

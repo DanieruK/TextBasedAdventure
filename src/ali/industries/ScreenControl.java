@@ -12,9 +12,20 @@ public class ScreenControl {
         aGui.setAction(action);
     }
 
-    public void ueberpruefenInventar(){
+    public void ueberpruefenWaffenInventar(){
+        aGui.getChoice1().setEnabled(false);
         if (inv.waffe2.isEnabled()){
             aGui.getChoice2().setEnabled(false);
+        }
+    }
+
+    public void ueberpruefenRuestungenInventar(){
+        if (inv.ruestung1.isEnabled()){
+            aGui.getChoice1().setEnabled(false);
+        }if (inv.ruestung2.isEnabled()){
+            aGui.getChoice2().setEnabled(false);
+        }if (inv.ruestung3.isEnabled()){
+            aGui.getChoice3().setEnabled(false);
         }
     }
 
@@ -77,26 +88,52 @@ public class ScreenControl {
             /**Schmied**/
             case "Zum Schmied" : aGui.Schmied(); aGui.getMainWindow().repaint(); break;
             case "Zurueck zum Marktplatz" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
-            case "Ruestungen ansehen" : aGui.RuestungsShop(); aGui.getMainWindow().repaint(); break;
-            case "Waffen ansehen" : aGui.WaffenShop(); aGui.getMainWindow().repaint();aGui.getChoice1().setEnabled(false); ueberpruefenInventar(); break;
+            case "Ruestungen ansehen" : aGui.RuestungsShop(); aGui.getMainWindow().repaint(); ueberpruefenRuestungenInventar(); break;
+            case "Waffen ansehen" : aGui.WaffenShop(); aGui.getMainWindow().repaint(); ueberpruefenWaffenInventar(); break;
 
-            case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true); aGui.getChoice2().setEnabled(true); break;
-            case "Schwert lvl 2 = 10 J" : if (Player.getPlayerMoney()>=10){
-                aGui.getChoice2().setEnabled(false); inv.schwert2(); break;
+            case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true);
+            aGui.getChoice2().setEnabled(true); aGui.getChoice3().setEnabled(true); break;
+
+            case "Eisenschwert = 10 J" : if (Player.getPlayerMoney()>=10){
+                aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); break;
+
+            case "Lederruestung = 4 J" : if (Player.getPlayerMoney() >= 4) {
+                aGui.getChoice1().setEnabled(false); inv.ruestung1(); inv.refreshJeweleryLabel(); break;
+            }else System.out.println("Nicht genug Juwelen"); break;
+
+            case "Kettenhemd = 10 J" : if (Player.getPlayerMoney() >= 10) {
+                aGui.getChoice2().setEnabled(false); inv.ruestung2(); inv.refreshJeweleryLabel(); break;
+            }
+
+            case "Stahlruestung = 20 J" : if (Player.getPlayerMoney() >= 20) {
+                aGui.getChoice3().setEnabled(false); inv.ruestung3(); inv.refreshJeweleryLabel(); break;
+            }
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zu deiner alten Schule" : aGui.Schule(); aGui.getMainWindow().repaint(); break;
             case "Zur großen Kirche" : aGui.Kirche(); aGui.getMainWindow().repaint(); break;
             case "Zum Park" : aGui.Park(); aGui.getMainWindow().repaint(); break;
+            case "Zu deinem Haus" : if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled()) {
+                aGui.getChoice2().setVisible(true);
+                aGui.Haus();
+                aGui.getMainWindow().repaint();
+                break;
+            }else if(inv.waffe3.isEnabled()){
+                aGui.getChoice2().setVisible(false); aGui.Haus(); aGui.getMainWindow().repaint(); break;
+            }else aGui.getChoice2().setVisible(false); aGui.Haus(); aGui.getMainWindow().repaint(); break;
+
+            case "Heldenschwert aufheben" : inv.schwert3(); aGui.getChoice2().setVisible(false); aGui.Haus();
+                aGui.getMainWindow().repaint(); break;
 
             /**Hexe**/
             case "Hexenhaus betreten" :
             case "Zurueck" :
                 aGui.Hexe();aGui.getMainWindow().repaint(); break;
             case "Trankinformationen" : aGui.Trankinformationen(); aGui.getMainWindow().repaint(); break;
-            case "kl. Trank = 1 Juwel" :
+            case "kl. Trank = 1 Juwel" : inv.kaufenKleinerHeiltrank(); inv.refreshKleineTraenke(); inv.refreshJeweleryLabel(); break;
+            case "gr. Trank = 3 Juwelen" : inv.kaufenGroßerHeiltrank(); inv.refreshGrosseTraenke(); inv.refreshJeweleryLabel(); break;
 
             //Anfang Kampfszenerie
             case "Links" : Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;

@@ -264,7 +264,7 @@ public class GUI{
     }
 
     public void Tutorial10(){
-        Player.setCurrentWeapon(ItemData.langschwert);
+        Player.setCurrentWeapon(ItemData.schwertlvl1);
         itemLabel.setText("Item: " + Player.getCurrentWeapon().getName());
         tutorialTextArea.setText("Nun gehe hinaus in die Welt und befreie die Buerger Tyrals von den Daemonen, die uns in " +
                 "Angst und Schrecken versetzen!");
@@ -340,15 +340,15 @@ public class GUI{
     }
 
     public void WaffenShop(){
-        choice1.setText(ItemData.langschwert.getName());
-        choice2.setText("Schwert lvl 2 = 10 J");
+        choice1.setText(ItemData.schwertlvl1.getName());
+        choice2.setText("Eisenschwert = 10 J");
         choice3.setText("Verlassen");
     }
 
     public void RuestungsShop(){
-        choice1.setText("Leder Rüstung = 4 J");
-        choice2.setText("Einfaches Kettenhemd = 10 J");
-        choice3.setText("Gestärkte Stahlruestung = 20 J");
+        choice1.setText("Lederruestung = 4 J");
+        choice2.setText("Kettenhemd = 10 J");
+        choice3.setText("Stahlruestung = 20 J");
         choice4.setVisible(true);
         choice4.setText("Verlassen");
     }
@@ -407,10 +407,13 @@ public class GUI{
     public void Kirche(){
         tutorialTextArea.setText("Die einst große und praechtige Kirche ist in sich zusammengestuerzt. In den truemmern " +
                 "liegen die zerbrochenen, bunten Glaesser die einst das heilige Haus geschmueckt haben.");
-        choice1.setText("Zur Schule");
+        choice1.setText("Zu deiner alten Schule");
         choice2.setText("Zum Park");
+        choice2.setVisible(true);
         choice3.setText("Zu deinem Haus");
+        choice3.setVisible(true);
         choice4.setText("Zurueck zum Dorfeingang");
+        choice4.setVisible(true);
     }
 
     public void Park(){
@@ -418,6 +421,16 @@ public class GUI{
                 "Die Baeume sind verkohlt und einige Graesser brennen noch immer.");
         choice1.setText("Zurueck zum Dorfeingang");
         choice2.setVisible(false);
+        choice3.setVisible(false);
+        choice4.setVisible(false);
+    }
+
+    public void Haus(){
+        tutorialTextArea.setText("Du stehst in deinem alten Haus. Das Dach ist teilweise eingestürzt und hat das " +
+                "Wohnzimmer zerstoert, die Waende stehen zwar noch, aber sie sehen zerbrechlich aus. Du verspuerst eine" +
+                " Kraft, es ist als rufe sie nach dir...");
+        choice1.setText("Zur großen Kirche");
+        choice2.setText("Heldenschwert aufheben");
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
