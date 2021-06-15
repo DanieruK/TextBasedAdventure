@@ -140,7 +140,7 @@ public class ScreenControl {
             case "Geradeaus" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
             case "Rechts" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
 
-            case "Angreifen" : Player.takeDamage(); System.out.println(Player.getPlayerLivePoints()); aGui.refreshLPLabel(); aGui.getMainWindow().repaint(); break;
+            case "Angreifen" : Player.takeDamage(); aGui.refreshLPLabel(); aGui.getMainWindow().repaint(); break;
 
 
         }
