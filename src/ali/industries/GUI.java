@@ -19,6 +19,13 @@ public class GUI{
     private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
     private JButton startButton;
     private JButton inventar;
+    private JButton startGame;
+    private JButton choice1, choice2, choice3, choice4;
+    private JTextArea tutorialTextArea;
+    Font titleFont = new Font("Algerian", Font.PLAIN,60);
+    Font startFont = new Font("Algerian", Font.PLAIN,50);
+    Font normFont = new Font("Algerian", Font.PLAIN,28);
+    Font buttonFont = new Font("Algerian", Font.PLAIN, 24);
 
     public JButton getStartButton() {
         return startButton;
@@ -45,15 +52,6 @@ public class GUI{
     }
 
     public JButton getInventory(){ return inventar; }
-
-    private JButton startGame;
-    private JButton choice1, choice2, choice3, choice4;
-    private JTextArea tutorialTextArea, nameInputTextArea;
-    private JTextField nameInput;
-    Font titleFont = new Font("Algerian", Font.PLAIN,60);
-    Font startFont = new Font("Algerian", Font.PLAIN,50);
-    Font normFont = new Font("Algerian", Font.PLAIN,28);
-    Font buttonFont = new Font("Algerian", Font.PLAIN, 24);
 
     private ActionListener action;
 
@@ -200,7 +198,7 @@ public class GUI{
         lpLabel.setForeground(Color.WHITE);
         lpPanel.add(lpLabel);
         int pPlayerLivePoints = player.getPlayerLivePoints();
-        lpNumberLabel = new JLabel(String.valueOf(pPlayerLivePoints));
+        lpNumberLabel = new JLabel(String.valueOf(Player.getPlayerLivePoints()));
         lpNumberLabel.setFont(normFont);
         lpNumberLabel.setForeground(Color.WHITE);
         lpPanel.add(lpNumberLabel);
@@ -422,6 +420,10 @@ public class GUI{
         choice2.setVisible(false);
         choice3.setVisible(false);
         choice4.setVisible(false);
+    }
+
+    public void refreshLPLabel() {
+        lpNumberLabel.setText(String.valueOf(Player.getPlayerLivePoints()));
     }
 
     public void Standardbefehl(){

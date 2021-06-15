@@ -5,6 +5,7 @@ public class Weapon extends Item {
 
     public Weapon(String pName, int pDamage, int pPrice, int pID) {
         super(pName, pPrice, pID);
+        damage = pDamage;
     }
 
     public int getDamage() {

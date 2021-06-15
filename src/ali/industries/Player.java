@@ -5,7 +5,7 @@ public class Player {
     private static int playerLivePoints;
     private static int playerMoney;
     private static Boolean playerAlive = true;
-    public static Armor currentArmor;
+    public static Armor currentArmor = ItemData.none;
     public static Weapon currentWeapon;
     public static Demon currenDemon;
 
@@ -32,10 +32,6 @@ public class Player {
 
     public static void setCurrentArmor(Armor currentArmor) {
         Player.currentArmor = currentArmor;
-    }
-
-    public static Armor getCurrentArmor() {
-        return currentArmor;
     }
 
     public static void killPlayer() {
