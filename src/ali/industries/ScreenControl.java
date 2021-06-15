@@ -56,7 +56,7 @@ public class ScreenControl {
             case "Geschenk annehmen" : aGui.Tutorial10(); aGui.getMainWindow().repaint(); inv.schwert1(); break;
 
             /**Inventar**/
-            case "Inventar" : inv.fensterOeffnen(); aGui.getMainWindow().repaint(); break;
+            case "Inventar" : inv.fensterOeffnen(); aGui.getMainWindow().repaint(); inv.refreshJeweleryLabel(); break;
 
             /**Kreuzung**/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
@@ -81,7 +81,9 @@ public class ScreenControl {
             case "Waffen ansehen" : aGui.WaffenShop(); aGui.getMainWindow().repaint();aGui.getChoice1().setEnabled(false); ueberpruefenInventar(); break;
 
             case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true); aGui.getChoice2().setEnabled(true); break;
-            case "Schwert lvl 2 = 10 J" : aGui.getChoice2().setEnabled(false); inv.schwert2(); break;
+            case "Schwert lvl 2 = 10 J" : if (Player.getPlayerMoney()>=10){
+                aGui.getChoice2().setEnabled(false); inv.schwert2(); break;
+            }else System.out.println("Nicht genug Juwelen");
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
@@ -95,6 +97,12 @@ public class ScreenControl {
                 aGui.Hexe();aGui.getMainWindow().repaint(); break;
             case "Trankinformationen" : aGui.Trankinformationen(); aGui.getMainWindow().repaint(); break;
             case "kl. Trank = 1 Juwel" :
+
+            //Anfang Kampfszenerie
+            case "Links" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
+            case "Geradeaus" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
+            case "Rechts" : aGui.createFightTheme(); Player.setCurrenDemon(EntityData.demonLVL1); break;
+
         }
     }
 }

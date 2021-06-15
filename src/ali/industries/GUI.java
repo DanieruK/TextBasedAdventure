@@ -206,7 +206,7 @@ public class GUI{
         lpPanel.add(lpNumberLabel);
 
         itemPanel = new JPanel();
-        itemPanel.setBounds(450,15,350,50);
+        itemPanel.setBounds(400,15,350,50);
         itemPanel.setBackground(Color.BLACK);
         con.add(itemPanel);
         itemLabel = new JLabel("Item: ");
@@ -292,8 +292,8 @@ public class GUI{
         tutorialTextArea.setText("Waechter: Ich lasse dich passieren, allerdings warne ich dich noch einmal, in dieser Hoehle" +
                 "befinden sich starke Daemonen! Sicher, dass du eintreten willst?");
         choice1.setVisible(true);
-        choice1.setText("Zurueck zur Kreuzung");
-        choice2.setText("Die Hoehle betreten");
+        choice1.setText("Die Hoehle betreten");
+        choice2.setText("Zurueck zur Kreuzung");
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
@@ -335,15 +335,15 @@ public class GUI{
 
     public void Schmied(){
         tutorialTextArea.setText("Schmied: Na mein Freund, was kann ich fuer dich tun? Sieh dich gerne um in meinem Laden!");
-        choice1.setText("Zurueck zum Marktplatz");
+        choice1.setText("Waffen ansehen");
         choice2.setText("Ruestungen ansehen");
-        choice3.setText("Waffen ansehen");
+        choice3.setText("Zurueck zum Marktplatz");
         choice4.setVisible(false);
     }
 
     public void WaffenShop(){
         choice1.setText(ItemData.langschwert.getName());
-        choice2.setText(ItemData.dolch.getName()+" = 10 J");
+        choice2.setText("Schwert lvl 2 = 10 J");
         choice3.setText("Verlassen");
     }
 
@@ -440,6 +440,10 @@ public class GUI{
     }
 
     public void createFightTheme(){
-
+        tutorialTextArea.setText("");
+        choice1.setText("Angreifen");
+        choice2.setText("Blocken");
+        choice3.setText("Fluechten");
+        choice4.setVisible(false);
     }
 }

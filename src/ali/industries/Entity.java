@@ -5,16 +5,13 @@ public class Entity {
     protected String name;
     protected int entityLivePoints;
     protected int damage;
+    protected Boolean entityLife;
 
-    Weapon aWeapon;
-    Player aPlayer;
-    Armor aArmor;
-
-    public Entity(String pName, int pLP, int pDamage, int pLVL, Player pPlayer){
+    public Entity(String pName, int pLP, int pDamage){
         name = pName;
         entityLivePoints = pLP;
         damage  = pDamage;
-        this.aPlayer=pPlayer;
+        entityLife = true;
     }
 
     public void setEntityLivePoints(int entityLivePoints) {
@@ -33,11 +30,7 @@ public class Entity {
         return name;
     }
 
-    public void attack(double pArmorDamagRedukion){
-        aPlayer.setPlayerLivePoints(aPlayer.getPlayerLivePoints()-(int)(damage*Player.getCurrentArmor().getDamageReduktion()));
-    }
-
-    public void takeDamage(){
-     setEntityLivePoints(getEntityLivePoints()-Player.getCurrentWeapon().getDamage());
+    public void kill() {
+        this.entityLife = false;
     }
 }
