@@ -48,11 +48,23 @@ public class Player {
         Player.currenDemon = currenDemon;
     }
 
+    public static Boolean getPlayerAlive() {
+        return playerAlive;
+    }
+
     public static void attack() {
-        //TODO
+        currenDemon.setEntityLivePoints(currenDemon.getEntityLivePoints() - currentWeapon.getDamage());
+        if (currenDemon.getEntityLivePoints() <= 0){
+            currenDemon.kill();
+        }
     }
 
     public static void takeDamage(){
-        //TODO
+        if (currenDemon.getEntityLife() == true){
+            setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
+            if (getPlayerLivePoints() <= 0){
+                killPlayer();
+            }
+        }
     }
 }
