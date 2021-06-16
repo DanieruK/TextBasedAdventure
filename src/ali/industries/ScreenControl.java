@@ -143,7 +143,7 @@ public class ScreenControl {
             case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.getMainWindow().repaint(); break; //TODO
 
             //Game Over Screen
-            case "Spiel schliessen" : aGui.closeWindow();
+            case "Spiel schliessen" : System.exit(0);
 
         }
     }
