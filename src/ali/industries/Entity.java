@@ -33,4 +33,8 @@ public class Entity {
     public void kill() {
         this.entityLife = false;
     }
+
+    public Boolean getEntityLife() {
+        return entityLife;
+    }
 }

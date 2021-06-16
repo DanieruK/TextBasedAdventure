@@ -9,9 +9,11 @@ public class Player {
     public static Weapon currentWeapon;
     public static Demon currenDemon;
 
+    public static GUI aGUI;
+
     public Player(){
         playerLivePoints = 20;
-        playerMoney = 100;
+        playerMoney = 0;
     }
 
     public static void setPlayerLivePoints(int playerLivePoints) {
@@ -23,15 +25,11 @@ public class Player {
     }
 
     public static void setPlayerMoney(int playerMoney){
-        Player.playerMoney = playerMoney + 1 ;
+        Player.playerMoney = playerMoney;
     }
 
     public static int getPlayerMoney(){
         return playerMoney;
-    }
-
-    public static void setCurrentArmor(Armor currentArmor) {
-        Player.currentArmor = currentArmor;
     }
 
     public static void killPlayer() {
@@ -50,21 +48,11 @@ public class Player {
         Player.currenDemon = currenDemon;
     }
 
+    public static void attack() {
+        //TODO
+    }
+
     public static void takeDamage(){
-        setPlayerLivePoints(getPlayerLivePoints()-(int)(currenDemon.getDamage()*currentArmor.getDamageReduktion()));
-        if (getPlayerLivePoints()<=0){
-            killPlayer();
-        }
+        //TODO
     }
-
-    public static void attack(){
-        currenDemon.setEntityLivePoints(currenDemon.getEntityLivePoints()-currentWeapon.getDamage());
-        if (currenDemon.getEntityLivePoints()<=0){
-            currenDemon.kill();
-        }
-    }
-
-
-
-
 }

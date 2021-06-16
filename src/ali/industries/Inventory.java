@@ -201,7 +201,7 @@ public class Inventory {
     public void schwert2() {
         waffe2.setEnabled(true);
         waffe2.setText(ItemData.schwertlvl2.getName() + (" (20 dmg)"));
-        Player.setPlayerMoney(Player.getPlayerMoney() - 11);
+        Player.setPlayerMoney(Player.getPlayerMoney() - 10);
     }
 
     public void schwert3() {
@@ -212,31 +212,31 @@ public class Inventory {
     public void ruestung1(){
         ruestung1.setEnabled(true);
         ruestung1.setText(ItemData.ruestunglvl1.getName() + (" (-15% dmg)"));
-        Player.setPlayerMoney(Player.getPlayerMoney() - 5);
+        Player.setPlayerMoney(Player.getPlayerMoney() - 4);
     }
 
     public void ruestung2(){
         ruestung2.setEnabled(true);
         ruestung2.setText(ItemData.ruestunglvl2.getName() + (" (-50% dmg)"));
-        Player.setPlayerMoney(Player.getPlayerMoney() - 11);
+        Player.setPlayerMoney(Player.getPlayerMoney() - 10);
     }
 
     public void ruestung3(){
         ruestung3.setEnabled(true);
         ruestung3.setText(ItemData.ruestunglvl3.getName() + (" (-75% dmg)"));
-        Player.setPlayerMoney(Player.getPlayerMoney() - 21);
+        Player.setPlayerMoney(Player.getPlayerMoney() - 20);
     }
 
     public void kaufenKleinerHeiltrank() {
         if (Player.getPlayerMoney() > 0 & getAnzKleineTraenke() < 3){
-            Player.setPlayerMoney(Player.getPlayerMoney() - 2);
+            Player.setPlayerMoney(Player.getPlayerMoney() - 1);
         setAnzKleineTraenke(getAnzKleineTraenke() + 1);
         }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
     }
 
     public void kaufenGroßerHeiltrank(){
         if (getAnzGroßeTraenke() < 3 & Player.getPlayerMoney() > 2){
-            Player.setPlayerMoney(Player.getPlayerMoney()-4);
+            Player.setPlayerMoney(Player.getPlayerMoney()-3);
             setAnzGroßeTraenke(getAnzGroßeTraenke()+1);
         }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
     }

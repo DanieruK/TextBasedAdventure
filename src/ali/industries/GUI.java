@@ -461,4 +461,21 @@ public class GUI{
         choice3.setText("Fluechten");
         choice4.setVisible(false);
     }
+
+    public void enemydeafeted(){
+            tutorialTextArea.setText("Du hast den Daemon besiegt. Du erhältst 2 Juwelen. Möchtest du den naechsten Raum betreten oder zum Hoehleneingang zurueckkehren?");
+            Player.setPlayerMoney(Player.getPlayerMoney()+2);
+            choice1.setText("Den naechsten raum betreten");
+            choice2.setText("Zum Eingang zurueckkehren");
+            choice3.setVisible(false);
+            choice4.setVisible(false);
+    }
+
+    public void setGameOverScreen(){
+        tutorialTextArea.setText("Du wurdest von " + Player.currenDemon.getName() + " getoetet. Game Over");
+        choice1.setText("Spiel schliessen");
+        choice2.setVisible(false);
+        choice3.setVisible(false);
+        choice4.setVisible(false);
+    }
 }
