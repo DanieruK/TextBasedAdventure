@@ -52,6 +52,10 @@ public class Player {
         return playerAlive;
     }
 
+    public static void setCurrentArmor(Armor currentArmor) {
+        Player.currentArmor = currentArmor;
+    }
+
     public static void attack() {
         currenDemon.setEntityLivePoints(currenDemon.getEntityLivePoints() - currentWeapon.getDamage());
         if (currenDemon.getEntityLivePoints() <= 0){

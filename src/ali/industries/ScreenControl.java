@@ -95,20 +95,20 @@ public class ScreenControl {
             aGui.getChoice2().setEnabled(true); aGui.getChoice3().setEnabled(true); break;
 
             case "Eisenschwert = 10 J" : if (Player.getPlayerMoney()>=10){
-                aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); break;
+                aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); Player.setCurrentWeapon(ItemData.schwertlvl2); break;
             }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Lederruestung = 4 J" : if (Player.getPlayerMoney() >= 4) {
-                aGui.getChoice1().setEnabled(false); inv.ruestung1(); inv.refreshJeweleryLabel(); break;
+                aGui.getChoice1().setEnabled(false); inv.ruestung1(); Player.setCurrentArmor(ItemData.ruestunglvl1); inv.refreshJeweleryLabel();
             }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Kettenhemd = 10 J" : if (Player.getPlayerMoney() >= 10) {
-                aGui.getChoice2().setEnabled(false); inv.ruestung2(); inv.refreshJeweleryLabel(); break;
-            }
+                aGui.getChoice2().setEnabled(false);inv.ruestung2(); Player.setCurrentArmor(ItemData.ruestunglvl2); inv.refreshJeweleryLabel();
+            }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Stahlruestung = 20 J" : if (Player.getPlayerMoney() >= 20) {
-                aGui.getChoice3().setEnabled(false); inv.ruestung3(); inv.refreshJeweleryLabel(); break;
-            }
+                aGui.getChoice3().setEnabled(false); inv.ruestung3(); Player.setCurrentArmor(ItemData.ruestunglvl3); inv.refreshJeweleryLabel();
+            }else System.out.println("Nicht genug Juwelen"); break;
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
@@ -140,7 +140,7 @@ public class ScreenControl {
             case "Geradeaus" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Rechts" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
 
-            case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.getMainWindow().repaint(); break; //TODO
+            case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.updateFightScene(); aGui.getMainWindow().repaint(); break; //TODO
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);

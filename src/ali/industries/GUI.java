@@ -437,6 +437,7 @@ public class GUI {
                 " Kraft, es ist als rufe sie nach dir...");
         choice1.setText("Zur großen Kirche");
         choice2.setText("Heldenschwert aufheben");
+        Player.setCurrentWeapon(ItemData.schwertlvl3);
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
@@ -466,6 +467,14 @@ public class GUI {
         choice2.setText("Blocken");
         choice3.setText("Fluechten");
         choice4.setVisible(false);
+    }
+
+    public void updateFightScene(){
+        if (Player.currenDemon.getEntityLife() == true){
+        tutorialTextArea.setText("Du hast dem " + Player.currenDemon.getName() + " " +
+                Player.getCurrentWeapon().getDamage() + " schaden gemacht. Er hat jetzt noch " +
+                Player.currenDemon.getEntityLivePoints() + " Lebenspunkte." );
+        }
     }
 
     public void enemydeafeted() {
