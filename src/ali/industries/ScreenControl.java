@@ -86,10 +86,19 @@ public class ScreenControl {
                 aGui.Marktplatz();aGui.getMainWindow().repaint(); break;
 
             /**Schmied**/
-            case "Zum Schmied" : aGui.Schmied(); aGui.getMainWindow().repaint(); break;
+            case "Zum Schmied" : if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled() & inv.waffe3.isEnabled()){
+                aGui.getTutorialTextArea().setText("Schmied: Du hast also das Titanschwert gefunden. Es heisst, dass Schwert wurde von den Goettern" +
+                        " geschmiedet und nur der, der dem Schwert wuerdig ist, koenne es fuehren. Es ist maechtiger als alle meine geschmiedeten Schwerter.");
+                aGui.getChoice1().setVisible(false); aGui.getChoice2().setVisible(false); aGui.getChoice3().setText("Zurueck zum Marktplatz");  aGui.getMainWindow().repaint(); break;
+           } else if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled()){
+                aGui.getTutorialTextArea().setText("Schmied: Du besitzt bereits alles aus meinem Laden. Seit dem du alles besitzt," +
+                        " verspuere ich eine merkwürdige Kraft aus dem Dorf Phylia...");
+                aGui.getChoice1().setVisible(false); aGui.getChoice2().setVisible(false); aGui.getChoice3().setText("Zurueck zum Marktplatz"); aGui.getMainWindow().repaint(); break;
+            }else aGui.Schmied(); aGui.getMainWindow().repaint(); break;
             case "Zurueck zum Marktplatz" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
             case "Ruestungen ansehen" : aGui.RuestungsShop(); aGui.getMainWindow().repaint(); ueberpruefenRuestungenInventar(); break;
             case "Waffen ansehen" : aGui.WaffenShop(); aGui.getMainWindow().repaint(); ueberpruefenWaffenInventar(); break;
+            case "Ausruestungsinformation" : aGui.ausruestungsinfos(); aGui.getMainWindow().repaint(); break;
 
             case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true);
             aGui.getChoice2().setEnabled(true); aGui.getChoice3().setEnabled(true); break;

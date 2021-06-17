@@ -55,6 +55,10 @@ public class GUI {
         return inventar;
     }
 
+    public JTextArea getTutorialTextArea() {
+        return tutorialTextArea;
+    }
+
     private ActionListener action;
 
     public void setAction(ActionListener action) {
@@ -225,7 +229,7 @@ public class GUI {
 
     public void Tutorial2() {
         tutorialTextArea.setText("Waechter: Was denkst du wohin du gehst? In dieser Hoehle befinden sich eine Menge Daemonen, " +
-                "in deinem aktuellen Zustand wirst du direkt sterben! Geh dich ausruhen und hol die erst eine Ausruestung bevor ich dich eintreten lasse.");
+                "in deinem aktuellen Zustand wirst du direkt sterben! Geh dich ausruhen und hol dir erst eine Ausruestung bevor ich dich eintreten lasse.");
         startGame.setText("zurueck zur Kreuzung");
     }
 
@@ -317,10 +321,11 @@ public class GUI {
         tutorialTextArea.setText("Du stehst in mitten des Marktplatzes des Schlosses Tyrals. Viele Menschen laufen umher, " +
                 "doch sie alle scheint etwas zu bedruecken. Du siehst den Schmied und die Gaststaette. Wohin gehst du?");
         choice1.setText("Zum Schmied");
-        choice2.setVisible(true);
+        choice1.setVisible(true);
         choice2.setText("Zur Gaststaette");
-        choice3.setVisible(true);
+        choice2.setVisible(true);
         choice3.setText("Zurueck zur Kreuzung");
+        choice3.setVisible(true);
         choice4.setVisible(false);
     }
 
@@ -341,14 +346,18 @@ public class GUI {
         tutorialTextArea.setText("Schmied: Na mein Freund, was kann ich fuer dich tun? Sieh dich gerne um in meinem Laden!");
         choice1.setText("Waffen ansehen");
         choice2.setText("Ruestungen ansehen");
-        choice3.setText("Zurueck zum Marktplatz");
-        choice4.setVisible(false);
+        choice2.setVisible(true);
+        choice3.setText("Ausruestungsinformation");
+        choice3.setVisible(true);
+        choice4.setText("Zurueck zum Marktplatz");
+        choice4.setVisible(true);
     }
 
     public void WaffenShop() {
         choice1.setText(ItemData.schwertlvl1.getName());
         choice2.setText("Eisenschwert = 10 J");
         choice3.setText("Verlassen");
+        choice4.setVisible(false);
     }
 
     public void RuestungsShop() {
@@ -357,6 +366,15 @@ public class GUI {
         choice3.setText("Stahlruestung = 20 J");
         choice4.setVisible(true);
         choice4.setText("Verlassen");
+    }
+
+    public void ausruestungsinfos(){
+        tutorialTextArea.setText("Schmied: Deine Ausruestung wird automatisch ausgewaehlt. Die staerkste Waffe und" +
+                " Ruestung, die du besitzt, wird im Kampf benutzt.");
+        choice1.setText("Verlassen");
+        choice2.setVisible(false);
+        choice3.setVisible(false);
+        choice4.setVisible(false);
     }
 
     public void Sumpf() {
