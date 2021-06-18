@@ -16,7 +16,7 @@ public class GUI {
     private JFrame mainWindow;
     private Container con;
     private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel;
-    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
+    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, karte;
     private JButton startButton;
     private JButton inventar;
     private JButton startGame;
@@ -176,6 +176,12 @@ public class GUI {
         tutorialButtonPanel.add(startGame);
         startGame.addActionListener(action);
 
+        ImageIcon map = new ImageIcon("Bilder/Kreuzung.png");
+        karte = new JLabel(map);
+        karte.setBounds(800, 65, 180, 180);
+        map.setImage(map.getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT));
+        mainWindow.add(karte);
+        karte.setVisible(false);
     }
 
     /**
@@ -225,22 +231,28 @@ public class GUI {
         itemNameLabel.setForeground(Color.WHITE);
         itemPanel.add(itemNameLabel);
 
+        karte.setVisible(true);
     }
 
     public void Tutorial2() {
         tutorialTextArea.setText("Waechter: Was denkst du wohin du gehst? In dieser Hoehle befinden sich eine Menge Daemonen, " +
                 "in deinem aktuellen Zustand wirst du direkt sterben! Geh dich ausruhen und hol dir erst eine Ausruestung bevor ich dich eintreten lasse.");
         startGame.setText("zurueck zur Kreuzung");
+        karte.setIcon(new ImageIcon("Bilder/Hoehleneingang.png"));
     }
 
     public void Tutorial3() {
         tutorialTextArea.setText("Du befindest dich erneut auf der Kreuzung. Gehe zum Schloss um dich auszuruhen und um dir eine Ausruestung zu holen.");
         startGame.setText("zum Schloss");
+        karte.setIcon(new ImageIcon("Bilder/Kreuzung.png"));
     }
 
     public void Tutorial4() {
         tutorialTextArea.setText("Du stehst auf dem Marktplatz des Schlosses und siehst die Gaststaette in der du dich ausruhen kannst. Gehe hin!");
         startGame.setText("zur Gaststaette");
+        karte.setIcon(new ImageIcon("Bilder/Marktplatz.png"));
+
+
     }
 
     public void Tutorial5() {
