@@ -483,8 +483,8 @@ public class GUI {
         tutorialTextArea.setText("Vor dir steht ein " + Player.currenDemon.getName() + " wähle deine nächste Aktion aus!");
         choice1.setText("Angreifen");
         choice2.setText("Blocken");
-        choice3.setText("Fluechten");
-        choice4.setVisible(false);
+        choice3.setText("Heilen");
+        choice4.setText("Fluechten");
     }
 
     public void updateFightScene(){
@@ -514,6 +514,14 @@ public class GUI {
             choice3.setVisible(false);
             choice4.setVisible(false);
         }
+    }
+
+    public void refreshBlockScreen(){
+        if (Player.getCombatcounter() == 1){
+            tutorialTextArea.setText("Blocken fehlgeschlagen. Du hast " + Player.getTakenDamage() + " Schaden erhalten");
+        }else if (Player.getCombatcounter() == 2){
+            tutorialTextArea.setText("Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
+        }else tutorialTextArea.setText("Blocken erfolgreich. Kein Schaden erhalten");
     }
 
 }

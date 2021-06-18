@@ -4,12 +4,12 @@ public class Player {
 
     private static int playerLivePoints;
     private static int playerMoney;
+    private static int combatcounter;
+    private static int takenDamage;
     private static Boolean playerAlive = true;
     public static Armor currentArmor = ItemData.none;
     public static Weapon currentWeapon;
     public static Demon currenDemon;
-
-    public static GUI aGUI;
 
     public Player(){
         playerLivePoints = 20;
@@ -63,9 +63,38 @@ public class Player {
         }
     }
 
+    public static int getCombatcounter() {
+        return combatcounter;
+    }
+
+    public static void setTakenDamage(int takenDamage) {
+        Player.takenDamage = takenDamage;
+    }
+
+    public static int getTakenDamage() {
+        return takenDamage;
+    }
+
     public static void takeDamage(){
         if (currenDemon.getEntityLife() == true){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
+            if (getPlayerLivePoints() <= 0){
+                killPlayer();
+            }
+        }
+    }
+
+    public static void blockAttack(){
+        combatcounter = (int)(Math.random() * 3);
+        if (combatcounter == 1){
+            setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
+            setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
+            if (getPlayerLivePoints() <= 0){
+                killPlayer();
+            }
+        }else if (combatcounter == 2){
+            setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
+            setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             if (getPlayerLivePoints() <= 0){
                 killPlayer();
             }

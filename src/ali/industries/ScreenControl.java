@@ -149,10 +149,14 @@ public class ScreenControl {
             case "Geradeaus" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Rechts" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
 
-            case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.updateFightScene(); aGui.getMainWindow().repaint(); break; //TODO
+            case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.updateFightScene(); break;
+            case "Blocken" : Player.blockAttack(); aGui.refreshBlockScreen(); aGui.refreshLPLabel(); aGui.setGameOverScreen(); break;
+            case "Heilen" : break;
+            case "Fluechten" : break;
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);
+
 
         }
     }
