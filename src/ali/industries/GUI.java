@@ -492,7 +492,7 @@ public class GUI {
     }
 
     public void createFightTheme() {
-        tutorialTextArea.setText("Vor dir steht ein " + Player.currenDemon.getName() + " wähle deine nächste Aktion aus!");
+        tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" +"Wähle deine nächste Aktion aus!");
         choice1.setText("Angreifen");
         choice2.setText("Blocken");
         choice3.setText("Heilen");
@@ -501,9 +501,7 @@ public class GUI {
 
     public void updateFightScene(){
         if (Player.currenDemon.getEntityLife() == true){
-        tutorialTextArea.setText("Du hast dem " + Player.currenDemon.getName() + " " +
-                Player.getCurrentWeapon().getDamage() + " schaden gemacht. Er hat jetzt noch " +
-                Player.currenDemon.getEntityLivePoints() + " Lebenspunkte." );
+        tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" + "Du hast " + Player.getCurrentWeapon().getDamage() + " Schaden gemacht." + "\n" +"Wähle deine nächste Aktion aus!");
         }
     }
 
