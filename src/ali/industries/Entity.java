@@ -42,4 +42,5 @@ public class Entity {
         entityLife = true;
         entityLivePoints = pLP;
     }
+
 }

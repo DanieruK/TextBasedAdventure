@@ -566,4 +566,12 @@ public class GUI {
         }
     }
 
+    public void createBossRoom(){
+        tutorialTextArea.setText(EntityData.fynal.getName() + " LP: "+ EntityData.fynal.getEntityLivePoints() + "\n" + "Der Daemonenkoenig der dein Dorf zerstoert hat ist in diesem Raum aufgetaucht. Dir bleibt keine andere Wahl mehr wie ihn jetzt zu besigen!");
+        choice1.setText("Ihn Angreifen");
+        choice2.setText("Seinen Angriff Blocken");
+        choice3.setVisible(true);
+        choice3.setText("Sich selber heilen");
+    }
+
 }

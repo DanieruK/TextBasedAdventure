@@ -161,6 +161,10 @@ public class ScreenControl {
             case "Den naechsten raum betreten" : Player.setCurrenDemon(EntityData.demonLVL2); aGui.createFightThemeRoom2(); break;
             case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); break;
 
+            //Eintritt Boss Raum
+            case "Das Risiko eingehen" : aGui.createBossRoom(); break;
+            case "Ihn Angreifen" :
+
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);

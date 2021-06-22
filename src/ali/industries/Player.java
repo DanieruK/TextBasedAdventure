@@ -13,7 +13,7 @@ public class Player {
 
     public Player(){
         playerLivePoints = 20;
-        playerMoney = 0;
+        playerMoney = 100;
     }
 
     public static void setPlayerLivePoints(int playerLivePoints) {
@@ -84,8 +84,37 @@ public class Player {
         }
     }
 
+    // 100 Damgae 15/20
+    // 40 Damage 2/20
+    // 80 healing 3/20
+    public static void takeDamageBoss(){
+        EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
+        if( EntityData.fynal.getEntityLife() == true){
+            if (EntityData.fynal.getFirstAttackCounter() == 1){
+                setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
+                EntityData.fynal.reduceFirstAttackCounter();
+            }else if (EntityData.fynal.getCombatCounter() <= 15){
+                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
+            }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
+                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
+            }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0){
+                EntityData.fynal.setEntityLivePoints(EntityData.demonLVL1.getEntityLivePoints() + 80 );
+                if (EntityData.fynal.getEntityLivePoints() > 200){
+                    EntityData.fynal.setCombatCounter(200);
+                }
+            }else if (EntityData.fynal.getHealingCounter() == 0){
+                takeDamageBoss();
+            }
+        }
+    }
+
+    // Blocken Fehlschlagen 1/5
+    // Blocken teilweise 3/5
+    // Blocken erfolgreich 1/5
+    // TODO
+
     public static void blockAttack(){
-        combatcounter = (int)(Math.random() * 3);
+        combatcounter = (int)(Math.random() * 4);
         if (combatcounter == 1){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
             setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
@@ -100,4 +129,7 @@ public class Player {
             }
         }
     }
+
+    // TODO Healing Potion auf 50 setzten und nur einmal verwendbar
+
 }
