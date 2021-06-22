@@ -530,7 +530,7 @@ public class GUI {
     public void refreshBlockScreen(){
         if (Player.getCombatcounter() == 1){
             tutorialTextArea.setText("Blocken fehlgeschlagen. Du hast " + Player.getTakenDamage() + " Schaden erhalten");
-        }else if (Player.getCombatcounter() == 2){
+        }else if (Player.getCombatcounter() > 1 && Player.getCombatcounter() <= 3){
             tutorialTextArea.setText("Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
         }else tutorialTextArea.setText("Blocken erfolgreich. Kein Schaden erhalten");
     }
@@ -572,6 +572,16 @@ public class GUI {
         choice2.setText("Seinen Angriff Blocken");
         choice3.setVisible(true);
         choice3.setText("Sich selber heilen");
+    }
+
+    public void bossdeafeted() {
+        if (EntityData.fynal.getEntityLife() == false) {
+            tutorialTextArea.setText("Du hast den Daemonenkoenig besigt und das Spiel beendet");
+            choice1.setVisible(false);
+            choice2.setVisible(false);
+            choice3.setVisible(false);
+            choice4.setVisible(false);
+        }
     }
 
 }

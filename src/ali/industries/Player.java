@@ -84,26 +84,32 @@ public class Player {
         }
     }
 
-    // 100 Damgae 15/20
-    // 40 Damage 2/20
-    // 80 healing 3/20
+    public static void attackBoss(){
+        EntityData.fynal.setEntityLivePoints(EntityData.fynal.getEntityLivePoints() - Player.getCurrentWeapon().getDamage());
+        if (EntityData.fynal.getEntityLivePoints() <= 0){
+            EntityData.fynal.kill();
+        }
+    }
+
     public static void takeDamageBoss(){
-        EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
-        if( EntityData.fynal.getEntityLife() == true){
-            if (EntityData.fynal.getFirstAttackCounter() == 1){
-                setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
-                EntityData.fynal.reduceFirstAttackCounter();
-            }else if (EntityData.fynal.getCombatCounter() <= 15){
-                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
-            }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
-                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
-            }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0){
-                EntityData.fynal.setEntityLivePoints(EntityData.demonLVL1.getEntityLivePoints() + 80 );
-                if (EntityData.fynal.getEntityLivePoints() > 200){
-                    EntityData.fynal.setCombatCounter(200);
+        if (EntityData.fynal.getEntityLife() == true){
+            EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
+            if( EntityData.fynal.getEntityLife() == true){
+                if (EntityData.fynal.getFirstAttackCounter() == 1){
+                    setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
+                    EntityData.fynal.reduceFirstAttackCounter();
+                }else if (EntityData.fynal.getCombatCounter() <= 15){
+                    setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
+                }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
+                    setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
+                }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0){
+                    EntityData.fynal.setEntityLivePoints(EntityData.demonLVL1.getEntityLivePoints() + 80 );
+                    if (EntityData.fynal.getEntityLivePoints() > 200){
+                        EntityData.fynal.setCombatCounter(200);
+                    }
+                }else if (EntityData.fynal.getHealingCounter() == 0){
+                    takeDamageBoss();
                 }
-            }else if (EntityData.fynal.getHealingCounter() == 0){
-                takeDamageBoss();
             }
         }
     }
@@ -121,9 +127,26 @@ public class Player {
             if (getPlayerLivePoints() <= 0){
                 killPlayer();
             }
-        }else if (combatcounter == 2){
+        }else if (combatcounter > 1 && combatcounter <=3){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
+            if (getPlayerLivePoints() <= 0){
+                killPlayer();
+            }
+        }
+    }
+
+    public static void blockBossAttack(){
+        combatcounter = (int)(Math.random() * 4);
+        if (combatcounter == 1){
+            setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
+            setTakenDamage((int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
+            if (getPlayerLivePoints() <= 0){
+                killPlayer();
+            }
+        }else if (combatcounter > 1 && combatcounter <=3){
+            setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion() * 0.5));
+            setTakenDamage((int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             if (getPlayerLivePoints() <= 0){
                 killPlayer();
             }

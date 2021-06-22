@@ -163,8 +163,9 @@ public class ScreenControl {
 
             //Eintritt Boss Raum
             case "Das Risiko eingehen" : aGui.createBossRoom(); break;
-            case "Ihn Angreifen" :
-
+            case "Ihn Angreifen" : Player.attackBoss(); Player.takeDamageBoss(); aGui.bossdeafeted(); aGui.setGameOverScreen(); break;
+            case "Seinen Angriff Blocken" : Player.blockBossAttack(); aGui.refreshBlockScreen(); break;
+            case "Sich selber heilen" : break;
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);
