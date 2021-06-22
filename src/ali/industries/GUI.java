@@ -523,6 +523,7 @@ public class GUI {
             choice2.setVisible(false);
             choice3.setVisible(false);
             choice4.setVisible(false);
+            lpNumberLabel.setText("0");
         }
     }
 
@@ -532,6 +533,37 @@ public class GUI {
         }else if (Player.getCombatcounter() == 2){
             tutorialTextArea.setText("Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
         }else tutorialTextArea.setText("Blocken erfolgreich. Kein Schaden erhalten");
+    }
+
+    public void rueckwegHoehle() {
+        tutorialTextArea.setText("Du befindest dich wieder am Eingang der Hoehle was moechtest du als naechstes tun?");
+        choice1.setText("Links");
+        choice2.setText("Geradeaus");
+        choice3.setVisible(true);
+        choice3.setText("Rechts");
+        choice4.setVisible(true);
+        choice4.setText("Zurueck zur Kreuzung");
+    }
+
+    public void createFightThemeRoom2() {
+        tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" +"Wähle deine nächste Aktion aus!");
+        choice1.setText("Angreifen");
+        choice2.setText("Blocken");
+        choice3.setVisible(true);
+        choice3.setText("Heilen");
+        choice4.setVisible(true);
+        choice4.setText("Fluechten");
+    }
+
+    public void enemydeafeted2() {
+        if (Player.currenDemon.getEntityLife() == false) {
+            tutorialTextArea.setText("Du hast den Daemon besiegt. Du erhältst 8 Juwelen. Du spuerst im nachsten Raum eine gefaehrliche Praesenz. Bist du sicher das du den naechsten Raum bereits betretten willst?");
+            Player.setPlayerMoney(Player.getPlayerMoney() + 8);
+            choice1.setText("Das Risiko eingehen");
+            choice2.setText("Zum Eingang zurueckkehren");
+            choice3.setVisible(false);
+            choice4.setVisible(false);
+        }
     }
 
 }

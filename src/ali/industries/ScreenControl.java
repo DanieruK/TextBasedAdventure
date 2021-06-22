@@ -149,10 +149,18 @@ public class ScreenControl {
             case "Geradeaus" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Rechts" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
 
-            case "Angreifen" : Player.attack(); Player.takeDamage(); aGui.enemydeafeted(); aGui.setGameOverScreen(); System.out.println(Player.currenDemon.getEntityLivePoints()); aGui.refreshLPLabel(); aGui.updateFightScene(); break;
+            case "Angreifen" : Player.attack(); Player.takeDamage(); if (Player.currenDemon == EntityData.demonLVL1){
+                aGui.enemydeafeted();
+            }else if (Player.currenDemon == EntityData.demonLVL2){
+                aGui.enemydeafeted2();
+            }aGui.refreshLPLabel(); aGui.updateFightScene(); aGui.setGameOverScreen(); break;
             case "Blocken" : Player.blockAttack(); aGui.refreshBlockScreen(); aGui.refreshLPLabel(); aGui.setGameOverScreen(); break;
             case "Heilen" : break;
             case "Fluechten" : break;
+
+            case "Den naechsten raum betreten" : Player.setCurrenDemon(EntityData.demonLVL2); aGui.createFightThemeRoom2(); break;
+            case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); break;
+
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);

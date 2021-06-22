@@ -37,4 +37,9 @@ public class Entity {
     public Boolean getEntityLife() {
         return entityLife;
     }
+
+    public void entityWiederbeleben(int pLP){
+        entityLife = true;
+        entityLivePoints = pLP;
+    }
 }
