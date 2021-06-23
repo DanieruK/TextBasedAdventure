@@ -13,7 +13,7 @@ public class Player {
 
     public Player(){
         playerLivePoints = 20;
-        playerMoney = 0;
+        playerMoney = 100;
     }
 
     public static void setPlayerLivePoints(int playerLivePoints) {

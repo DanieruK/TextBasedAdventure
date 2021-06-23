@@ -159,7 +159,7 @@ public class ScreenControl {
             case "Fluechten" : aGui.fluchtHoehlenEinganz(); EntityData.demonLVL1.entityWiederbeleben(20); EntityData.demonLVL2.entityWiederbeleben(75); break;
 
             case "Den naechsten raum betreten" : Player.setCurrenDemon(EntityData.demonLVL2); aGui.createFightThemeRoom2(); break;
-            case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); break;
+            case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); EntityData.demonLVL2.entityWiederbeleben(75); break;
 
             //Eintritt Boss Raum
             case "Das Risiko eingehen" : aGui.createBossRoom(); break;
