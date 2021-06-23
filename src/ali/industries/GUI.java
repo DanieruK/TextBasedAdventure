@@ -611,4 +611,16 @@ public class GUI {
         itemLabel.setText("Item: " + Player.getCurrentWeapon().getName());
     }
 
+    public void setNichtGenugJuwelenPotion(){
+        tutorialTextArea.setText("Du hast nicht genug Juwelen um diesen Heiltrank zu kaufen");
+    }
+
+    public void setNichtGenugJuwelenArmor(){
+        tutorialTextArea.setText("Du hast nicht genug Juwelen um diese Ruestung zu kaufen");
+    }
+
+    public void setNichtGenugJuwelenWeapon(){
+        tutorialTextArea.setText("Du hast nicht genug Juwelen um diese Waffe zu kaufen");
+    }
+
 }

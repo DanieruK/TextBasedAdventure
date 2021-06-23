@@ -18,6 +18,8 @@ public class Inventory {
     Font buttonFont = new Font("Algerian", Font.PLAIN, 17);
     Font titleFont = new Font("Algerian", Font.PLAIN, 60);
 
+    GUI aGUI;
+
     private ActionListener invAction = new invAction();
 
     public class invAction implements ActionListener{

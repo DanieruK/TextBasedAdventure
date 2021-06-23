@@ -13,7 +13,7 @@ public class Player {
 
     public Player(){
         playerLivePoints = 20;
-        playerMoney = 100;
+        playerMoney = 0;
     }
 
     public static void setPlayerLivePoints(int playerLivePoints) {
@@ -92,17 +92,17 @@ public class Player {
     }
 
     public static void takeDamageBoss(){
-        EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
+        EntityData.fynal.setCombatCounter((int)(Math.random() * 20f));
         System.out.println(EntityData.fynal.getCombatCounter());
         if(EntityData.fynal.getEntityLife() == true){
             if (EntityData.fynal.getFirstAttackCounter() == 1){
                 setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
                 EntityData.fynal.reduceFirstAttackCounter();
-            }else if (EntityData.fynal.getCombatCounter() <= 15){
+            }else if (EntityData.fynal.getCombatCounter() <= 10){
                 setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
-            }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
+            }else if (EntityData.fynal.getCombatCounter() > 10 &&  EntityData.fynal.getCombatCounter() <= 15){
                 setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
-            }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0) {
+            }else if (EntityData.fynal.getCombatCounter() > 15 && EntityData.fynal.getHealingCounter() > 0) {
                 EntityData.fynal.setEntityLivePoints(EntityData.fynal.getEntityLivePoints() + 80);
                 if (EntityData.fynal.getEntityLivePoints() > 200) {
                     EntityData.fynal.setCombatCounter(200);

@@ -105,19 +105,19 @@ public class ScreenControl {
 
             case "Eisenschwert = 10 J" : if (Player.getPlayerMoney()>=10){
                 aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); Player.setCurrentWeapon(ItemData.schwertlvl2); aGui.refreshItemLabel(); break;
-            }else System.out.println("Nicht genug Juwelen"); break;
+            }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenWeapon(); break;
 
             case "Lederruestung = 4 J" : if (Player.getPlayerMoney() >= 4) {
                 aGui.getChoice1().setEnabled(false); inv.ruestung1(); if (Player.currentArmor == ItemData.none){Player.setCurrentArmor(ItemData.ruestunglvl1);} inv.refreshJeweleryLabel(); break;
-            }else System.out.println("Nicht genug Juwelen"); break;
+            }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenArmor(); break;
 
             case "Kettenhemd = 10 J" : if (Player.getPlayerMoney() >= 10) {
                 aGui.getChoice2().setEnabled(false);inv.ruestung2(); if (Player.currentArmor.getDamageReduktion() > ItemData.ruestunglvl2.getDamageReduktion()){Player.setCurrentArmor(ItemData.ruestunglvl2);} inv.refreshJeweleryLabel(); break;
-            }else System.out.println("Nicht genug Juwelen"); break;
+            }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenArmor(); break;
 
             case "Stahlruestung = 20 J" : if (Player.getPlayerMoney() >= 20) {
                 aGui.getChoice3().setEnabled(false); inv.ruestung3(); if (Player.currentArmor.getDamageReduktion() > ItemData.ruestunglvl3.getDamageReduktion()){Player.setCurrentArmor(ItemData.ruestunglvl3);} inv.refreshJeweleryLabel(); break;
-            }else System.out.println("Nicht genug Juwelen"); break;
+            }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenArmor(); break;
 
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
