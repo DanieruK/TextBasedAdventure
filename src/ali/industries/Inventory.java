@@ -1,7 +1,5 @@
 package ali.industries;
 
-import jdk.jfr.Enabled;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,36 +15,7 @@ public class Inventory {
     protected JButton waffe1, waffe2, waffe3, ruestung1, ruestung2, ruestung3, kleinerHeiltrank, grosserHeiltrank, juwelen;
     Font buttonFont = new Font("Algerian", Font.PLAIN, 17);
     Font titleFont = new Font("Algerian", Font.PLAIN, 60);
-
-    GUI aGUI;
-
-    private ActionListener invAction = new invAction();
-
-    public class invAction implements ActionListener{
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource().equals(getWaffe1())){
-                invActionButtons(getWaffe1().getText());
-            }else if (e.getSource().equals(getWaffe2())){
-                invActionButtons(getWaffe2().getText());
-            }else if (e.getSource().equals(getWaffe3())){
-                invActionButtons(getWaffe3().getText());
-            }else if (e.getSource().equals(getRuestung1())){
-                invActionButtons(getRuestung1().getText());
-            }else if (e.getSource().equals(getRuestung2())){
-                invActionButtons(getRuestung2().getText());
-            }else  if (e.getSource().equals(getRuestung3())){
-                invActionButtons(getRuestung3().getText());
-            }
-        }
-    }
-
-    public void invActionButtons(String pNextAction){
-        switch (pNextAction){
-
-            case "" : break;
-        }
-    }
-
+    
     public int getAnzKleineTraenke() {
         return anzKleineTraenke;
     }
@@ -94,7 +63,6 @@ public class Inventory {
         waffe1.setBackground(Color.BLACK);
         waffe1.setForeground(Color.WHITE);
         waffe1.setFont(buttonFont);
-        waffe1.addActionListener(invAction);
         inventarPanel.add(waffe1);
         waffe1.setVisible(true);
         waffe1.setEnabled(false);
@@ -103,7 +71,6 @@ public class Inventory {
         waffe2.setBackground(Color.BLACK);
         waffe2.setForeground(Color.WHITE);
         waffe2.setFont(buttonFont);
-        waffe2.addActionListener(invAction);
         inventarPanel.add(waffe2);
         waffe2.setVisible(true);
         waffe2.setEnabled(false);
@@ -112,7 +79,6 @@ public class Inventory {
         waffe3.setBackground(Color.BLACK);
         waffe3.setForeground(Color.WHITE);
         waffe3.setFont(buttonFont);
-        waffe3.addActionListener(invAction);
         inventarPanel.add(waffe3);
         waffe3.setVisible(true);
         waffe3.setEnabled(false);
@@ -121,7 +87,6 @@ public class Inventory {
         ruestung1.setBackground(Color.BLACK);
         ruestung1.setForeground(Color.WHITE);
         ruestung1.setFont(buttonFont);
-        ruestung1.addActionListener(invAction);
         inventarPanel.add(ruestung1);
         ruestung1.setVisible(true);
         ruestung1.setEnabled(false);
@@ -130,7 +95,6 @@ public class Inventory {
         ruestung2.setBackground(Color.BLACK);
         ruestung2.setForeground(Color.WHITE);
         ruestung2.setFont(buttonFont);
-        ruestung2.addActionListener(invAction);
         inventarPanel.add(ruestung2);
         ruestung2.setVisible(true);
         ruestung2.setEnabled(false);
@@ -139,7 +103,6 @@ public class Inventory {
         ruestung3.setBackground(Color.BLACK);
         ruestung3.setForeground(Color.WHITE);
         ruestung3.setFont(buttonFont);
-        ruestung3.addActionListener(invAction);
         inventarPanel.add(ruestung3);
         ruestung3.setVisible(true);
         ruestung3.setEnabled(false);
@@ -148,7 +111,6 @@ public class Inventory {
         kleinerHeiltrank.setBackground(Color.BLACK);
         kleinerHeiltrank.setForeground(Color.WHITE);
         kleinerHeiltrank.setFont(buttonFont);
-        kleinerHeiltrank.addActionListener(invAction);
         inventarPanel.add(kleinerHeiltrank);
         kleinerHeiltrank.setVisible(true);
         kleinerHeiltrank.setEnabled(false);
@@ -157,7 +119,6 @@ public class Inventory {
         grosserHeiltrank.setBackground(Color.BLACK);
         grosserHeiltrank.setForeground(Color.WHITE);
         grosserHeiltrank.setFont(buttonFont);
-        grosserHeiltrank.addActionListener(invAction);
         inventarPanel.add(grosserHeiltrank);
         grosserHeiltrank.setVisible(true);
         grosserHeiltrank.setEnabled(false);
