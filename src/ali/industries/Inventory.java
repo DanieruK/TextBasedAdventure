@@ -9,12 +9,11 @@ import java.awt.event.ActionListener;
 
 public class Inventory {
 
-    private String[] slot = new String[4];
     protected int anzKleineTraenke = 0;
     protected int anzGroßeTraenke = 0;
     private JPanel inventarPanel, inventoryTitlePanel;
     private JFrame inventoryWindow;
-    private JLabel feuerStein, eisStein, blitzStein, inventoryTitleLabel;
+    private JLabel inventoryTitleLabel;
     protected JButton waffe1, waffe2, waffe3, ruestung1, ruestung2, ruestung3, kleinerHeiltrank, grosserHeiltrank, juwelen;
     Font buttonFont = new Font("Algerian", Font.PLAIN, 17);
     Font titleFont = new Font("Algerian", Font.PLAIN, 60);
@@ -22,7 +21,6 @@ public class Inventory {
     private ActionListener invAction = new invAction();
 
     public class invAction implements ActionListener{
-        @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource().equals(getWaffe1())){
                 invActionButtons(getWaffe1().getText());
@@ -210,36 +208,23 @@ public class Inventory {
     }
 
     public void kaufenKleinerHeiltrank() {
-        if (Player.getPlayerMoney() > 0 & getAnzKleineTraenke() < 3){
-            Player.setPlayerMoney(Player.getPlayerMoney() - 1);
+        if (Player.getPlayerMoney() > 1 & getAnzKleineTraenke() < 2){
+            Player.setPlayerMoney(Player.getPlayerMoney() - 2);
         setAnzKleineTraenke(getAnzKleineTraenke() + 1);
-        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
+        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 2 Tränke erworben");
     }
 
     public void kaufenGroßerHeiltrank(){
-        if (getAnzGroßeTraenke() < 3 & Player.getPlayerMoney() > 2){
-            Player.setPlayerMoney(Player.getPlayerMoney()-3);
+        if (getAnzGroßeTraenke() < 2 & Player.getPlayerMoney() > 4){
+            Player.setPlayerMoney(Player.getPlayerMoney()-5);
             setAnzGroßeTraenke(getAnzGroßeTraenke()+1);
-        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 3 Tränke erworben");
-    }
-    
-    public void benutzenKleinerHeiltrank(){
-        if (getAnzKleineTraenke() > 0){
-            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+20);
-            setAnzKleineTraenke(getAnzKleineTraenke()-1);
-        }
-    }
-
-    public void benutzenGroßerHeiltrank(){
-        if (anzGroßeTraenke > 0){
-            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+40);
-            anzGroßeTraenke--;
-        }
+        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits einen Trank erworben");
     }
 
     public void refreshJeweleryLabel() {
         juwelen.setText("Juwelen: " + Player.getPlayerMoney());
     }
+
     public void refreshKleineTraenke() { kleinerHeiltrank.setText("Anz. kl. Heiltrank: " + getAnzKleineTraenke());}
 
     public void refreshGrosseTraenke() { grosserHeiltrank.setText("Anz. gr. Heiltrank: " + getAnzGroßeTraenke());}
@@ -268,12 +253,21 @@ public class Inventory {
         return ruestung3;
     }
 
-    public JButton getGrosserHeiltrank() {
-        return grosserHeiltrank;
+    public void usePotion(){
+        if (anzGroßeTraenke > 0){
+            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+50);
+            if (Player.getPlayerLivePoints() > 100){
+                Player.setPlayerLivePoints(100);
+            }
+            setAnzGroßeTraenke(getAnzGroßeTraenke() - 1);
+            refreshGrosseTraenke();
+        }else if (anzKleineTraenke > 0){
+            Player.setPlayerLivePoints(Player.getPlayerLivePoints()+20);
+            if (Player.getPlayerLivePoints() > 100) {
+                Player.setPlayerLivePoints(100);
+            }
+            setAnzKleineTraenke(getAnzKleineTraenke() - 1);
+            refreshKleineTraenke();
+        }
     }
-
-    public JButton getKleinerHeiltrank() {
-        return kleinerHeiltrank;
-    }
-
 }

@@ -3,16 +3,15 @@ package ali.industries;
 public class DemonKing extends Entity{
 
     private int damage2;
-    private int healingPoints;
     private int firstAttackDamage;
     private int firstAttackCounter = 1;
     private int combatCounter;
     private int healingCounter = 3;
 
-    public DemonKing(String pName, int pLP, int pDamage, int pDamage2, int pHealingPoints, int pFirstAttackDamage) {
+    public DemonKing(String pName, int pLP, int pDamage, int pDamage2, int pFirstAttackDamage) {
         super(pName, pLP, pDamage);
         damage2 =pDamage2;
-        healingPoints = pHealingPoints;
+        firstAttackDamage = pFirstAttackDamage;
     }
 
     public int getFirstAttackDamage() {

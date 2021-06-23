@@ -104,19 +104,19 @@ public class ScreenControl {
             aGui.getChoice2().setEnabled(true); aGui.getChoice3().setEnabled(true); break;
 
             case "Eisenschwert = 10 J" : if (Player.getPlayerMoney()>=10){
-                aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); Player.setCurrentWeapon(ItemData.schwertlvl2); break;
+                aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); Player.setCurrentWeapon(ItemData.schwertlvl2); aGui.refreshItemLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Lederruestung = 4 J" : if (Player.getPlayerMoney() >= 4) {
-                aGui.getChoice1().setEnabled(false); inv.ruestung1(); Player.setCurrentArmor(ItemData.ruestunglvl1); inv.refreshJeweleryLabel();
+                aGui.getChoice1().setEnabled(false); inv.ruestung1(); if (Player.currentArmor == ItemData.none){Player.setCurrentArmor(ItemData.ruestunglvl1);} inv.refreshJeweleryLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Kettenhemd = 10 J" : if (Player.getPlayerMoney() >= 10) {
-                aGui.getChoice2().setEnabled(false);inv.ruestung2(); Player.setCurrentArmor(ItemData.ruestunglvl2); inv.refreshJeweleryLabel();
+                aGui.getChoice2().setEnabled(false);inv.ruestung2(); if (Player.currentArmor.getDamageReduktion() > ItemData.ruestunglvl2.getDamageReduktion()){Player.setCurrentArmor(ItemData.ruestunglvl2);} inv.refreshJeweleryLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); break;
 
             case "Stahlruestung = 20 J" : if (Player.getPlayerMoney() >= 20) {
-                aGui.getChoice3().setEnabled(false); inv.ruestung3(); Player.setCurrentArmor(ItemData.ruestunglvl3); inv.refreshJeweleryLabel();
+                aGui.getChoice3().setEnabled(false); inv.ruestung3(); if (Player.currentArmor.getDamageReduktion() > ItemData.ruestunglvl3.getDamageReduktion()){Player.setCurrentArmor(ItemData.ruestunglvl3);} inv.refreshJeweleryLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); break;
 
             /**Heimat**/
@@ -134,15 +134,15 @@ public class ScreenControl {
             }else aGui.getChoice2().setVisible(false); aGui.Haus(); aGui.getMainWindow().repaint(); break;
 
             case "Heldenschwert aufheben" : inv.schwert3(); aGui.getChoice2().setVisible(false); aGui.Haus();
-                aGui.getMainWindow().repaint(); break;
+                aGui.getMainWindow().repaint(); Player.setCurrentWeapon(ItemData.schwertlvl3); aGui.refreshItemLabel(); break;
 
             /**Hexe**/
             case "Hexenhaus betreten" :
             case "Zurueck" :
                 aGui.Hexe();aGui.getMainWindow().repaint(); break;
             case "Trankinformationen" : aGui.Trankinformationen(); aGui.getMainWindow().repaint(); break;
-            case "kl. Trank = 1 Juwel" : inv.kaufenKleinerHeiltrank(); inv.refreshKleineTraenke(); inv.refreshJeweleryLabel(); break;
-            case "gr. Trank = 3 Juwelen" : inv.kaufenGroßerHeiltrank(); inv.refreshGrosseTraenke(); inv.refreshJeweleryLabel(); break;
+            case "kl. Trank = 2 Juwel" : inv.kaufenKleinerHeiltrank(); inv.refreshKleineTraenke(); inv.refreshJeweleryLabel(); break;
+            case "gr. Trank = 5 Juwelen" : inv.kaufenGroßerHeiltrank(); inv.refreshGrosseTraenke(); inv.refreshJeweleryLabel(); break;
 
             //Anfang Kampfszenerie
             case "Links" : Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
@@ -155,21 +155,20 @@ public class ScreenControl {
                 aGui.enemydeafeted2();
             }aGui.refreshLPLabel(); aGui.updateFightScene(); aGui.setGameOverScreen(); break;
             case "Blocken" : Player.blockAttack(); aGui.refreshBlockScreen(); aGui.refreshLPLabel(); aGui.setGameOverScreen(); break;
-            case "Heilen" : break;
-            case "Fluechten" : break;
+            case "Heilen" : inv.usePotion(); aGui.refreshLPLabel(); break;
+            case "Fluechten" : aGui.fluchtHoehlenEinganz(); EntityData.demonLVL1.entityWiederbeleben(20); EntityData.demonLVL2.entityWiederbeleben(75); break;
 
             case "Den naechsten raum betreten" : Player.setCurrenDemon(EntityData.demonLVL2); aGui.createFightThemeRoom2(); break;
             case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); break;
 
             //Eintritt Boss Raum
             case "Das Risiko eingehen" : aGui.createBossRoom(); break;
-            case "Ihn Angreifen" : Player.attackBoss(); Player.takeDamageBoss(); aGui.bossdeafeted(); aGui.setGameOverScreen(); break;
-            case "Seinen Angriff Blocken" : Player.blockBossAttack(); aGui.refreshBlockScreen(); break;
-            case "Sich selber heilen" : break;
+            case "Ihn Angreifen" : Player.attackBoss(); Player.takeDamageBoss(); aGui.updateBossFightScene(); aGui.bossdeafeted(); aGui.refreshLPLabel(); aGui.setGameOverScreen(); break;
+            case "Seinen Angriff Blocken" : Player.blockBossAttack(); aGui.refreshBlockBossScreen(); aGui.refreshLPLabel(); break;
+            case "Sich selber heilen" : inv.usePotion(); aGui.refreshLPLabel(); break;
 
             //Game Over Screen
             case "Spiel schliessen" : System.exit(0);
-
 
         }
     }

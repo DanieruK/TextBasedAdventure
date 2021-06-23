@@ -303,9 +303,9 @@ public class GUI {
         choice2.setVisible(true);
         choice2.setText("Zum Schloss");
         choice3.setVisible(true);
-        choice3.setText("Zu deinem Heimatdorf");
+        choice3.setText("Zur Hexe");
         choice4.setVisible(true);
-        choice4.setText("Zur Hexe");
+        choice4.setText("Zu deinem Heimatdorf");
     }
 
     public void Hoehleneingang() {
@@ -400,9 +400,9 @@ public class GUI {
 
     public void Hexe() {
         tutorialTextArea.setText("Hexe: Hallo junger reisender, was kann ich für dich tun?");
-        choice1.setText("kl. Trank = 1 Juwel");
+        choice1.setText("kl. Trank = 2 Juwel");
         choice2.setVisible(true);
-        choice2.setText("gr. Trank = 3 Juwelen");
+        choice2.setText("gr. Trank = 5 Juwelen");
         choice3.setVisible(true);
         choice3.setText("Trankinformationen");
         choice4.setVisible(true);
@@ -411,7 +411,7 @@ public class GUI {
 
     public void Trankinformationen() {
         tutorialTextArea.setText("Hexe: Der kleine Trank regeneriert 20 deiner Lebenspunkte in einem Kampf und der " +
-                "große Trank 40 Lebenspunkte. Zwar kostet der kleine Trank weniger Juwelen, allerdings verbraucht das benutzen " +
+                "große Trank 50 Lebenspunkte. Zwar kostet der kleine Trank weniger Juwelen, allerdings verbraucht das benutzen " +
                 "jedes Trankes deinen Angriffszug im Kampf.");
         choice1.setText("Zurueck");
         choice2.setVisible(false);
@@ -467,7 +467,6 @@ public class GUI {
                 " Kraft, es ist als rufe sie nach dir...");
         choice1.setText("Zur großen Kirche");
         choice2.setText("Heldenschwert aufheben");
-        Player.setCurrentWeapon(ItemData.schwertlvl3);
         choice3.setVisible(false);
         choice4.setVisible(false);
     }
@@ -505,6 +504,12 @@ public class GUI {
         }
     }
 
+    public void updateBossFightScene(){
+        if (EntityData.fynal.getEntityLife() == true){
+            tutorialTextArea.setText(EntityData.fynal.getName() + " LP: " + EntityData.fynal.getEntityLivePoints() + "\n" + "Du hast " + Player.getCurrentWeapon().getDamage() + " Schaden gemacht." + "\n" +"Wähle deine nächste Aktion aus!");
+        }
+    }
+
     public void enemydeafeted() {
         if (Player.currenDemon.getEntityLife() == false) {
             tutorialTextArea.setText("Du hast den Daemon besiegt. Du erhältst 2 Juwelen. Möchtest du den naechsten Raum betreten oder zum Hoehleneingang zurueckkehren?");
@@ -529,10 +534,18 @@ public class GUI {
 
     public void refreshBlockScreen(){
         if (Player.getCombatcounter() == 1){
-            tutorialTextArea.setText("Blocken fehlgeschlagen. Du hast " + Player.getTakenDamage() + " Schaden erhalten");
-        }else if (Player.getCombatcounter() > 1 && Player.getCombatcounter() <= 3){
-            tutorialTextArea.setText("Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
-        }else tutorialTextArea.setText("Blocken erfolgreich. Kein Schaden erhalten");
+            tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" + "Blocken fehlgeschlagen. Du hast " + Player.getTakenDamage() + " Schaden erhalten");
+        }else if (Player.getCombatcounter() > 1 && Player.getCombatcounter() <= 4){
+            tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" + "Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
+        }else tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" + "Blocken erfolgreich. Kein Schaden erhalten");
+    }
+
+    public void refreshBlockBossScreen(){
+        if (Player.getCombatcounter() == 1){
+            tutorialTextArea.setText(EntityData.fynal.getName() + " LP: " + EntityData.fynal.getEntityLivePoints() + "\n" + "Blocken fehlgeschlagen. Du hast " + Player.getTakenDamage() + " Schaden erhalten");
+        }else if (Player.getCombatcounter() > 1 && Player.getCombatcounter() <= 4){
+            tutorialTextArea.setText(EntityData.fynal.getName() + " LP: " + EntityData.fynal.getEntityLivePoints() + "\n" + "Blocken teilweise erfolgreich " + Player.getTakenDamage() + " Schaden erhalten");
+        }else tutorialTextArea.setText(EntityData.fynal.getName() + " LP: " + EntityData.fynal.getEntityLivePoints() + "\n" + "Blocken erfolgreich. Kein Schaden erhalten");
     }
 
     public void rueckwegHoehle() {
@@ -577,11 +590,25 @@ public class GUI {
     public void bossdeafeted() {
         if (EntityData.fynal.getEntityLife() == false) {
             tutorialTextArea.setText("Du hast den Daemonenkoenig besigt und das Spiel beendet");
-            choice1.setVisible(false);
+            choice1.setText("Spiel schliessen");
             choice2.setVisible(false);
             choice3.setVisible(false);
             choice4.setVisible(false);
         }
+    }
+
+    public void fluchtHoehlenEinganz() {
+        tutorialTextArea.setText("Du bist dem Daemon erflogreich entkommen. Nun befindest du dich wieder am Hoehleneingang");
+        choice1.setText("Links");
+        choice2.setText("Geradeaus");
+        choice3.setVisible(true);
+        choice3.setText("Rechts");
+        choice4.setVisible(true);
+        choice4.setText("Zurueck zur Kreuzung");
+    }
+
+    public void refreshItemLabel(){
+        itemLabel.setText("Item: " + Player.getCurrentWeapon().getName());
     }
 
 }

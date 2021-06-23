@@ -92,42 +92,39 @@ public class Player {
     }
 
     public static void takeDamageBoss(){
-        if (EntityData.fynal.getEntityLife() == true){
-            EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
-            if( EntityData.fynal.getEntityLife() == true){
-                if (EntityData.fynal.getFirstAttackCounter() == 1){
-                    setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
-                    EntityData.fynal.reduceFirstAttackCounter();
-                }else if (EntityData.fynal.getCombatCounter() <= 15){
-                    setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
-                }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
-                    setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
-                }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0){
-                    EntityData.fynal.setEntityLivePoints(EntityData.demonLVL1.getEntityLivePoints() + 80 );
-                    if (EntityData.fynal.getEntityLivePoints() > 200){
-                        EntityData.fynal.setCombatCounter(200);
-                    }
-                }else if (EntityData.fynal.getHealingCounter() == 0){
-                    takeDamageBoss();
+        EntityData.fynal.setCombatCounter((int)(Math.random() * 20));
+        System.out.println(EntityData.fynal.getCombatCounter());
+        if(EntityData.fynal.getEntityLife() == true){
+            if (EntityData.fynal.getFirstAttackCounter() == 1){
+                setPlayerLivePoints(getPlayerLivePoints() - EntityData.fynal.getFirstAttackDamage());
+                EntityData.fynal.reduceFirstAttackCounter();
+            }else if (EntityData.fynal.getCombatCounter() <= 15){
+                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
+            }else if (EntityData.fynal.getCombatCounter() > 15 &&  EntityData.fynal.getCombatCounter() <= 17){
+                setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage2() * currentArmor.getDamageReduktion()));
+            }else if (EntityData.fynal.getCombatCounter() > 17 && EntityData.fynal.getHealingCounter() > 0) {
+                EntityData.fynal.setEntityLivePoints(EntityData.fynal.getEntityLivePoints() + 80);
+                if (EntityData.fynal.getEntityLivePoints() > 200) {
+                    EntityData.fynal.setCombatCounter(200);
                 }
+            }else if (EntityData.fynal.getHealingCounter() == 0){
+                takeDamageBoss();
             }
+        }
+        if (Player.getPlayerLivePoints() <= 0){
+            Player.killPlayer();
         }
     }
 
-    // Blocken Fehlschlagen 1/5
-    // Blocken teilweise 3/5
-    // Blocken erfolgreich 1/5
-    // TODO
-
     public static void blockAttack(){
-        combatcounter = (int)(Math.random() * 4);
+        combatcounter = (int)(Math.random() * 5);
         if (combatcounter == 1){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
             setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
             if (getPlayerLivePoints() <= 0){
                 killPlayer();
             }
-        }else if (combatcounter > 1 && combatcounter <=3){
+        }else if (combatcounter > 1 && combatcounter <=4){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             setTakenDamage((int)(currenDemon.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             if (getPlayerLivePoints() <= 0){
@@ -137,14 +134,14 @@ public class Player {
     }
 
     public static void blockBossAttack(){
-        combatcounter = (int)(Math.random() * 4);
+        combatcounter = (int)(Math.random() * 5);
         if (combatcounter == 1){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
             setTakenDamage((int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion()));
             if (getPlayerLivePoints() <= 0){
                 killPlayer();
             }
-        }else if (combatcounter > 1 && combatcounter <=3){
+        }else if (combatcounter > 1 && combatcounter <=4){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             setTakenDamage((int)(EntityData.fynal.getDamage() * currentArmor.getDamageReduktion() * 0.5));
             if (getPlayerLivePoints() <= 0){
@@ -152,7 +149,5 @@ public class Player {
             }
         }
     }
-
-    // TODO Healing Potion auf 50 setzten und nur einmal verwendbar
 
 }
