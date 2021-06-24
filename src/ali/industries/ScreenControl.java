@@ -29,6 +29,8 @@ public class ScreenControl {
         }
     }
 
+
+    //*dies ist der ActionListener den wir benötigen um die Buttons zu benutzen. Außerdem wird der Text des Buttons abgefragt*//
     public class Action implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
@@ -52,6 +54,8 @@ public class ScreenControl {
         }
     }
 
+
+    //*ab hier überprüfen wir den Text der Buttons und je nach Text wird ein anderer Screen aufgerufen*//
     public void choiceActionButtons(String pNextScreen){
         switch (pNextScreen){
 
@@ -66,8 +70,10 @@ public class ScreenControl {
             case "Deine Geschichte erzaehlen..." : aGui.Tutorial9(); aGui.getMainWindow().repaint(); break;
             case "Geschenk annehmen" : aGui.Tutorial10(); aGui.getMainWindow().repaint(); inv.schwert1(); break;
 
+
             /**Inventar**/
             case "Inventar" : inv.fensterOeffnen(); aGui.getMainWindow().repaint(); inv.refreshJeweleryLabel(); break;
+
 
             /**Kreuzung**/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
@@ -75,8 +81,8 @@ public class ScreenControl {
             case "Zum Schloss" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
             case "Zu deinem Heimatdorf" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zur Hexe" : aGui.Sumpf(); aGui.getMainWindow().repaint(); break;
-
             case "Die Hoehle betreten" : aGui.Hoehle(); aGui.getMainWindow().repaint(); break;
+
 
             /**Gaststaette**/
             case "Zur Gaststaette" : aGui.GaststaetteVor(); aGui.getMainWindow().repaint(); break;
@@ -85,6 +91,7 @@ public class ScreenControl {
             case "Vielen dank, bis bald!" :
                 aGui.Marktplatz();aGui.getMainWindow().repaint(); break;
 
+
             /**Schmied**/
             case "Zum Schmied" : if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled() & inv.waffe3.isEnabled()){
                 aGui.getTutorialTextArea().setText("Schmied: Du hast also das Titanschwert gefunden. Es heisst, dass Schwert wurde von den Goettern" +
@@ -92,7 +99,7 @@ public class ScreenControl {
                 aGui.getChoice1().setVisible(false); aGui.getChoice2().setVisible(false); aGui.getChoice3().setText("Zurueck zum Marktplatz");  aGui.getMainWindow().repaint(); break;
            } else if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled()){
                 aGui.getTutorialTextArea().setText("Schmied: Du besitzt bereits alles aus meinem Laden. Seit dem du alles besitzt," +
-                        " verspuere ich eine merkwürdige Kraft aus dem Dorf Phylia...");
+                        " verspuere ich eine merkwuerdige Kraft aus dem Dorf Phylia...");
                 aGui.getChoice1().setVisible(false); aGui.getChoice2().setVisible(false); aGui.getChoice3().setText("Zurueck zum Marktplatz"); aGui.getMainWindow().repaint(); break;
             }else aGui.Schmied(); aGui.getMainWindow().repaint(); break;
             case "Zurueck zum Marktplatz" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
@@ -102,6 +109,7 @@ public class ScreenControl {
 
             case "Verlassen" : aGui.Schmied(); aGui.getMainWindow().repaint(); aGui.getChoice1().setEnabled(true);
             aGui.getChoice2().setEnabled(true); aGui.getChoice3().setEnabled(true); break;
+
 
             case "Eisenschwert = 10 J" : if (Player.getPlayerMoney()>=10){
                 aGui.getChoice2().setEnabled(false); inv.schwert2(); inv.refreshJeweleryLabel(); Player.setCurrentWeapon(ItemData.schwertlvl2); aGui.refreshItemLabel(); break;
@@ -119,10 +127,11 @@ public class ScreenControl {
                 aGui.getChoice3().setEnabled(false); inv.ruestung3(); if (Player.currentArmor.getDamageReduktion() > ItemData.ruestunglvl3.getDamageReduktion()){Player.setCurrentArmor(ItemData.ruestunglvl3);} inv.refreshJeweleryLabel(); break;
             }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenArmor(); break;
 
+
             /**Heimat**/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zu deiner alten Schule" : aGui.Schule(); aGui.getMainWindow().repaint(); break;
-            case "Zur großen Kirche" : aGui.Kirche(); aGui.getMainWindow().repaint(); break;
+            case "Zur grossen Kirche" : aGui.Kirche(); aGui.getMainWindow().repaint(); break;
             case "Zum Park" : aGui.Park(); aGui.getMainWindow().repaint(); break;
             case "Zu deinem Haus" : if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled()) {
                 aGui.getChoice2().setVisible(true);
@@ -136,15 +145,24 @@ public class ScreenControl {
             case "Heldenschwert aufheben" : inv.schwert3(); aGui.getChoice2().setVisible(false); aGui.Haus();
                 aGui.getMainWindow().repaint(); Player.setCurrentWeapon(ItemData.schwertlvl3); aGui.refreshItemLabel(); break;
 
+
             /**Hexe**/
             case "Hexenhaus betreten" :
             case "Zurueck" :
                 aGui.Hexe();aGui.getMainWindow().repaint(); break;
             case "Trankinformationen" : aGui.Trankinformationen(); aGui.getMainWindow().repaint(); break;
-            case "kl. Trank = 2 Juwel" : inv.kaufenKleinerHeiltrank(); inv.refreshKleineTraenke(); inv.refreshJeweleryLabel(); break;
-            case "gr. Trank = 5 Juwelen" : inv.kaufenGroßerHeiltrank(); inv.refreshGrosseTraenke(); inv.refreshJeweleryLabel(); break;
+            case "kl. Trank = 2 Juwel" : if(Player.getPlayerMoney() > 1 & inv.getAnzKleineTraenke() < 2){
+                inv.kaufenKleinerHeiltrank(); inv.refreshKleineTraenke(); inv.refreshJeweleryLabel();
+                aGui.getTutorialTextArea().setText("Du hast einen kleinen Trank erworben!"); break;
+            }else aGui.getTutorialTextArea().setText("Entweder hast du nicht genug Juwelen, oder du hast bereits 2 Tränke erworben"); break;
 
-            //Anfang Kampfszenerie
+            case "gr. Trank = 5 Juwelen" : if ( inv.getAnzGroßeTraenke() < 2 & Player.getPlayerMoney() > 4){
+                inv.kaufenGroßerHeiltrank(); inv.refreshGrosseTraenke(); inv.refreshJeweleryLabel();
+                aGui.getTutorialTextArea().setText("Du hast einen grossen Trank erworben!"); break;
+            }else aGui.getTutorialTextArea().setText("Entweder hast du nicht genug Juwelen, oder du hast bereits 2 Tränke erworben"); break;
+
+
+            //*Anfang Kampfszenerie*//
             case "Links" : Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Geradeaus" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Rechts" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;

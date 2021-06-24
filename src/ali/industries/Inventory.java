@@ -132,10 +132,14 @@ public class Inventory {
         juwelen.setEnabled(false);
     }
 
+
+    //*das Inventar wird auf Knopfdruck geöffnet*//
     public void fensterOeffnen() {
         inventoryWindow.setVisible(true);
     }
 
+
+    //*wird die jeweilige Waffe gekauft oder gefunden, wird sie im Inventar freigeschalten*//
     public void schwert1() {
         waffe1.setEnabled(true);
         waffe1.setText(ItemData.schwertlvl1.getName() + (" (10 dmg)"));
@@ -152,6 +156,8 @@ public class Inventory {
         waffe3.setText(ItemData.schwertlvl3.getName() + (" (40 dmg)"));
     }
 
+
+    //*wird die jeweilige Rüstung erworben, wird sie im Inventar freigeschalten*//
     public void ruestung1(){
         ruestung1.setEnabled(true);
         ruestung1.setText(ItemData.ruestunglvl1.getName() + (" (-15% dmg)"));
@@ -170,18 +176,16 @@ public class Inventory {
         Player.setPlayerMoney(Player.getPlayerMoney() - 20);
     }
 
+
+    //*mit diesen Befehlen werden die Heiltränke gekauft und das Geld abgezogen*//
     public void kaufenKleinerHeiltrank() {
-        if (Player.getPlayerMoney() > 1 & getAnzKleineTraenke() < 2){
-            Player.setPlayerMoney(Player.getPlayerMoney() - 2);
+        Player.setPlayerMoney(Player.getPlayerMoney() - 2);
         setAnzKleineTraenke(getAnzKleineTraenke() + 1);
-        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits 2 Tränke erworben");
-    }
+        }
 
     public void kaufenGroßerHeiltrank(){
-        if (getAnzGroßeTraenke() < 2 & Player.getPlayerMoney() > 4){
             Player.setPlayerMoney(Player.getPlayerMoney()-5);
             setAnzGroßeTraenke(getAnzGroßeTraenke()+1);
-        }else System.out.println("Entweder hast du nicht genug Juwelen, oder du hast bereits einen Trank erworben");
     }
 
     public void refreshJeweleryLabel() {
@@ -216,6 +220,8 @@ public class Inventory {
         return ruestung3;
     }
 
+
+    //*mit diesem Befehl wird überprüft welche Tränke der Spieler hat, je nachdem wird der Trank dann verwender und der Spieler geheilt*//
     public void usePotion(){
         if (anzGroßeTraenke > 0){
             Player.setPlayerLivePoints(Player.getPlayerLivePoints()+50);

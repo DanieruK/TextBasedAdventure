@@ -75,6 +75,8 @@ public class Player {
         return takenDamage;
     }
 
+
+    //*mit diesem Befehl wird der Schaden an den Spieler verteilt*//
     public static void takeDamage(){
         if (currenDemon.getEntityLife() == true){
             setPlayerLivePoints(getPlayerLivePoints() - (int)(currenDemon.getDamage() * currentArmor.getDamageReduktion()));
@@ -84,6 +86,8 @@ public class Player {
         }
     }
 
+
+    //*mit diesem Befehl wird der Bossgegner angegriffen*//
     public static void attackBoss(){
         EntityData.fynal.setEntityLivePoints(EntityData.fynal.getEntityLivePoints() - Player.getCurrentWeapon().getDamage());
         if (EntityData.fynal.getEntityLivePoints() <= 0){
@@ -91,6 +95,8 @@ public class Player {
         }
     }
 
+
+    //*mit diesem Befehl werden die Fähigkeiten des Bosses per Zufallsprinzip ausgewählt und ausgeführt*//
     public static void takeDamageBoss(){
         EntityData.fynal.setCombatCounter((int)(Math.random() * 20f));
         System.out.println(EntityData.fynal.getCombatCounter());
@@ -116,6 +122,8 @@ public class Player {
         }
     }
 
+
+    //*dies ist der Befehl der es dem Spieler ermöglicht einen Schlag des Gegners zu blocken
     public static void blockAttack(){
         combatcounter = (int)(Math.random() * 5);
         if (combatcounter == 1){

@@ -16,7 +16,7 @@ public class GUI {
     private JFrame mainWindow;
     private Container con;
     private JPanel titleNamePanel, startButtonPanel, tutorialTextPanel, tutorialButtonPanel, lpPanel, itemPanel, choiceButtonPanel;
-    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel, karte;
+    private JLabel titleNameLabel, lpLabel, lpNumberLabel, itemLabel, itemNameLabel;
     private JButton startButton;
     private JButton inventar;
     private JButton startGame;
@@ -64,6 +64,7 @@ public class GUI {
     public void setAction(ActionListener action) {
         this.action = action;
     }
+
 
     //* hier wird unser Hauptfenster erstellt*//
 
@@ -140,7 +141,10 @@ public class GUI {
         choiceButtonPanel.add(choice4);
         choice4.addActionListener(action);
         choice4.setVisible(false);
+
     }
+
+    //* im Gamescreen wird die Vorgeschichte unseres Spiels erklärt*//
 
     public void createGameScreen() {
 
@@ -176,18 +180,13 @@ public class GUI {
         tutorialButtonPanel.add(startGame);
         startGame.addActionListener(action);
 
-        ImageIcon map = new ImageIcon("Bilder/Kreuzung.png");
-        karte = new JLabel(map);
-        karte.setBounds(800, 65, 180, 180);
-        map.setImage(map.getImage().getScaledInstance(180, 180, Image.SCALE_DEFAULT));
-        mainWindow.add(karte);
-        karte.setVisible(false);
     }
 
     /**
      * dies sind die Tutorial Screens. In diesen kann der Spieler sich noch nicht frei bewegen,
      * er soll erstmal die Spielmechanik verstehen
      **/
+
     public void Tutorial1() {
 
         tutorialTextArea.setText("Du befindest dich auf der Kreuzung. Gehe zur Hoehle in der sich die Daemonen befinden!");
@@ -231,37 +230,33 @@ public class GUI {
         itemNameLabel.setForeground(Color.WHITE);
         itemPanel.add(itemNameLabel);
 
-        karte.setVisible(true);
     }
 
     public void Tutorial2() {
         tutorialTextArea.setText("Waechter: Was denkst du wohin du gehst? In dieser Hoehle befinden sich eine Menge Daemonen, " +
                 "in deinem aktuellen Zustand wirst du direkt sterben! Geh dich ausruhen und hol dir erst eine Ausruestung bevor ich dich eintreten lasse.");
         startGame.setText("zurueck zur Kreuzung");
-        karte.setIcon(new ImageIcon("Bilder/Hoehleneingang.png"));
     }
 
     public void Tutorial3() {
         tutorialTextArea.setText("Du befindest dich erneut auf der Kreuzung. Gehe zum Schloss um dich auszuruhen und um dir eine Ausruestung zu holen.");
         startGame.setText("zum Schloss");
-        karte.setIcon(new ImageIcon("Bilder/Kreuzung.png"));
     }
 
     public void Tutorial4() {
         tutorialTextArea.setText("Du stehst auf dem Marktplatz des Schlosses und siehst die Gaststaette in der du dich ausruhen kannst. Gehe hin!");
         startGame.setText("zur Gaststaette");
-        karte.setIcon(new ImageIcon("Bilder/Marktplatz.png"));
-
-
     }
 
     public void Tutorial5() {
-        tutorialTextArea.setText("Wirt: Guten Tag, wie wärs mit einem erholsamen Schlaf?");
+        tutorialTextArea.setText("Wirt: Guten Tag, wie ich sehe bist du erschoepft, sieh dir nur deine Lebenspunkte an!" +
+                " Wie waere es mit einem erholsamen Schlaf?");
         startGame.setText("Ja bitte...");
     }
 
     public void Tutorial6() {
-        tutorialTextArea.setText("Wirt: Guten morgen! Ich hoffe dein Aufenthalt war zufriedenstellend, beehre uns gerne wieder!");
+        tutorialTextArea.setText("Wirt: Guten morgen! Wie du sehen kannst haben sich deine Lebenspunkte regeneriert." +
+                " Ich hoffe dein Aufenthalt war zufriedenstellend, beehre uns gerne wieder!");
         startGame.setText("Werde ich bestimmt!");
     }
 
@@ -272,14 +267,13 @@ public class GUI {
 
     public void Tutorial8() {
         tutorialTextArea.setText("Schmied: Na mein Freund, bist du neu hier? Leider befindet sich das Koenigreich in " +
-                "schlechten Zeiten, die Daemonen haben erst vor kurzem das naheliegende Dorf Phylia zerstört.");
+                "schlechten Zeiten, die Daemonen haben erst vor kurzem das naheliegende Dorf Phylia zerstoert.");
         startGame.setText("Deine Geschichte erzaehlen...");
     }
 
     public void Tutorial9() {
         tutorialTextArea.setText("Scheint als haettest du einiges durchmachen muessen. Wenn du Rache ueben " +
-                "willst werde ich dir allerdings zur Seite stehen, hier nimm dieses Schwert und diese Ruestung" +
-                " an dich, es ist ein Geschenk!");
+                "willst werde ich dir allerdings zur Seite stehen, hier nimm dieses Schwert an dich, es ist ein Geschenk!");
         startGame.setText("Geschenk annehmen");
     }
 
@@ -291,9 +285,10 @@ public class GUI {
         startGame.setText("Zurueck zur Kreuzung");
     }
 
-    /**
-     * ab hier beginnt das freie Spiel
-     **/
+
+
+    /**ab hier beginnt das freie Spiel, in dem sich der Spieler frei bewegen und eigenständig handeln kann**/
+
     public void Kreuzung() {
         startGame.setVisible(false);
         choiceButtonPanel.setVisible(true);
@@ -310,7 +305,7 @@ public class GUI {
 
     public void Hoehleneingang() {
         tutorialTextArea.setText("Waechter: Ich lasse dich passieren, allerdings warne ich dich noch einmal, in dieser Hoehle" +
-                "befinden sich starke Daemonen! Sicher, dass du eintreten willst?");
+                " befinden sich starke Daemonen! Bist du dir sicher, dass du eintreten willst?");
         choice1.setVisible(true);
         choice1.setText("Die Hoehle betreten");
         choice2.setText("Zurueck zur Kreuzung");
@@ -365,6 +360,8 @@ public class GUI {
         choice4.setVisible(true);
     }
 
+    //*dies ist der Waffenshop, hier kann der Spieler seine Waffen kaufen*//
+
     public void WaffenShop() {
         choice1.setText(ItemData.schwertlvl1.getName());
         choice2.setText("Eisenschwert = 10 J");
@@ -372,6 +369,7 @@ public class GUI {
         choice4.setVisible(false);
     }
 
+    //*dies ist der Rüstungsshop, hier kann der Spieler seine Rüstungen kaufen*//
     public void RuestungsShop() {
         choice1.setText("Lederruestung = 4 J");
         choice2.setText("Kettenhemd = 10 J");
@@ -390,8 +388,8 @@ public class GUI {
     }
 
     public void Sumpf() {
-        tutorialTextArea.setText("Du bewegst dich inmitten eines Sumpfes und siehst das mysteriöse Haus der Hexe vor dir. " +
-                "Moechtest du eintreten oder zurück zur Kreuzung gehen?");
+        tutorialTextArea.setText("Du bewegst dich inmitten eines Sumpfes und siehst das mysterioese Haus der Hexe nicht weit von dir. " +
+                "Moechtest du eintreten oder zurueck zur Kreuzung gehen?");
         choice1.setText("Hexenhaus betreten");
         choice2.setText("Zurueck zur Kreuzung");
         choice3.setVisible(false);
@@ -409,10 +407,11 @@ public class GUI {
         choice4.setText("Zurueck zur Kreuzung");
     }
 
+
+    //*hier erhält der Spieler informationen über das Heilsystem im Kampf*//
     public void Trankinformationen() {
         tutorialTextArea.setText("Hexe: Der kleine Trank regeneriert 20 deiner Lebenspunkte in einem Kampf und der " +
-                "große Trank 50 Lebenspunkte. Zwar kostet der kleine Trank weniger Juwelen, allerdings verbraucht das benutzen " +
-                "jedes Trankes deinen Angriffszug im Kampf.");
+                "grosse Trank 50 Lebenspunkte. Du kannst allerdings nur jeweils 2 von beiden bei dir tragen, benutze sie also mit bedacht!");
         choice1.setText("Zurueck");
         choice2.setVisible(false);
         choice3.setVisible(false);
@@ -424,7 +423,7 @@ public class GUI {
                 "Wo lang willst du gehen?");
         choice1.setText("Zu deiner alten Schule");
         choice2.setVisible(true);
-        choice2.setText("Zur großen Kirche");
+        choice2.setText("Zur grossen Kirche");
         choice3.setVisible(true);
         choice3.setText("Zum Park");
         choice4.setVisible(true);
@@ -432,7 +431,7 @@ public class GUI {
     }
 
     public void Schule() {
-        tutorialTextArea.setText("Das Gebauede, in welchem du frueher unterrichtet wurdest, ist zerstört." +
+        tutorialTextArea.setText("Das Gebauede, in welchem du frueher unterrichtet wurdest, ist zerstoert." +
                 " Dein Klassenzimmer ist nicht mehr wieder zu erkennen.");
         choice1.setText("Zurueck zum Dorfeingang");
         choice2.setVisible(false);
@@ -441,7 +440,7 @@ public class GUI {
     }
 
     public void Kirche() {
-        tutorialTextArea.setText("Die einst große und praechtige Kirche ist in sich zusammengestuerzt. In den truemmern " +
+        tutorialTextArea.setText("Die einst grosse und praechtige Kirche ist in sich zusammengestuerzt. In den truemmern " +
                 "liegen die zerbrochenen, bunten Glaesser die einst das heilige Haus geschmueckt haben.");
         choice1.setText("Zu deiner alten Schule");
         choice2.setText("Zum Park");
@@ -462,10 +461,10 @@ public class GUI {
     }
 
     public void Haus() {
-        tutorialTextArea.setText("Du stehst in deinem alten Haus. Das Dach ist teilweise eingestürzt und hat das " +
+        tutorialTextArea.setText("Du stehst in deinem alten Haus. Das Dach ist teilweise eingestuerzt und hat das " +
                 "Wohnzimmer zerstoert, die Waende stehen zwar noch, aber sie sehen zerbrechlich aus. Du verspuerst eine" +
                 " Kraft, es ist als rufe sie nach dir...");
-        choice1.setText("Zur großen Kirche");
+        choice1.setText("Zur grossen Kirche");
         choice2.setText("Heldenschwert aufheben");
         choice3.setVisible(false);
         choice4.setVisible(false);
@@ -484,11 +483,15 @@ public class GUI {
         con.remove(tutorialButtonPanel);
     }
 
+    //*mit diesem Befehl werden die Spieler Lebenspunkte regeneriert*//
+
     public void Schlafen() {
         player.setPlayerLivePoints(100);
         int pPlayerLivePoints = player.getPlayerLivePoints();
         lpNumberLabel.setText(String.valueOf(pPlayerLivePoints));
     }
+
+    //*ab hier beginnen die Befehle, die für die Kampfszenen nötig sind*//
 
     public void createFightTheme() {
         tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" +"Wähle deine nächste Aktion aus!");
@@ -531,6 +534,8 @@ public class GUI {
             lpNumberLabel.setText("0");
         }
     }
+
+    //*mit den Refresh Befehlen wird dafür gesorgt das immer die aktuellsten Werte auf dem Bildschirm zu sehen sind*//
 
     public void refreshBlockScreen(){
         if (Player.getCombatcounter() == 1){
@@ -611,10 +616,8 @@ public class GUI {
         itemLabel.setText("Item: " + Player.getCurrentWeapon().getName());
     }
 
-    public void setNichtGenugJuwelenPotion(){
-        tutorialTextArea.setText("Du hast nicht genug Juwelen um diesen Heiltrank zu kaufen");
-    }
 
+    //*der Spieler wird, wenn er nicht genug Geld hat, darauf hingewiesen*//
     public void setNichtGenugJuwelenArmor(){
         tutorialTextArea.setText("Du hast nicht genug Juwelen um diese Ruestung zu kaufen");
     }
