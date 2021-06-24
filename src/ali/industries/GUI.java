@@ -66,7 +66,7 @@ public class GUI {
     }
 
 
-    //* hier wird unser Hauptfenster erstellt*//
+    /** hier wird unser Hauptfenster erstellt*/
 
     public GUI() {
 
@@ -144,7 +144,7 @@ public class GUI {
 
     }
 
-    //* im Gamescreen wird die Vorgeschichte unseres Spiels erklärt*//
+    /** im Gamescreen wird die Vorgeschichte unseres Spiels erklärt*/
 
     public void createGameScreen() {
 
@@ -182,10 +182,7 @@ public class GUI {
 
     }
 
-    /**
-     * dies sind die Tutorial Screens. In diesen kann der Spieler sich noch nicht frei bewegen,
-     * er soll erstmal die Spielmechanik verstehen
-     **/
+    /**dies sind die Tutorial Screens. In diesen kann der Spieler sich noch nicht frei bewegen, er soll erstmal die Spielmechanik verstehen*/
 
     public void Tutorial1() {
 
@@ -287,7 +284,7 @@ public class GUI {
 
 
 
-    /**ab hier beginnt das freie Spiel, in dem sich der Spieler frei bewegen und eigenständig handeln kann**/
+    /**ab hier beginnt das freie Spiel, in dem sich der Spieler frei bewegen und eigenständig handeln kann*/
 
     public void Kreuzung() {
         startGame.setVisible(false);
@@ -360,7 +357,7 @@ public class GUI {
         choice4.setVisible(true);
     }
 
-    //*dies ist der Waffenshop, hier kann der Spieler seine Waffen kaufen*//
+    /**dies ist der Waffenshop, hier kann der Spieler seine Waffen kaufen*/
 
     public void WaffenShop() {
         choice1.setText(ItemData.schwertlvl1.getName());
@@ -369,7 +366,7 @@ public class GUI {
         choice4.setVisible(false);
     }
 
-    //*dies ist der Rüstungsshop, hier kann der Spieler seine Rüstungen kaufen*//
+    /**dies ist der Rüstungsshop, hier kann der Spieler seine Rüstungen kaufen*/
     public void RuestungsShop() {
         choice1.setText("Lederruestung = 4 J");
         choice2.setText("Kettenhemd = 10 J");
@@ -408,7 +405,7 @@ public class GUI {
     }
 
 
-    //*hier erhält der Spieler informationen über das Heilsystem im Kampf*//
+    /**hier erhält der Spieler informationen über das Heilsystem im Kampf*/
     public void Trankinformationen() {
         tutorialTextArea.setText("Hexe: Der kleine Trank regeneriert 20 deiner Lebenspunkte in einem Kampf und der " +
                 "grosse Trank 50 Lebenspunkte. Du kannst allerdings nur jeweils 2 von beiden bei dir tragen, benutze sie also mit bedacht!");
@@ -483,7 +480,7 @@ public class GUI {
         con.remove(tutorialButtonPanel);
     }
 
-    //*mit diesem Befehl werden die Spieler Lebenspunkte regeneriert*//
+    /**mit diesem Befehl werden die Spieler Lebenspunkte regeneriert*/
 
     public void Schlafen() {
         player.setPlayerLivePoints(100);
@@ -491,7 +488,7 @@ public class GUI {
         lpNumberLabel.setText(String.valueOf(pPlayerLivePoints));
     }
 
-    //*ab hier beginnen die Befehle, die für die Kampfszenen nötig sind*//
+    /**ab hier beginnen die Befehle, die für die Kampfszenen nötig sind*/
 
     public void createFightTheme() {
         tutorialTextArea.setText(Player.currenDemon.getName() + " LP: " + Player.currenDemon.getEntityLivePoints() + "\n" +"Wähle deine nächste Aktion aus!");
@@ -535,7 +532,7 @@ public class GUI {
         }
     }
 
-    //*mit den Refresh Befehlen wird dafür gesorgt das immer die aktuellsten Werte auf dem Bildschirm zu sehen sind*//
+    /**mit den Refresh Befehlen wird dafür gesorgt das immer die aktuellsten Werte auf dem Bildschirm zu sehen sind*/
 
     public void refreshBlockScreen(){
         if (Player.getCombatcounter() == 1){
@@ -617,7 +614,7 @@ public class GUI {
     }
 
 
-    //*der Spieler wird, wenn er nicht genug Geld hat, darauf hingewiesen*//
+    /**der Spieler wird, wenn er nicht genug Geld hat, darauf hingewiesen*/
     public void setNichtGenugJuwelenArmor(){
         tutorialTextArea.setText("Du hast nicht genug Juwelen um diese Ruestung zu kaufen");
     }

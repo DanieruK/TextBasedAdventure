@@ -3,7 +3,7 @@ package ali.industries;
 public class ItemData {
 
 
-    //*hier haben wir die Waffen und Rüstungen mit ihren jeweiligen Werten, beziehungsweise mit ihrem Preis*//
+    /**hier haben wir die Waffen und Rüstungen mit ihren jeweiligen Werten, beziehungsweise mit ihrem Preis*/
     public static Weapon holzstock = new Weapon("Holzstock",0,0,0);
     public static Weapon schwertlvl1 = new Weapon("Kupferschwert",10,1,1);
     public static Weapon schwertlvl2 = new Weapon("Eisenschwert",20,10,2 );

@@ -133,13 +133,13 @@ public class Inventory {
     }
 
 
-    //*das Inventar wird auf Knopfdruck geöffnet*//
+    /**das Inventar wird auf Knopfdruck geöffnet*/
     public void fensterOeffnen() {
         inventoryWindow.setVisible(true);
     }
 
 
-    //*wird die jeweilige Waffe gekauft oder gefunden, wird sie im Inventar freigeschalten*//
+    /**wird die jeweilige Waffe gekauft oder gefunden, wird sie im Inventar freigeschalten*/
     public void schwert1() {
         waffe1.setEnabled(true);
         waffe1.setText(ItemData.schwertlvl1.getName() + (" (10 dmg)"));
@@ -157,7 +157,7 @@ public class Inventory {
     }
 
 
-    //*wird die jeweilige Rüstung erworben, wird sie im Inventar freigeschalten*//
+    /**wird die jeweilige Rüstung erworben, wird sie im Inventar freigeschalten*/
     public void ruestung1(){
         ruestung1.setEnabled(true);
         ruestung1.setText(ItemData.ruestunglvl1.getName() + (" (-15% dmg)"));
@@ -177,7 +177,7 @@ public class Inventory {
     }
 
 
-    //*mit diesen Befehlen werden die Heiltränke gekauft und das Geld abgezogen*//
+    /**mit diesen Befehlen werden die Heiltränke gekauft und das Geld abgezogen*/
     public void kaufenKleinerHeiltrank() {
         Player.setPlayerMoney(Player.getPlayerMoney() - 2);
         setAnzKleineTraenke(getAnzKleineTraenke() + 1);
@@ -221,7 +221,7 @@ public class Inventory {
     }
 
 
-    //*mit diesem Befehl wird überprüft welche Tränke der Spieler hat, je nachdem wird der Trank dann verwender und der Spieler geheilt*//
+    /**mit diesem Befehl wird überprüft welche Tränke der Spieler hat, je nachdem wird der Trank dann verwender und der Spieler geheilt*/
     public void usePotion(){
         if (anzGroßeTraenke > 0){
             Player.setPlayerLivePoints(Player.getPlayerLivePoints()+50);

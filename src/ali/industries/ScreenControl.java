@@ -30,7 +30,7 @@ public class ScreenControl {
     }
 
 
-    //*dies ist der ActionListener den wir benötigen um die Buttons zu benutzen. Außerdem wird der Text des Buttons abgefragt*//
+    /**dies ist der ActionListener den wir benötigen um die Buttons zu benutzen. Außerdem wird der Text des Buttons abgefragt*/
     public class Action implements ActionListener {
 
         public void actionPerformed(ActionEvent event){
@@ -55,7 +55,7 @@ public class ScreenControl {
     }
 
 
-    //*ab hier überprüfen wir den Text der Buttons und je nach Text wird ein anderer Screen aufgerufen*//
+    /**ab hier überprüfen wir den Text der Buttons und je nach Text wird ein anderer Screen aufgerufen*/
     public void choiceActionButtons(String pNextScreen){
         switch (pNextScreen){
 
@@ -71,11 +71,11 @@ public class ScreenControl {
             case "Geschenk annehmen" : aGui.Tutorial10(); aGui.getMainWindow().repaint(); inv.schwert1(); break;
 
 
-            /**Inventar**/
+            /**Inventar*/
             case "Inventar" : inv.fensterOeffnen(); aGui.getMainWindow().repaint(); inv.refreshJeweleryLabel(); break;
 
 
-            /**Kreuzung**/
+            /**Kreuzung*/
             case "Zurueck zur Kreuzung" : aGui.WegMitDemSchmutz(); aGui.Kreuzung();aGui.getMainWindow().repaint(); break;
             case "Zum dem Hoehleneingang" : aGui.Hoehleneingang();aGui.getMainWindow().repaint(); break;
             case "Zum Schloss" : aGui.Marktplatz(); aGui.getMainWindow().repaint(); break;
@@ -84,7 +84,7 @@ public class ScreenControl {
             case "Die Hoehle betreten" : aGui.Hoehle(); aGui.getMainWindow().repaint(); break;
 
 
-            /**Gaststaette**/
+            /**Gaststaette*/
             case "Zur Gaststaette" : aGui.GaststaetteVor(); aGui.getMainWindow().repaint(); break;
             case "Gerne!" : aGui.Schlafen(); aGui.GaststaetteNach(); aGui.getMainWindow().repaint(); break;
             case "Nein, vielen dank." :
@@ -92,7 +92,7 @@ public class ScreenControl {
                 aGui.Marktplatz();aGui.getMainWindow().repaint(); break;
 
 
-            /**Schmied**/
+            /**Schmied*/
             case "Zum Schmied" : if (inv.waffe2.isEnabled() & inv.ruestung1.isEnabled() & inv.ruestung2.isEnabled() & inv.ruestung3.isEnabled() & inv.waffe3.isEnabled()){
                 aGui.getTutorialTextArea().setText("Schmied: Du hast also das Titanschwert gefunden. Es heisst, dass Schwert wurde von den Goettern" +
                         " geschmiedet und nur der, der dem Schwert wuerdig ist, koenne es fuehren. Es ist maechtiger als alle meine geschmiedeten Schwerter.");
@@ -128,7 +128,7 @@ public class ScreenControl {
             }else System.out.println("Nicht genug Juwelen"); aGui.setNichtGenugJuwelenArmor(); break;
 
 
-            /**Heimat**/
+            /**Heimat*/
             case "Zurueck zum Dorfeingang" : aGui.Heimat(); aGui.getMainWindow().repaint(); break;
             case "Zu deiner alten Schule" : aGui.Schule(); aGui.getMainWindow().repaint(); break;
             case "Zur grossen Kirche" : aGui.Kirche(); aGui.getMainWindow().repaint(); break;
@@ -146,7 +146,7 @@ public class ScreenControl {
                 aGui.getMainWindow().repaint(); Player.setCurrentWeapon(ItemData.schwertlvl3); aGui.refreshItemLabel(); break;
 
 
-            /**Hexe**/
+            /**Hexe*/
             case "Hexenhaus betreten" :
             case "Zurueck" :
                 aGui.Hexe();aGui.getMainWindow().repaint(); break;
@@ -162,7 +162,7 @@ public class ScreenControl {
             }else aGui.getTutorialTextArea().setText("Entweder hast du nicht genug Juwelen, oder du hast bereits 2 Tränke erworben"); break;
 
 
-            //*Anfang Kampfszenerie*//
+            /**Anfang Kampfszenerie*/
             case "Links" : Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Geradeaus" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
             case "Rechts" :Player.setCurrenDemon(EntityData.demonLVL1); aGui.createFightTheme(); break;
@@ -179,13 +179,13 @@ public class ScreenControl {
             case "Den naechsten raum betreten" : Player.setCurrenDemon(EntityData.demonLVL2); aGui.createFightThemeRoom2(); break;
             case "Zum Eingang zurueckkehren" : aGui.rueckwegHoehle(); EntityData.demonLVL1.entityWiederbeleben(20); EntityData.demonLVL2.entityWiederbeleben(75); break;
 
-            //Eintritt Boss Raum
+            /**Eintritt Boss Raum*/
             case "Das Risiko eingehen" : aGui.createBossRoom(); break;
             case "Ihn Angreifen" : Player.attackBoss(); Player.takeDamageBoss(); aGui.updateBossFightScene(); aGui.bossdeafeted(); aGui.refreshLPLabel(); aGui.setGameOverScreen(); break;
             case "Seinen Angriff Blocken" : Player.blockBossAttack(); aGui.refreshBlockBossScreen(); aGui.refreshLPLabel(); break;
             case "Sich selber heilen" : inv.usePotion(); aGui.refreshLPLabel(); break;
 
-            //Game Over Screen
+            //**Game Over Screen*/
             case "Spiel schliessen" : System.exit(0);
 
         }
